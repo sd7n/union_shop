@@ -85,8 +85,17 @@ class _FeaturedProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title),
-                  Text(price),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    price,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                   ElevatedButton(
                     onPressed: onView,
                     child: const Text('View'),

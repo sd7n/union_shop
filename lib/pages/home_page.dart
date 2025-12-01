@@ -62,7 +62,35 @@ class _FeaturedProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Text(title),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            Container(
+              width: 72,
+              height: 72,
+              color: Colors.grey[300],
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title),
+                  Text(price),
+                  ElevatedButton(
+                    onPressed: onView,
+                    child: const Text('View'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

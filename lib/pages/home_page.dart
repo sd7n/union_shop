@@ -72,7 +72,13 @@ class _FeaturedProductCard extends StatelessWidget {
             Container(
               width: 72,
               height: 72,
-              color: Colors.grey[300],
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(
+                child: Icon(Icons.image),
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(

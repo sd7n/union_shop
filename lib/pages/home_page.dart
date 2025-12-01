@@ -18,6 +18,11 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
+            const SizedBox(height: 8),
+            Text(
+              'Official University merchandise, clothing and accessories.',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ],
         ),
       ),

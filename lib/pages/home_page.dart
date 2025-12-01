@@ -179,77 +179,139 @@ class _FeaturedProductCard extends StatelessWidget {
         final imageSize = inGrid ? 60.0 : 72.0;
         final padding = inGrid ? 8.0 : 12.0;
 
-        return Card(
-          elevation: 2,
-          shadowColor: Colors.black12,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          margin: const EdgeInsets.symmetric(vertical: 4),
-          child: Padding(
-            padding: EdgeInsets.all(padding),
-            child: Row(
-              children: [
-                Container(
-                  width: imageSize,
-                  height: imageSize,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.image,
-                      size: 24,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        price,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green.shade700,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton(
-                          onPressed: onView,
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            foregroundColor: Colors.blue,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Text('View'),
-                              SizedBox(width: 4),
-                              Icon(Icons.chevron_right, size: 18),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        return _HoverableProductCard(
+          imageSize: imageSize,
+          padding: padding,
+          title: title,
+          price: price,
+          onView: onView,
         );
       },
+    );
+  }
+}
+
+class _HoverableProductCard extends StatefulWidget {
+  final double imageSize;
+  final double padding;
+  final String title;
+  final String price;
+  final VoidCallback onView;
+
+  const _HoverableProductCard({
+    required this.imageSize,
+    required this.padding,
+    required this.title,
+    required this.price,
+    required this.onView,
+  });
+
+  @override
+  State<_HoverableProductCard> createState() => _HoverableProductCardState();
+}
+
+class _HoverableProductCardState extends State<_HoverableProductCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(begin: 1.0, end: _isHovered ? 1.02 : 1.0),
+        duration: const Duration(milliseconds: 200),
+        builder: (context, scale, child) {
+          return Transform.scale(
+            scale: scale,
+            child: child,
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            border: _isHovered
+                ? Border.all(color: Colors.blue.shade200)
+                : null,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Card(
+            elevation: 2,
+            shadowColor: Colors.black12,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            margin: const EdgeInsets.symmetric(vertical: 4),
+            child: Padding(
+              padding: EdgeInsets.all(widget.padding),
+              child: Row(
+                children: [
+                  Container(
+                    width: widget.imageSize,
+                    height: widget.imageSize,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.image,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          widget.price,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green.shade700,
+                              ),
+                        ),
+                        const SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextButton(
+                            onPressed: widget.onView,
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              foregroundColor: Colors.blue,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Text('View'),
+                                SizedBox(width: 4),
+                                Icon(Icons.chevron_right, size: 18),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

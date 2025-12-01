@@ -34,33 +34,50 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 24),
-                Text(
-                  'Union Shop',
-                  style: (isWide
-                          ? Theme.of(context).textTheme.headlineLarge
-                          : Theme.of(context).textTheme.headlineMedium)
-                      ?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Union Shop',
+                        style: (isWide
+                                ? Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(fontSize: 40)
+                                : Theme.of(context).textTheme.headlineMedium)
+                            ?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: isWide ? 16 : 12),
+                      Text(
+                        'Official University merchandise, clothing and accessories.',
+                        style: (isWide
+                                ? Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(fontSize: 18)
+                                : Theme.of(context).textTheme.bodyLarge)
+                            ?.copyWith(
+                          color: Colors.black87,
+                        ),
+                      ),
+                      SizedBox(height: isWide ? 24 : 20),
+                      ElevatedButton(
+                        onPressed: () => _goToCollections(context),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(140, 48),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 14,
+                          ),
+                        ),
+                        child: const Text('Shop Now'),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Official University merchandise, clothing and accessories.',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () => _goToCollections(context),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(140, 48),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                  ),
-                  child: const Text('Shop Now'),
                 ),
                 const SizedBox(height: 40),
                 Text(

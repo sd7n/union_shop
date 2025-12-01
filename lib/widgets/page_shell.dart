@@ -17,7 +17,14 @@ class PageShell extends StatelessWidget {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
-            child: child,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                child,
+                const SizedBox(height: 48),
+                const Footer(),
+              ],
+            ),
           ),
         ),
       ),

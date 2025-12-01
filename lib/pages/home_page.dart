@@ -92,27 +92,57 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.grey.shade300,
                 ),
                 const SizedBox(height: 16),
-                Column(
-                  children: [
-                    _FeaturedProductCard(
-                      title: 'Uni Hoodie',
-                      price: '£29.99',
-                      onView: () => _goToProduct(context),
-                    ),
-                    const SizedBox(height: 12),
-                    _FeaturedProductCard(
-                      title: 'Union T-Shirt',
-                      price: '£14.99',
-                      onView: () => _goToProduct(context),
-                    ),
-                    const SizedBox(height: 12),
-                    _FeaturedProductCard(
-                      title: 'Logo Mug',
-                      price: '£9.99',
-                      onView: () => _goToProduct(context),
-                    ),
-                    const SizedBox(height: 12),
-                  ],
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth < 600) {
+                      return Column(
+                        children: [
+                          _FeaturedProductCard(
+                            title: 'Uni Hoodie',
+                            price: '£29.99',
+                            onView: () => _goToProduct(context),
+                          ),
+                          const SizedBox(height: 12),
+                          _FeaturedProductCard(
+                            title: 'Union T-Shirt',
+                            price: '£14.99',
+                            onView: () => _goToProduct(context),
+                          ),
+                          const SizedBox(height: 12),
+                          _FeaturedProductCard(
+                            title: 'Logo Mug',
+                            price: '£9.99',
+                            onView: () => _goToProduct(context),
+                          ),
+                          const SizedBox(height: 12),
+                        ],
+                      );
+                    }
+                    return GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      children: [
+                        _FeaturedProductCard(
+                          title: 'Uni Hoodie',
+                          price: '£29.99',
+                          onView: () => _goToProduct(context),
+                        ),
+                        _FeaturedProductCard(
+                          title: 'Union T-Shirt',
+                          price: '£14.99',
+                          onView: () => _goToProduct(context),
+                        ),
+                        _FeaturedProductCard(
+                          title: 'Logo Mug',
+                          price: '£9.99',
+                          onView: () => _goToProduct(context),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 const SizedBox(height: 48),

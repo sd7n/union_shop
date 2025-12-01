@@ -50,6 +50,25 @@ class Footer extends StatelessWidget {
             onPressed: () {},
             child: const Text('Cookie Policy'),
           ),
+          const SizedBox(height: 16),
+          Text(
+            'Follow Us',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Instagram'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Twitter'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('YouTube'),
+          ),
+          const SizedBox(height: 8),
         ],
       ),
     );

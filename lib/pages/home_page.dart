@@ -36,17 +36,26 @@ class HomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             Text(
               'Official University merchandise, clothing and accessories.',
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.black87,
+              ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => _goToCollections(context),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(140, 48),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
+              ),
               child: const Text('Shop Now'),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 40),
             Text(
               'Featured Products',
               style: Theme.of(context).textTheme.titleLarge,

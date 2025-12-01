@@ -36,6 +36,10 @@ class Footer extends StatelessWidget {
           const SizedBox(height: 8),
           TextButton(
             onPressed: () {},
+            child: const Text('About the Union'),
+          ),
+          TextButton(
+            onPressed: () {},
             child: const Text('Privacy Policy'),
           ),
           TextButton(

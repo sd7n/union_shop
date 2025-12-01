@@ -24,8 +24,8 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Union Shop',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
@@ -119,8 +119,8 @@ class _FeaturedProductCard extends StatelessWidget {
                   Text(
                     price,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Align(

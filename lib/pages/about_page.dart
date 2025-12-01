@@ -43,16 +43,46 @@ class AboutPage extends StatelessWidget {
               'The Union Shop is the only official source of University merchandise, ensuring authenticity and quality. We offer a wide range of products, including clothing, accessories, and stationery, all designed and produced by the University.',
             ),
             const SizedBox(height: 8),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('• Official university-branded merchandise'),
-                const Text('• Supports student clubs and societies'),
-                const Text('• Fair pricing and regular promotions'),
-                const Text('• Environmentally conscious product choices'),
+                Text('• Official university-branded merchandise'),
+                Text('• Supports student clubs and societies'),
+                Text('• Fair pricing and regular promotions'),
+                Text('• Environmentally conscious product choices'),
               ],
             ),
             const SizedBox(height: 24),
+            Text(
+              'Contact',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Email: unionshop@example.ac.uk',
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Location: Students\' Union Building, Main Campus',
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Opening hours: Mon–Fri 10:00–17:00',
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'We are available during office hours and can assist you with any inquiries.',
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'You can also reach us through our social media channels.',
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Follow us on Instagram, Facebook, and Twitter.',
+            ),
+            const SizedBox(height: 24),
+            const SizedBox(height: 32),
           ],
         ),
       ),

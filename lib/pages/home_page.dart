@@ -161,7 +161,18 @@ class _FeaturedProductCard extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: TextButton(
                       onPressed: onView,
-                      child: const Text('View'),
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        foregroundColor: Colors.blue,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          Text('View'),
+                          SizedBox(width: 4),
+                          Icon(Icons.chevron_right, size: 18),
+                        ],
+                      ),
                     ),
                   ),
                 ],

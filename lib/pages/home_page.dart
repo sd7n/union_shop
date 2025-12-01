@@ -96,9 +96,13 @@ class _FeaturedProductCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  ElevatedButton(
-                    onPressed: onView,
-                    child: const Text('View'),
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: onView,
+                      child: const Text('View'),
+                    ),
                   ),
                 ],
               ),

@@ -23,76 +23,82 @@ class HomeScreen extends StatelessWidget {
       endDrawer: const NavbarDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
-            Text(
-              'Union Shop',
-              style: (isWide
-                      ? Theme.of(context).textTheme.headlineLarge
-                      : Theme.of(context).textTheme.headlineMedium)
-                  ?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'Official University merchandise, clothing and accessories.',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => _goToCollections(context),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(140, 48),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 14,
-                ),
-              ),
-              child: const Text('Shop Now'),
-            ),
-            const SizedBox(height: 40),
-            Text(
-              'Featured Products',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Divider(
-              thickness: 1,
-              color: Colors.grey.shade300,
-            ),
-            const SizedBox(height: 16),
-            Column(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 900),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _FeaturedProductCard(
-                  title: 'Uni Hoodie',
-                  price: '£29.99',
-                  onView: () => _goToProduct(context),
+                const SizedBox(height: 24),
+                Text(
+                  'Union Shop',
+                  style: (isWide
+                          ? Theme.of(context).textTheme.headlineLarge
+                          : Theme.of(context).textTheme.headlineMedium)
+                      ?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 12),
-                _FeaturedProductCard(
-                  title: 'Union T-Shirt',
-                  price: '£14.99',
-                  onView: () => _goToProduct(context),
+                Text(
+                  'Official University merchandise, clothing and accessories.',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Colors.black87,
+                  ),
                 ),
-                const SizedBox(height: 12),
-                _FeaturedProductCard(
-                  title: 'Logo Mug',
-                  price: '£9.99',
-                  onView: () => _goToProduct(context),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () => _goToCollections(context),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(140, 48),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 14,
+                    ),
+                  ),
+                  child: const Text('Shop Now'),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 40),
+                Text(
+                  'Featured Products',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  children: [
+                    _FeaturedProductCard(
+                      title: 'Uni Hoodie',
+                      price: '£29.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                    _FeaturedProductCard(
+                      title: 'Union T-Shirt',
+                      price: '£14.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                    _FeaturedProductCard(
+                      title: 'Logo Mug',
+                      price: '£9.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                const SizedBox(height: 48),
+                const Footer(),
               ],
             ),
-            const SizedBox(height: 24),
-            const Footer(),
-          ],
+          ),
         ),
       ),
     );

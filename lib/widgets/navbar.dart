@@ -5,7 +5,9 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.shrink();
+    return AppBar(
+      title: const Text('Union Shop'),
+    );
   }
 
   @override

@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: isWide ? 16 : 12),
+                      SizedBox(height: isWide ? 20 : 12),
                       Text(
                         'Official University merchandise, clothing and accessories.',
                         style: (isWide
@@ -64,17 +64,20 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.black87,
                         ),
                       ),
-                      SizedBox(height: isWide ? 24 : 20),
-                      ElevatedButton(
-                        onPressed: () => _goToCollections(context),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(140, 48),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 14,
+                      SizedBox(height: isWide ? 32 : 20),
+                      SizedBox(
+                        width: isWide ? 180 : double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => _goToCollections(context),
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(140, 48),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 14,
+                            ),
                           ),
+                          child: const Text('Shop Now'),
                         ),
-                        child: const Text('Shop Now'),
                       ),
                     ],
                   ),

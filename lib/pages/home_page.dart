@@ -7,6 +7,10 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/collections');
   }
 
+  void _goToProduct(BuildContext context) {
+    Navigator.pushNamed(context, '/product');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +43,13 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Column(
-              children: [],
+              children: [
+                _FeaturedProductCard(
+                  title: 'Uni Hoodie',
+                  price: '£29.99',
+                  onView: () => _goToProduct(context),
+                ),
+              ],
             ),
           ],
         ),

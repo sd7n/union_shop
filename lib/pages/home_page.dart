@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  void _goToCollections(BuildContext context) {
+    Navigator.pushNamed(context, '/collections');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +26,11 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Official University merchandise, clothing and accessories.',
               style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => _goToCollections(context),
+              child: const Text('Shop Now'),
             ),
           ],
         ),

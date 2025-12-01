@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({super.key});
 
+  void _go(BuildContext context, String route) {
+    Navigator.pushNamed(context, route);
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

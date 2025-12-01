@@ -56,6 +56,12 @@ class HomeScreen extends StatelessWidget {
                   onView: () => _goToProduct(context),
                 ),
                 const SizedBox(height: 12),
+                _FeaturedProductCard(
+                  title: 'Logo Mug',
+                  price: '£9.99',
+                  onView: () => _goToProduct(context),
+                ),
+                const SizedBox(height: 12),
               ],
             ),
           ],

@@ -33,6 +33,26 @@ class AboutPage extends StatelessWidget {
             const Text(
               'From hoodies and t-shirts to accessories and stationery, the Union Shop offers products for students, staff, alumni, and visitors.',
             ),
+            const SizedBox(height: 24),
+            Text(
+              'Why shop with us?',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'The Union Shop is the only official source of University merchandise, ensuring authenticity and quality. We offer a wide range of products, including clothing, accessories, and stationery, all designed and produced by the University.',
+            ),
+            const SizedBox(height: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('• Official university-branded merchandise'),
+                const Text('• Supports student clubs and societies'),
+                const Text('• Fair pricing and regular promotions'),
+                const Text('• Environmentally conscious product choices'),
+              ],
+            ),
+            const SizedBox(height: 24),
           ],
         ),
       ),

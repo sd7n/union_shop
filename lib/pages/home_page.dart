@@ -16,6 +16,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isWide = MediaQuery.of(context).size.width >= 600;
+
     return Scaffold(
       appBar: const Navbar(),
       endDrawer: const NavbarDrawer(),
@@ -27,7 +29,10 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               'Union Shop',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              style: (isWide
+                      ? Theme.of(context).textTheme.headlineLarge
+                      : Theme.of(context).textTheme.headlineMedium)
+                  ?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

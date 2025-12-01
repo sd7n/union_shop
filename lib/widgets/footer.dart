@@ -10,7 +10,13 @@ class Footer extends StatelessWidget {
       color: Colors.grey.shade200,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [],
+        children: [
+          Text(
+            'Customer Service',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+        ],
       ),
     );
   }

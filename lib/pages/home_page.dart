@@ -32,6 +32,11 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => _goToCollections(context),
               child: const Text('Shop Now'),
             ),
+            const SizedBox(height: 32),
+            Text(
+              'Featured Products',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
           ],
         ),
       ),

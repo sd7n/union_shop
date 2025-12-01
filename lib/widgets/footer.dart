@@ -24,6 +24,10 @@ class Footer extends StatelessWidget {
             onPressed: () {},
             child: const Text('FAQs'),
           ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Returns Policy'),
+          ),
         ],
       ),
     );

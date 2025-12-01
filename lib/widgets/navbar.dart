@@ -60,6 +60,16 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     }
     return AppBar(
       title: const Text('Union Shop'),
+      actions: [
+        Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+          ),
+        ),
+      ],
     );
   }
 

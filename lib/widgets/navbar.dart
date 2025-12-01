@@ -11,6 +11,32 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     if (isWide) {
       return AppBar(
         title: const Text('Union Shop'),
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: const Text('Home'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Collections'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Sale'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('About'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Sign In'),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart),
+          ),
+        ],
       );
     }
     return AppBar(

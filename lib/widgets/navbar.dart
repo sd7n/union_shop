@@ -8,6 +8,11 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     final width = MediaQuery.of(context).size.width;
     final isWide = width >= 600;
 
+    if (isWide) {
+      return AppBar(
+        title: const Text('Union Shop'),
+      );
+    }
     return AppBar(
       title: const Text('Union Shop'),
     );

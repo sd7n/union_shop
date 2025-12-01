@@ -16,6 +16,10 @@ class Footer extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Contact Us'),
+          ),
         ],
       ),
     );

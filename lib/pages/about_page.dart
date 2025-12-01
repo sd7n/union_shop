@@ -29,6 +29,10 @@ class AboutPage extends StatelessWidget {
             const Text(
               'Every purchase supports student activities, events, and services across the University community.',
             ),
+            const SizedBox(height: 12),
+            const Text(
+              'From hoodies and t-shirts to accessories and stationery, the Union Shop offers products for students, staff, alumni, and visitors.',
+            ),
           ],
         ),
       ),

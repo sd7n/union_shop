@@ -12,7 +12,15 @@ class PageShell extends StatelessWidget {
     return Scaffold(
       appBar: const Navbar(),
       endDrawer: const NavbarDrawer(),
-      body: child,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 900),
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

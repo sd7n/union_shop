@@ -49,6 +49,13 @@ class HomeScreen extends StatelessWidget {
                   price: '£29.99',
                   onView: () => _goToProduct(context),
                 ),
+                const SizedBox(height: 12),
+                _FeaturedProductCard(
+                  title: 'Union T-Shirt',
+                  price: '£14.99',
+                  onView: () => _goToProduct(context),
+                ),
+                const SizedBox(height: 12),
               ],
             ),
           ],

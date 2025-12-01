@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/widgets/footer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -65,6 +66,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 24),
+            const Footer(),
           ],
         ),
       ),

@@ -113,9 +113,12 @@ class _FeaturedProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 2,
+      shadowColor: Colors.black12,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
       ),
+      margin: const EdgeInsets.symmetric(vertical: 4),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Row(
@@ -124,11 +127,14 @@ class _FeaturedProductCard extends StatelessWidget {
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(6),
               ),
               child: const Center(
-                child: Icon(Icons.image),
+                child: Icon(
+                  Icons.image,
+                  size: 24,
+                ),
               ),
             ),
             const SizedBox(width: 12),
@@ -138,13 +144,16 @@ class _FeaturedProductCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     price,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
+                      color: Colors.green.shade700,
                     ),
                   ),
                   const SizedBox(height: 8),

@@ -17,27 +17,42 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         title: const Text('Union Shop'),
         actions: [
           TextButton(
-            onPressed: () {},
-            child: const Text('Home'),
+            onPressed: () => _go(context, '/'),
+            child: const Text(
+              'Home',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text('Collections'),
+            onPressed: () => _go(context, '/collections'),
+            child: const Text(
+              'Collections',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text('Sale'),
+            onPressed: () => _go(context, '/sale'),
+            child: const Text(
+              'Sale',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text('About'),
+            onPressed: () => _go(context, '/about'),
+            child: const Text(
+              'About',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text('Sign In'),
+            onPressed: () => _go(context, '/auth'),
+            child: const Text(
+              'Sign In',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => _go(context, '/cart'),
             icon: const Icon(Icons.shopping_cart),
           ),
         ],

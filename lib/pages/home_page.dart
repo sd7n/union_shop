@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/footer.dart';
-import 'package:union_shop/widgets/navbar_drawer.dart';
 import 'package:union_shop/widgets/navbar.dart';
+import 'package:union_shop/widgets/navbar_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -16,16 +16,34 @@ class NavbarDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(color: Colors.blue),
-            child: Text('Union Shop', style: TextStyle(color: Colors.white)),
+            child: Text(
+              'Union Shop',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
-          ListTile(title: Text('Home'), onTap: () => _go(context, '/')),
-          ListTile(title: Text('Collections'), onTap: () => _go(context, '/collections')),
-          ListTile(title: Text('Sale'), onTap: () => _go(context, '/sale')),
-          ListTile(title: Text('About'), onTap: () => _go(context, '/about')),
-          ListTile(title: Text('Sign In'), onTap: () => _go(context, '/auth')),
           ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('Cart'),
+            title: const Text('Home'),
+            onTap: () => _go(context, '/'),
+          ),
+          ListTile(
+            title: const Text('Collections'),
+            onTap: () => _go(context, '/collections'),
+          ),
+          ListTile(
+            title: const Text('Sale'),
+            onTap: () => _go(context, '/sale'),
+          ),
+          ListTile(
+            title: const Text('About'),
+            onTap: () => _go(context, '/about'),
+          ),
+          ListTile(
+            title: const Text('Sign In'),
+            onTap: () => _go(context, '/auth'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_cart),
+            title: const Text('Cart'),
             onTap: () => _go(context, '/cart'),
           ),
         ],

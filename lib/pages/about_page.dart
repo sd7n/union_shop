@@ -25,6 +25,10 @@ class AboutPage extends StatelessWidget {
             const Text(
               'The Union Shop is operated by the Students\' Union and provides official University merchandise, clothing, and accessories.',
             ),
+            const SizedBox(height: 12),
+            const Text(
+              'Every purchase supports student activities, events, and services across the University community.',
+            ),
           ],
         ),
       ),

@@ -9,13 +9,19 @@ class PageShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isWide = width >= 900;
+
     return Scaffold(
       appBar: const Navbar(),
       endDrawer: const NavbarDrawer(),
       body: Container(
         color: Colors.grey.shade50,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          padding: EdgeInsets.symmetric(
+            horizontal: isWide ? 32 : 16,
+            vertical: 24,
+          ),
           child: Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 900),

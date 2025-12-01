@@ -37,6 +37,10 @@ class HomeScreen extends StatelessWidget {
               'Featured Products',
               style: Theme.of(context).textTheme.titleLarge,
             ),
+            const SizedBox(height: 16),
+            Column(
+              children: [],
+            ),
           ],
         ),
       ),

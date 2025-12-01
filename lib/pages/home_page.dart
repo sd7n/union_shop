@@ -48,6 +48,25 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+class _FeaturedProductCard extends StatelessWidget {
+  final String title;
+  final String price;
+  final VoidCallback onView;
+
+  const _FeaturedProductCard({
+    required this.title,
+    required this.price,
+    required this.onView,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Text(title),
+    );
+  }
+}
+
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;

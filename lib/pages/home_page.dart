@@ -58,7 +58,14 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               'Featured Products',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Divider(
+              thickness: 1,
+              color: Colors.grey.shade300,
             ),
             const SizedBox(height: 16),
             Column(

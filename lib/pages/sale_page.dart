@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/widgets/page_shell.dart';
 
 class SalePage extends StatelessWidget {
   const SalePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sale'),
-      ),
-      body: const Center(
+    return PageShell(
+      child: const Center(
         child: Text('Sale Page'),
       ),
     );

@@ -19,77 +19,166 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return PageShell(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 240,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Center(
-              child: Icon(Icons.image, size: 72),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'Classic Navy Hoodie',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            '£29.99',
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.green,
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'A comfortable, high-quality cotton hoodie featuring the official university logo.',
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'Size',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          DropdownButton<String>(
-            value: selectedSize,
-            items: ['S', 'M', 'L', 'XL']
-                .map((size) => DropdownMenuItem(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isWide = constraints.maxWidth >= 700;
+
+          if (isWide) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 240,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.image, size: 72),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 32),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Classic Navy Hoodie',
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        '£29.99',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        'A comfortable, high-quality cotton hoodie featuring the official university logo.',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        'Size',
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      DropdownButton<String>(
+                        value: selectedSize,
+                        items: ['S', 'M', 'L', 'XL']
+                            .map((size) => DropdownMenuItem(
+                          value: size,
+                          child: Text(size),
+                        ))
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedSize = value;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                      QuantitySelector(
+                        onChanged: (qty) {},
+                      ),
+                      const SizedBox(height: 24),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // TODO: implement cart functionality
+                          },
+                          child: const Text('Add to Cart'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 240,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Center(
+                  child: Icon(Icons.image, size: 72),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Classic Navy Hoodie',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                '£29.99',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'A comfortable, high-quality cotton hoodie featuring the official university logo.',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Size',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              DropdownButton<String>(
+                value: selectedSize,
+                items: ['S', 'M', 'L', 'XL']
+                    .map((size) => DropdownMenuItem(
                   value: size,
                   child: Text(size),
                 ))
-                .toList(),
-            onChanged: (value) {
-              setState(() {
-                selectedSize = value;
-              });
-            },
-          ),
-          const SizedBox(height: 24),
-          QuantitySelector(
-            onChanged: (qty) {},
-          ),
-          const SizedBox(height: 24),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                // TODO: implement cart functionality
-              },
-              child: const Text('Add to Cart'),
-            ),
-          ),
-          const SizedBox(height: 32),
-        ],
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedSize = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 24),
+              QuantitySelector(
+                onChanged: (qty) {},
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // TODO: implement cart functionality
+                  },
+                  child: const Text('Add to Cart'),
+                ),
+              ),
+              const SizedBox(height: 32),
+            ],
+          );
+        },
       ),
     );
   }

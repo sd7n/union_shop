@@ -52,6 +52,7 @@ class CollectionsPage extends StatelessWidget {
                 subtitle: 'Custom printing & personalised gifts',
                 onTap: () => _goToCollection(context),
               ),
+              SizedBox(height: 32),
             ],
           ),
         ],

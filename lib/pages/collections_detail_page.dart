@@ -43,13 +43,11 @@ class CollectionsDetailPage extends StatelessWidget {
                 childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
                 children: products.map((p) {
                   return ProductGridCard(
+                    productId: p.id,
                     title: p.name,
                     price: '£${p.price.toStringAsFixed(2)}',
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      '/product',
-                      arguments: p.id,
-                    ),
+                    imageUrl: p.imageUrl,
+                    isLocalImage: p.isLocalImage,
                   );
                 }).toList(),
               );

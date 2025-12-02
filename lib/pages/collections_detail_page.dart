@@ -29,6 +29,9 @@ class CollectionsDetailPage extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 24),
+          if (products.isEmpty)
+            Text('No products available in this collection.'),
+            const SizedBox(height: 16),
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth >= 600;

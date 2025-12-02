@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
+import '../widgets/product_grid_card.dart';
 
 class CollectionsDetailPage extends StatelessWidget {
   const CollectionsDetailPage({super.key});
@@ -39,6 +40,11 @@ class CollectionsDetailPage extends StatelessWidget {
                 mainAxisSpacing: 16,
                 childAspectRatio: isWide ? 3/4 : 3/3.8,
                 children: [
+                  ProductGridCard(
+                    title: 'Classic Navy Hoodie',
+                    price: '£29.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                   // cards will be added next
                 ],
               );

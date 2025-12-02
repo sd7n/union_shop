@@ -4,7 +4,7 @@ import '../models/product.dart';
 
 class DataService {
   static final DataService instance = DataService._();
-  
+
   DataService._() {
     load();
   }
@@ -53,8 +53,7 @@ class DataService {
     Product(
       id: 'hoodie-navy',
       name: 'Classic Navy Hoodie',
-      description:
-          'A warm, durable hoodie featuring the university crest.',
+      description: 'A warm, durable hoodie featuring the university crest.',
       price: 29.99,
       imageUrl: 'assets/images/hoodie_navy.png',
       isLocalImage: true,
@@ -65,8 +64,7 @@ class DataService {
     Product(
       id: 'hoodie-zip',
       name: 'University Zip Hoodie',
-      description:
-          'Front-zip hoodie with embroidered university logo.',
+      description: 'Front-zip hoodie with embroidered university logo.',
       price: 34.99,
       imageUrl: 'assets/images/hoodie_zip.png',
       isLocalImage: true,
@@ -76,8 +74,7 @@ class DataService {
     Product(
       id: 'tee-classic',
       name: 'Classic Uni T-Shirt',
-      description:
-          'Soft cotton tee with printed university logo.',
+      description: 'Soft cotton tee with printed university logo.',
       price: 14.99,
       imageUrl: 'assets/images/tshirt_classic.png',
       isLocalImage: true,
@@ -87,8 +84,7 @@ class DataService {
     Product(
       id: 'tee-sport',
       name: 'Sport T-Shirt',
-      description:
-          'Breathable sports tee for gym and outdoor activities.',
+      description: 'Breathable sports tee for gym and outdoor activities.',
       price: 17.99,
       imageUrl: 'assets/images/tshirt_sport.png',
       isLocalImage: true,
@@ -98,8 +94,7 @@ class DataService {
     Product(
       id: 'mug-uni',
       name: 'University Mug',
-      description:
-          'Ceramic mug featuring the university emblem.',
+      description: 'Ceramic mug featuring the university emblem.',
       price: 7.99,
       imageUrl: 'assets/images/mug_uni.png',
       isLocalImage: true,
@@ -109,8 +104,7 @@ class DataService {
     Product(
       id: 'tote-campus',
       name: 'Campus Tote Bag',
-      description:
-          'Durable tote bag with campus map design.',
+      description: 'Durable tote bag with campus map design.',
       price: 9.99,
       imageUrl: 'assets/images/tote_bag.png',
       isLocalImage: true,
@@ -120,8 +114,7 @@ class DataService {
     Product(
       id: 'notebook-a5',
       name: 'A5 Notebook',
-      description:
-          'Hardcover notebook with university crest.',
+      description: 'Hardcover notebook with university crest.',
       price: 5.99,
       imageUrl: 'assets/images/notebook_a5.png',
       isLocalImage: true,
@@ -155,8 +148,7 @@ class DataService {
   Collection getCollection(String id) =>
       _collections.firstWhere((c) => c.id == id);
 
-  Product getProduct(String id) =>
-      _products.firstWhere((p) => p.id == id);
+  Product getProduct(String id) => _products.firstWhere((p) => p.id == id);
 
   List<Product> getProductsForCollection(String id) =>
       _products.where((p) => p.collectionId == id).toList();

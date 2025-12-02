@@ -69,7 +69,7 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'A comfortable, high-quality cotton hoodie featuring the official university logo.',
+                        product.description,
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(height: 24),
@@ -146,7 +146,7 @@ class _ProductPageState extends State<ProductPage> {
               ),
               const SizedBox(height: 24),
               Text(
-                'A comfortable, high-quality cotton hoodie featuring the official university logo.',
+                product.description,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 24),

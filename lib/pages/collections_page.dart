@@ -21,6 +21,9 @@ class CollectionsPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24),
+          Column(
+            children: [],
+          ),
         ],
       ),
     );

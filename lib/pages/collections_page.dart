@@ -22,7 +22,14 @@ class CollectionsPage extends StatelessWidget {
           ),
           SizedBox(height: 24),
           Column(
-            children: [],
+            children: [
+              CollectionCard(
+                title: 'Hoodies',
+                subtitle: 'Official university hoodies',
+                onTap: () => _goToCollection(context),
+              ),
+              SizedBox(height: 16),
+            ],
           ),
         ],
       ),

@@ -13,6 +13,9 @@ class CollectionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = DataService.instance;
+    final collections = data.collections;
+
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,36 +29,19 @@ class CollectionsPage extends StatelessWidget {
           SizedBox(height: 24),
           Column(
             children: [
-              CollectionCard(
-                title: 'Hoodies',
-                subtitle: 'Official university hoodies',
-                onTap: () => _goToCollection(context),
-              ),
+              ...collections.map((collection) {
+                return Column(
+                  children: [
+                    CollectionCard(
+                      title: collection.name,
+                      subtitle: collection.description,
+                      onTap: () => _goToCollection(context),
+                    ),
+                    SizedBox(height: 16),
+                  ],
+                );
+              }).toList(),
               SizedBox(height: 16),
-              CollectionCard(
-                title: 'T-Shirts',
-                subtitle: 'Shirts, tees & casual wear',
-                onTap: () => _goToCollection(context),
-              ),
-              SizedBox(height: 16),
-              CollectionCard(
-                title: 'Accessories',
-                subtitle: 'Mugs, bags, lanyards & more',
-                onTap: () => _goToCollection(context),
-              ),
-              SizedBox(height: 16),
-              CollectionCard(
-                title: 'Stationery',
-                subtitle: 'Notebooks, pens & study items',
-                onTap: () => _goToCollection(context),
-              ),
-              SizedBox(height: 16),
-              CollectionCard(
-                title: 'Print Shack',
-                subtitle: 'Custom printing & personalised gifts',
-                onTap: () => _goToCollection(context),
-              ),
-              SizedBox(height: 32),
             ],
           ),
         ],

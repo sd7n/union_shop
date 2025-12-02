@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/quantity_selector.dart';
+import '../services/data_service.dart';
+import '../models/product.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/product_grid_card.dart';
+import '../services/data_service.dart';
 
 class CollectionsDetailPage extends StatelessWidget {
   const CollectionsDetailPage({super.key});
@@ -11,19 +12,23 @@ class CollectionsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final collectionId = ModalRoute.of(context)!.settings.arguments as String;
+    final data = DataService.instance;
+    final collection = data.getCollection(collectionId);
+
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hoodies',
+            collection.name,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 12),
           Text(
-            'Explore our range of official university hoodies.',
+            collection.description,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 24),

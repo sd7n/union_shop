@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/collection_card.dart';
 import '../services/data_service.dart';
-import '../models/collection.dart';
 
 class CollectionsPage extends StatelessWidget {
   const CollectionsPage({super.key});

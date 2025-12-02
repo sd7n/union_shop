@@ -6,15 +6,12 @@ import '../services/data_service.dart';
 class CollectionsDetailPage extends StatelessWidget {
   const CollectionsDetailPage({super.key});
 
-  void _goToProduct(BuildContext context) {
-    Navigator.pushNamed(context, '/product');
-  }
-
   @override
   Widget build(BuildContext context) {
     final collectionId = ModalRoute.of(context)!.settings.arguments as String;
     final data = DataService.instance;
     final collection = data.getCollection(collectionId);
+    final products = data.getProductsForCollection(collectionId);
 
     return PageShell(
       child: Column(
@@ -44,28 +41,17 @@ class CollectionsDetailPage extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
-                children: [
-                  ProductGridCard(
-                    title: 'Classic Navy Hoodie',
-                    price: '£29.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'University Zip Hoodie',
-                    price: '£34.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'Sport Hoodie',
-                    price: '£32.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'Freshers Hoodie 2025',
-                    price: '£28.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                ],
+                children: products.map((p) {
+                  return ProductGridCard(
+                    title: p.name,
+                    price: '£${p.price.toStringAsFixed(2)}',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/product',
+                      arguments: p.id,
+                    ),
+                  );
+                }).toList(),
               );
             },
           ),

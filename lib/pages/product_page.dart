@@ -20,6 +20,9 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final productId = ModalRoute.of(context)!.settings.arguments as String;
+    print("DEBUG Product ID: $productId");
+
     return PageShell(
       child: LayoutBuilder(
         builder: (context, constraints) {

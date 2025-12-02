@@ -12,4 +12,7 @@ class Collection {
     required this.imageUrl,
     required this.isLocalImage,
   });
+
+  @override
+  String toString() => 'Collection(id: $id, name: $name)';
 }

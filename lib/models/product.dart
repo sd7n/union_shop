@@ -22,4 +22,8 @@ class Product {
     required this.sizes,
     this.externalUrl,
   });
+
+  @override
+  String toString() =>
+      'Product(id: $id, name: $name, price: $price, collectionId: $collectionId)';
 }

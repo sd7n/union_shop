@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/widgets/footer.dart';
-import 'package:union_shop/widgets/navbar.dart';
-import 'package:union_shop/widgets/navbar_drawer.dart';
+import 'package:union_shop/widgets/page_shell.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,144 +15,127 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width >= 600;
-    final isExtraWide = MediaQuery.of(context).size.width >= 900;
 
-    return Scaffold(
-      appBar: const Navbar(),
-      endDrawer: const NavbarDrawer(),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(
-          horizontal: isExtraWide ? 32 : 16,
-          vertical: 24,
-        ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 900),
+    return PageShell(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 24),
+          Align(
+            alignment: Alignment.centerLeft,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 24),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Union Shop',
-                        style: (isWide
-                                ? Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge
-                                    ?.copyWith(fontSize: 40)
-                                : Theme.of(context).textTheme.headlineMedium)
-                            ?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: isWide ? 20 : 12),
-                      Text(
-                        'Official University merchandise, clothing and accessories.',
-                        style: (isWide
-                                ? Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(fontSize: 18)
-                                : Theme.of(context).textTheme.bodyLarge)
-                            ?.copyWith(
-                          color: Colors.black87,
-                        ),
-                      ),
-                      SizedBox(height: isWide ? 32 : 20),
-                      SizedBox(
-                        width: isWide ? 180 : double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () => _goToCollections(context),
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(140, 48),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 24,
-                              vertical: 14,
-                            ),
-                          ),
-                          child: const Text('Shop Now'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 40),
                 Text(
-                  'Featured Products',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  'Union Shop',
+                  style: (isWide
+                          ? Theme.of(context)
+                              .textTheme
+                              .headlineLarge
+                              ?.copyWith(fontSize: 40)
+                          : Theme.of(context).textTheme.headlineMedium)
+                      ?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Divider(
-                  thickness: 1,
-                  color: Colors.grey.shade300,
+                SizedBox(height: isWide ? 20 : 12),
+                Text(
+                  'Official University merchandise, clothing and accessories.',
+                  style: (isWide
+                          ? Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(fontSize: 18)
+                          : Theme.of(context).textTheme.bodyLarge)
+                      ?.copyWith(
+                    color: Colors.black87,
+                  ),
                 ),
-                const SizedBox(height: 16),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (constraints.maxWidth < 600) {
-                      return Column(
-                        children: [
-                          _FeaturedProductCard(
-                            title: 'Uni Hoodie',
-                            price: '£29.99',
-                            onView: () => _goToProduct(context),
-                          ),
-                          const SizedBox(height: 12),
-                          _FeaturedProductCard(
-                            title: 'Union T-Shirt',
-                            price: '£14.99',
-                            onView: () => _goToProduct(context),
-                          ),
-                          const SizedBox(height: 12),
-                          _FeaturedProductCard(
-                            title: 'Logo Mug',
-                            price: '£9.99',
-                            onView: () => _goToProduct(context),
-                          ),
-                          const SizedBox(height: 12),
-                        ],
-                      );
-                    }
-                    return GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      childAspectRatio: 0.85,
-                      children: [
-                        _FeaturedProductCard(
-                          title: 'Uni Hoodie',
-                          price: '£29.99',
-                          onView: () => _goToProduct(context),
-                        ),
-                        _FeaturedProductCard(
-                          title: 'Union T-Shirt',
-                          price: '£14.99',
-                          onView: () => _goToProduct(context),
-                        ),
-                        _FeaturedProductCard(
-                          title: 'Logo Mug',
-                          price: '£9.99',
-                          onView: () => _goToProduct(context),
-                        ),
-                      ],
-                    );
-                  },
+                SizedBox(height: isWide ? 32 : 20),
+                SizedBox(
+                  width: isWide ? 180 : double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => _goToCollections(context),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(140, 48),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 14,
+                      ),
+                    ),
+                    child: const Text('Shop Now'),
+                  ),
                 ),
-                const SizedBox(height: 24),
-                const SizedBox(height: 48),
-                const Footer(),
               ],
             ),
           ),
-        ),
+          const SizedBox(height: 40),
+          Text(
+            'Featured Products',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Divider(
+            thickness: 1,
+            color: Colors.grey.shade300,
+          ),
+          const SizedBox(height: 16),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return Column(
+                  children: [
+                    _FeaturedProductCard(
+                      title: 'Uni Hoodie',
+                      price: '£29.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                    _FeaturedProductCard(
+                      title: 'Union T-Shirt',
+                      price: '£14.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                    _FeaturedProductCard(
+                      title: 'Logo Mug',
+                      price: '£9.99',
+                      onView: () => _goToProduct(context),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                );
+              }
+              return GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 0.85,
+                children: [
+                  _FeaturedProductCard(
+                    title: 'Uni Hoodie',
+                    price: '£29.99',
+                    onView: () => _goToProduct(context),
+                  ),
+                  _FeaturedProductCard(
+                    title: 'Union T-Shirt',
+                    price: '£14.99',
+                    onView: () => _goToProduct(context),
+                  ),
+                  _FeaturedProductCard(
+                    title: 'Logo Mug',
+                    price: '£9.99',
+                    onView: () => _goToProduct(context),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -311,8 +292,7 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
             ),
           ),
         ),
-      ),
-    );
+      ));
   }
 }
 

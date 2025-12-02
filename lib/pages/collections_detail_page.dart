@@ -50,6 +50,11 @@ class CollectionsDetailPage extends StatelessWidget {
                     price: '£34.99',
                     onTap: () => _goToProduct(context),
                   ),
+                  ProductGridCard(
+                    title: 'Sport Hoodie',
+                    price: '£32.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                   // cards will be added next
                 ],
               );

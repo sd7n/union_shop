@@ -4,7 +4,10 @@ import '../models/product.dart';
 
 class DataService {
   static final DataService instance = DataService._();
-  DataService._();
+  
+  DataService._() {
+    load();
+  }
 
   late final AppData appData;
 
@@ -136,4 +139,11 @@ class DataService {
       sizes: [],
     ),
   ];
+
+  void load() {
+    appData = AppData(
+      collections: _collections,
+      products: _products,
+    );
+  }
 }

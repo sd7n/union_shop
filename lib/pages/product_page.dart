@@ -46,17 +46,18 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       Text(
                         'Classic Navy Hoodie',
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         '£29.99',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                            ),
                       ),
                       const SizedBox(height: 24),
                       Text(
@@ -66,18 +67,19 @@ class _ProductPageState extends State<ProductPage> {
                       const SizedBox(height: 24),
                       Text(
                         'Size',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       const SizedBox(height: 8),
                       DropdownButton<String>(
                         value: selectedSize,
                         items: ['S', 'M', 'L', 'XL']
                             .map((size) => DropdownMenuItem(
-                          value: size,
-                          child: Text(size),
-                        ))
+                                  value: size,
+                                  child: Text(size),
+                                ))
                             .toList(),
                         onChanged: (value) {
                           setState(() {
@@ -123,16 +125,16 @@ class _ProductPageState extends State<ProductPage> {
               Text(
                 'Classic Navy Hoodie',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 8),
               Text(
                 '£29.99',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
               ),
               const SizedBox(height: 24),
               Text(
@@ -143,17 +145,17 @@ class _ProductPageState extends State<ProductPage> {
               Text(
                 'Size',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 8),
               DropdownButton<String>(
                 value: selectedSize,
                 items: ['S', 'M', 'L', 'XL']
                     .map((size) => DropdownMenuItem(
-                  value: size,
-                  child: Text(size),
-                ))
+                          value: size,
+                          child: Text(size),
+                        ))
                     .toList(),
                 onChanged: (value) {
                   setState(() {

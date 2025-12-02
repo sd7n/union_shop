@@ -6,10 +6,6 @@ import '../services/data_service.dart';
 class CollectionsPage extends StatelessWidget {
   const CollectionsPage({super.key});
 
-  void _goToCollection(BuildContext context) {
-    Navigator.pushNamed(context, '/collection');
-  }
-
   @override
   Widget build(BuildContext context) {
     final data = DataService.instance;

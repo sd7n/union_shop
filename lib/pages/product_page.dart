@@ -61,7 +61,7 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '£29.99',
+                        '£${product.price.toStringAsFixed(2)}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Colors.green,
@@ -138,11 +138,11 @@ class _ProductPageState extends State<ProductPage> {
               ),
               const SizedBox(height: 8),
               Text(
-                '£29.99',
+                '£${product.price.toStringAsFixed(2)}',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
               ),
               const SizedBox(height: 24),
               Text(

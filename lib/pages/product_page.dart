@@ -40,6 +40,11 @@ class ProductPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
+          Text(
+            'A comfortable, high-quality cotton hoodie featuring the official university logo.',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 24),
         ],
       ),
     );

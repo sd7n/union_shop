@@ -41,6 +41,12 @@ class CollectionsPage extends StatelessWidget {
                 onTap: () => _goToCollection(context),
               ),
               SizedBox(height: 16),
+              CollectionCard(
+                title: 'Stationery',
+                subtitle: 'Notebooks, pens & study items',
+                onTap: () => _goToCollection(context),
+              ),
+              SizedBox(height: 16),
             ],
           ),
         ],

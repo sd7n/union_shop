@@ -146,4 +146,17 @@ class DataService {
       products: _products,
     );
   }
+
+  List<Collection> get collections => _collections;
+
+  List<Product> get products => _products;
+
+  Collection getCollection(String id) =>
+      _collections.firstWhere((c) => c.id == id);
+
+  Product getProduct(String id) =>
+      _products.firstWhere((p) => p.id == id);
+
+  List<Product> getProductsForCollection(String id) =>
+      _products.where((p) => p.collectionId == id).toList();
 }

@@ -26,6 +26,24 @@ class CollectionsDetailPage extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           SizedBox(height: 24),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth >= 600;
+              final columns = isWide ? 2 : 1;
+
+              return GridView.count(
+                crossAxisCount: columns,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: isWide ? 3/4 : 3/3.8,
+                children: [
+                  // cards will be added next
+                ],
+              );
+            },
+          ),
         ],
       ),
     );

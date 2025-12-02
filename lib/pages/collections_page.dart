@@ -7,8 +7,9 @@ class CollectionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageShell(
-      child: const Center(
-        child: Text('Collections Page'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [],
       ),
     );
   }

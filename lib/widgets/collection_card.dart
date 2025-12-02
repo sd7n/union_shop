@@ -43,7 +43,6 @@ class CollectionCard extends StatelessWidget {
                     : Image.network(imageUrl, fit: BoxFit.cover),
               ),
               SizedBox(width: 16),
-
               // text
               Expanded(
                 child: Column(

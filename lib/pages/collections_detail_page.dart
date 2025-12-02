@@ -20,8 +20,8 @@ class CollectionsDetailPage extends StatelessWidget {
           Text(
             collection.name,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 12),
           Text(

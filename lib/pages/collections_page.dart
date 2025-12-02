@@ -22,8 +22,8 @@ class CollectionsPage extends StatelessWidget {
           Text(
             'Collections',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           SizedBox(height: 16),
           Column(

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/product_grid_card.dart';
+import '../services/data_service.dart';
 
 class SalePage extends StatelessWidget {
   const SalePage({super.key});
 
-  void _goToProduct(BuildContext context) {
-    Navigator.pushNamed(context, '/product');
-  }
-
   @override
   Widget build(BuildContext context) {
+    final data = DataService.instance;
+    final saleProducts = [
+      data.getProduct('hoodie-navy'),
+      data.getProduct('hoodie-zip'),
+      data.getProduct('mug-uni'),
+      data.getProduct('tote-campus'),
+    ];
+
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,28 +68,15 @@ class SalePage extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
-                children: [
-                  ProductGridCard(
-                    title: 'Classic Navy Hoodie (Sale)',
-                    price: '£24.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'Freshers Hoodie 2025 (Sale)',
-                    price: '£22.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'University Mug (Sale)',
-                    price: '£6.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                  ProductGridCard(
-                    title: 'Campus Tote Bag (Sale)',
-                    price: '£7.99',
-                    onTap: () => _goToProduct(context),
-                  ),
-                ],
+                children: saleProducts.map((p) {
+                  return ProductGridCard(
+                    productId: p.id,
+                    title: p.name,
+                    price: '£${(p.price * 0.8).toStringAsFixed(2)}',
+                    imageUrl: p.imageUrl,
+                    isLocalImage: p.isLocalImage,
+                  );
+                }).toList(),
               );
             },
           ),

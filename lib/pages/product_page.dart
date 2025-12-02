@@ -53,7 +53,7 @@ class _ProductPageState extends State<ProductPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Classic Navy Hoodie',
+                        product.name,
                         style:
                             Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   fontWeight: FontWeight.bold,
@@ -131,10 +131,10 @@ class _ProductPageState extends State<ProductPage> {
               ),
               const SizedBox(height: 24),
               Text(
-                'Classic Navy Hoodie',
+                product.name,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               Text(

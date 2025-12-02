@@ -9,7 +9,15 @@ class CollectionsPage extends StatelessWidget {
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [],
+        children: [
+          Text(
+            'Collections',
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 24),
+        ],
       ),
     );
   }

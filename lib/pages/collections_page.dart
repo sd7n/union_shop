@@ -28,21 +28,21 @@ class CollectionsPage extends StatelessWidget {
           ),
           SizedBox(height: 24),
           Column(
-            children: [
-              ...collections.map((collection) {
-                return Column(
-                  children: [
-                    CollectionCard(
-                      title: collection.name,
-                      subtitle: collection.description,
-                      onTap: () => _goToCollection(context),
-                    ),
-                    SizedBox(height: 16),
-                  ],
-                );
-              }).toList(),
-              SizedBox(height: 16),
-            ],
+            children: collections.map((c) {
+              return Column(
+                children: [
+                  CollectionCard(
+                    title: c.name,
+                    subtitle: c.description,
+                    collectionId: c.id,
+                    imageUrl: c.imageUrl,
+                    isLocalImage: c.isLocalImage,
+                    onTap: () => _goToCollection(context),
+                  ),
+                  SizedBox(height: 16),
+                ],
+              );
+            }).toList(),
           ),
         ],
       ),

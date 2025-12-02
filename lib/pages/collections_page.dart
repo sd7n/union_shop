@@ -25,7 +25,7 @@ class CollectionsPage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 24),
+          SizedBox(height: 16),
           Column(
             children: collections.map((c) {
               return Column(
@@ -47,6 +47,7 @@ class CollectionsPage extends StatelessWidget {
               );
             }).toList(),
           ),
+          SizedBox(height: 32),
         ],
       ),
     );

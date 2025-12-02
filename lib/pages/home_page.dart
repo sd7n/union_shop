@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
+import '../services/data_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,6 +20,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width >= 600;
+    final data = DataService.instance;
+    final featured = [
+      data.getProduct('hoodie-navy'),
+      data.getProduct('tee-classic'),
+      data.getProduct('mug-uni'),
+    ];
 
     return PageShell(
       child: Column(
@@ -91,24 +98,18 @@ class HomeScreen extends StatelessWidget {
               if (constraints.maxWidth < 600) {
                 return Column(
                   children: [
-                    _FeaturedProductCard(
-                      title: 'Uni Hoodie',
-                      price: '£29.99',
-                      onView: () => _goToProduct(context, 'uni-hoodie'),
-                    ),
-                    const SizedBox(height: 12),
-                    _FeaturedProductCard(
-                      title: 'Union T-Shirt',
-                      price: '£14.99',
-                      onView: () => _goToProduct(context, 'union-tshirt'),
-                    ),
-                    const SizedBox(height: 12),
-                    _FeaturedProductCard(
-                      title: 'Logo Mug',
-                      price: '£9.99',
-                      onView: () => _goToProduct(context, 'logo-mug'),
-                    ),
-                    const SizedBox(height: 12),
+                    ...featured.map((p) {
+                      return Column(
+                        children: [
+                          _FeaturedProductCard(
+                            title: p.name,
+                            price: '£${p.price.toStringAsFixed(2)}',
+                            onView: () => _goToProduct(context, p.id),
+                          ),
+                          const SizedBox(height: 12),
+                        ],
+                      );
+                    }).toList(),
                   ],
                 );
               }
@@ -119,23 +120,13 @@ class HomeScreen extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 childAspectRatio: 0.85,
-                children: [
-                  _FeaturedProductCard(
-                    title: 'Uni Hoodie',
-                    price: '£29.99',
-                    onView: () => _goToProduct(context, 'uni-hoodie'),
-                  ),
-                  _FeaturedProductCard(
-                    title: 'Union T-Shirt',
-                    price: '£14.99',
-                    onView: () => _goToProduct(context, 'union-tshirt'),
-                  ),
-                  _FeaturedProductCard(
-                    title: 'Logo Mug',
-                    price: '£9.99',
-                    onView: () => _goToProduct(context, 'logo-mug'),
-                  ),
-                ],
+                children: featured.map((p) {
+                  return _FeaturedProductCard(
+                    title: p.name,
+                    price: '£${p.price.toStringAsFixed(2)}',
+                    onView: () => _goToProduct(context, p.id),
+                  );
+                }).toList(),
               );
             },
           ),

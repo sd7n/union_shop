@@ -25,6 +25,21 @@ class ProductPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
+          Text(
+            'Classic Navy Hoodie',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '£29.99',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.green,
+            ),
+          ),
+          const SizedBox(height: 24),
         ],
       ),
     );

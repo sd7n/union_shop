@@ -60,6 +60,7 @@ class DataService {
       isLocalImage: true,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
+      externalUrl: 'https://example.com/products/navy_hoodie',
     ),
     Product(
       id: 'hoodie-zip',

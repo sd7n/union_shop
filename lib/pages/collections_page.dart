@@ -37,7 +37,11 @@ class CollectionsPage extends StatelessWidget {
                     collectionId: c.id,
                     imageUrl: c.imageUrl,
                     isLocalImage: c.isLocalImage,
-                    onTap: () => _goToCollection(context),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/collection',
+                      arguments: c.id,
+                    ),
                   ),
                   SizedBox(height: 16),
                 ],

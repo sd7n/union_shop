@@ -74,6 +74,11 @@ class SalePage extends StatelessWidget {
                     price: '£22.99',
                     onTap: () => _goToProduct(context),
                   ),
+                  ProductGridCard(
+                    title: 'University Mug (Sale)',
+                    price: '£6.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                 ],
               );
             },

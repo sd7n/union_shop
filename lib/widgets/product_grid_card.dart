@@ -35,9 +35,12 @@ class ProductGridCard extends StatelessWidget {
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: isLocalImage
-                    ? const Icon(Icons.image)
-                    : Image.network(imageUrl, fit: BoxFit.cover),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: isLocalImage
+                      ? Image.asset(imageUrl, fit: BoxFit.cover)
+                      : Image.network(imageUrl, fit: BoxFit.cover),
+                  ),
                 ),
               ),
               const SizedBox(height: 12),

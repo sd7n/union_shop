@@ -64,6 +64,7 @@ class CollectionsDetailPage extends StatelessWidget {
               );
             },
           ),
+          const SizedBox(height: 32),
         ],
       ),
     );

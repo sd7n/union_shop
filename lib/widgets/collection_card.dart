@@ -30,15 +30,17 @@ class CollectionCard extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // placeholder image box
+              // image box
               Container(
                 width: 72,
                 height: 72,
+                clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(Icons.collections),
+                child: isLocalImage
+                    ? Image.asset(imageUrl, fit: BoxFit.cover)
+                    : Image.network(imageUrl, fit: BoxFit.cover),
               ),
               SizedBox(width: 16),
 

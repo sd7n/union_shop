@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
+import '../widgets/quantity_selector.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -72,6 +73,10 @@ class _ProductPageState extends State<ProductPage> {
                 selectedSize = value;
               });
             },
+          ),
+          const SizedBox(height: 24),
+          QuantitySelector(
+            onChanged: (qty) {},
           ),
           const SizedBox(height: 24),
         ],

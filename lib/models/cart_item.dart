@@ -22,4 +22,8 @@ class CartItem {
       size: size ?? this.size,
     );
   }
+
+  @override
+  String toString() =>
+      'CartItem(product: ${product.name}, quantity: $quantity, size: $size)';
 }

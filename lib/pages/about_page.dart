@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/widgets/footer.dart';
-import 'package:union_shop/widgets/navbar.dart';
-import 'package:union_shop/widgets/navbar_drawer.dart';
+import 'package:union_shop/widgets/page_shell.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const Navbar(),
-      endDrawer: const NavbarDrawer(),
-      body: SingleChildScrollView(
+    return PageShell(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +81,6 @@ class AboutPage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             const SizedBox(height: 32),
-            const Footer(),
           ],
         ),
       ),

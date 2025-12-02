@@ -21,12 +21,12 @@ class CollectionsDetailPage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(
             'Explore our range of official university hoodies.',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth >= 600;
@@ -35,10 +35,10 @@ class CollectionsDetailPage extends StatelessWidget {
               return GridView.count(
                 crossAxisCount: columns,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
-                childAspectRatio: isWide ? 3/4 : 3/3.8,
+                childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
                 children: [
                   ProductGridCard(
                     title: 'Classic Navy Hoodie',

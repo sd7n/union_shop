@@ -9,7 +9,20 @@ class CollectionsDetailPage extends StatelessWidget {
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [],
+        children: [
+          Text(
+            'Hoodies',
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 12),
+          Text(
+            'Explore our range of official university hoodies.',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          SizedBox(height: 24),
+        ],
       ),
     );
   }

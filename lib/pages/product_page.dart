@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
+
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  String? selectedSize = 'M';
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
@@ -43,6 +50,28 @@ class ProductPage extends StatelessWidget {
           Text(
             'A comfortable, high-quality cotton hoodie featuring the official university logo.',
             style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Size',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          DropdownButton<String>(
+            value: selectedSize,
+            items: ['S', 'M', 'L', 'XL']
+                .map((size) => DropdownMenuItem(
+                  value: size,
+                  child: Text(size),
+                ))
+                .toList(),
+            onChanged: (value) {
+              setState(() {
+                selectedSize = value;
+              });
+            },
           ),
           const SizedBox(height: 24),
         ],

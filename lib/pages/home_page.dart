@@ -210,9 +210,8 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
         },
         child: Container(
           decoration: BoxDecoration(
-            border: _isHovered
-                ? Border.all(color: Colors.blue.shade200)
-                : null,
+            border:
+                _isHovered ? Border.all(color: Colors.blue.shade200) : null,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Card(
@@ -292,7 +291,8 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
             ),
           ),
         ),
-      ));
+      ),
+    );
   }
 }
 

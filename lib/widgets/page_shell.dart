@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'footer.dart';
 import 'navbar.dart';
 import 'navbar_drawer.dart';
-import 'footer.dart';
 
 class PageShell extends StatelessWidget {
   final Widget child;

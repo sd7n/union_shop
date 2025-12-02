@@ -15,23 +15,25 @@ class PageShell extends StatelessWidget {
     return Scaffold(
       appBar: const Navbar(),
       endDrawer: const NavbarDrawer(),
-      body: Container(
-        color: Colors.grey.shade50,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: isWide ? 32 : 16,
-            vertical: 24,
-          ),
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 900),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  child,
-                  const SizedBox(height: 48),
-                  const Footer(),
-                ],
+      body: SafeArea(
+        child: Container(
+          color: Colors.grey.shade50,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(
+              horizontal: isWide ? 32 : 16,
+              vertical: 24,
+            ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 900),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    child,
+                    const SizedBox(height: 48),
+                    const Footer(),
+                  ],
+                ),
               ),
             ),
           ),

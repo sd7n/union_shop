@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/widgets/page_shell.dart';
+import '../widgets/page_shell.dart';
 
 class SalePage extends StatelessWidget {
   const SalePage({super.key});
@@ -7,8 +7,9 @@ class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageShell(
-      child: const Center(
-        child: Text('Sale Page'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [],
       ),
     );
   }

@@ -20,8 +20,8 @@ class CollectionsDetailPage extends StatelessWidget {
           Text(
             collection.name,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 12),
           Text(
@@ -31,8 +31,10 @@ class CollectionsDetailPage extends StatelessWidget {
           const SizedBox(height: 24),
           const SizedBox(height: 16),
           if (products.isEmpty)
-            Text('No products available in this collection.'),
-            const SizedBox(height: 16),
+            ...[
+              Text('No products available in this collection.'),
+              const SizedBox(height: 16),
+            ],
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth >= 600;

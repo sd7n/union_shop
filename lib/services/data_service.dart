@@ -124,8 +124,7 @@ class DataService {
     Product(
       id: 'pen-gel',
       name: 'Official Gel Pen',
-      description:
-          'Smooth-writing blue gel pen branded with the university logo.',
+      description: 'Smooth-writing blue gel pen branded with the university logo.',
       price: 1.99,
       imageUrl: 'assets/images/pen_gel.png',
       isLocalImage: true,

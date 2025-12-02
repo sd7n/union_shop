@@ -47,6 +47,11 @@ class CollectionsPage extends StatelessWidget {
                 onTap: () => _goToCollection(context),
               ),
               SizedBox(height: 16),
+              CollectionCard(
+                title: 'Print Shack',
+                subtitle: 'Custom printing & personalised gifts',
+                onTap: () => _goToCollection(context),
+              ),
             ],
           ),
         ],

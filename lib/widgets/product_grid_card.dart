@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductGridCard extends StatelessWidget {
   final String title;
   final String price;
-  final VoidCallback onTap;
   final String imageUrl;
   final bool isLocalImage;
+  final String productId;
 
   const ProductGridCard({
     super.key,
     required this.title,
     required this.price,
-    required this.onTap,
     required this.imageUrl,
+    required this.productId,
     this.isLocalImage = false,
   });
 
@@ -23,7 +24,11 @@ class ProductGridCard extends StatelessWidget {
       elevation: 1,
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: onTap,
+        onTap: () => Navigator.pushNamed(
+          context,
+          '/product',
+          arguments: productId,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

@@ -29,6 +29,7 @@ class CollectionsDetailPage extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 24),
+          const SizedBox(height: 16),
           if (products.isEmpty)
             Text('No products available in this collection.'),
             const SizedBox(height: 16),

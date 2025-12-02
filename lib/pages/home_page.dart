@@ -8,8 +8,12 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/collections');
   }
 
-  void _goToProduct(BuildContext context) {
-    Navigator.pushNamed(context, '/product');
+  void _goToProduct(BuildContext context, String productId) {
+    Navigator.pushNamed(
+      context,
+      '/product',
+      arguments: productId,
+    );
   }
 
   @override
@@ -90,19 +94,19 @@ class HomeScreen extends StatelessWidget {
                     _FeaturedProductCard(
                       title: 'Uni Hoodie',
                       price: '£29.99',
-                      onView: () => _goToProduct(context),
+                      onView: () => _goToProduct(context, 'uni-hoodie'),
                     ),
                     const SizedBox(height: 12),
                     _FeaturedProductCard(
                       title: 'Union T-Shirt',
                       price: '£14.99',
-                      onView: () => _goToProduct(context),
+                      onView: () => _goToProduct(context, 'union-tshirt'),
                     ),
                     const SizedBox(height: 12),
                     _FeaturedProductCard(
                       title: 'Logo Mug',
                       price: '£9.99',
-                      onView: () => _goToProduct(context),
+                      onView: () => _goToProduct(context, 'logo-mug'),
                     ),
                     const SizedBox(height: 12),
                   ],
@@ -119,17 +123,17 @@ class HomeScreen extends StatelessWidget {
                   _FeaturedProductCard(
                     title: 'Uni Hoodie',
                     price: '£29.99',
-                    onView: () => _goToProduct(context),
+                    onView: () => _goToProduct(context, 'uni-hoodie'),
                   ),
                   _FeaturedProductCard(
                     title: 'Union T-Shirt',
                     price: '£14.99',
-                    onView: () => _goToProduct(context),
+                    onView: () => _goToProduct(context, 'union-tshirt'),
                   ),
                   _FeaturedProductCard(
                     title: 'Logo Mug',
                     price: '£9.99',
-                    onView: () => _goToProduct(context),
+                    onView: () => _goToProduct(context, 'logo-mug'),
                   ),
                 ],
               );

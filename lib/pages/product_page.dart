@@ -79,6 +79,16 @@ class _ProductPageState extends State<ProductPage> {
             onChanged: (qty) {},
           ),
           const SizedBox(height: 24),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                // TODO: implement cart functionality
+              },
+              child: const Text('Add to Cart'),
+            ),
+          ),
+          const SizedBox(height: 32),
         ],
       ),
     );

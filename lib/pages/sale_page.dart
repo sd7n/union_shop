@@ -79,6 +79,11 @@ class SalePage extends StatelessWidget {
                     price: '£6.99',
                     onTap: () => _goToProduct(context),
                   ),
+                  ProductGridCard(
+                    title: 'Campus Tote Bag (Sale)',
+                    price: '£7.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                 ],
               );
             },

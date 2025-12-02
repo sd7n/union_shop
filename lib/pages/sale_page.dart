@@ -46,6 +46,22 @@ class SalePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 32),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth >= 600;
+              final columns = isWide ? 2 : 1;
+
+              return GridView.count(
+                crossAxisCount: columns,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
+                children: [],
+              );
+            },
+          ),
         ],
       ),
     );

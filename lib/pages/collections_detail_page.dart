@@ -45,6 +45,11 @@ class CollectionsDetailPage extends StatelessWidget {
                     price: '£29.99',
                     onTap: () => _goToProduct(context),
                   ),
+                  ProductGridCard(
+                    title: 'University Zip Hoodie',
+                    price: '£34.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                   // cards will be added next
                 ],
               );

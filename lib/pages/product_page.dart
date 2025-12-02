@@ -23,6 +23,9 @@ class _ProductPageState extends State<ProductPage> {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
     print("DEBUG Product ID: $productId");
 
+    final data = DataService.instance;
+    final Product product = data.getProduct(productId);
+
     return PageShell(
       child: LayoutBuilder(
         builder: (context, constraints) {

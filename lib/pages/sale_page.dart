@@ -69,6 +69,11 @@ class SalePage extends StatelessWidget {
                     price: '£24.99',
                     onTap: () => _goToProduct(context),
                   ),
+                  ProductGridCard(
+                    title: 'Freshers Hoodie 2025 (Sale)',
+                    price: '£22.99',
+                    onTap: () => _goToProduct(context),
+                  ),
                 ],
               );
             },

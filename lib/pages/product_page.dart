@@ -116,7 +116,7 @@ class _ProductPageState extends State<ProductPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            // TODO: implement cart functionality
+                            print("ADD TO CART → productId=$productId size=$selectedSize qty=$quantity");
                           },
                           child: const Text('Add to Cart'),
                         ),
@@ -201,7 +201,7 @@ class _ProductPageState extends State<ProductPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: implement cart functionality
+                    print("ADD TO CART → productId=$productId size=$selectedSize qty=$quantity");
                   },
                   child: const Text('Add to Cart'),
                 ),

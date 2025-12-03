@@ -58,7 +58,7 @@ class CartProvider extends ChangeNotifier {
     }
 
     try {
-      final products = DataService.getProducts();
+      final products = DataService.instance.products;
 
       // Parse the saved cart string and reconstruct items
       // This is a simplified approach - in production, use proper JSON parsing

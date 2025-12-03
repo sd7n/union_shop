@@ -225,6 +225,26 @@ class _ProductPageState extends State<ProductPage> {
             color: Colors.grey,
           ),
         ),
+        const SizedBox(height: 24),
+        if (product.sizes.isNotEmpty) ...[
+          Text(
+            'Size',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          _styledDropdown(
+            value: selectedSize,
+            items: product.sizes,
+            onChanged: (value) {
+              setState(() {
+                selectedSize = value;
+              });
+            },
+          ),
+          const SizedBox(height: 24),
+        ],
       ],
     );
   }
@@ -234,6 +254,24 @@ class _ProductPageState extends State<ProductPage> {
     required List<String> items,
     required ValueChanged<String?> onChanged,
   }) {
-    return const SizedBox.shrink();
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: DropdownButton<String>(
+        value: value,
+        items: items
+            .map((item) => DropdownMenuItem(
+          value: item,
+          child: Text(item),
+        ))
+            .toList(),
+        onChanged: onChanged,
+        isExpanded: true,
+        underline: const SizedBox.shrink(),
+      ),
+    );
   }
 }

@@ -118,7 +118,7 @@ class _ProductPageState extends State<ProductPage> {
                         child: ElevatedButton(
                           onPressed: () {
                             final cartProvider = context.read<CartProvider>();
-                            cartProvider.add(product, selectedSize);
+                            cartProvider.add(product, quantity, selectedSize);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('${product.name} added to cart'),
@@ -212,7 +212,7 @@ class _ProductPageState extends State<ProductPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     final cartProvider = context.read<CartProvider>();
-                    cartProvider.add(product, selectedSize);
+                    cartProvider.add(product, quantity, selectedSize);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('${product.name} added to cart'),

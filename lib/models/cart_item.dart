@@ -3,7 +3,7 @@ import 'product.dart';
 class CartItem {
   final Product product;
   int quantity;
-  String? size;
+  final String? size;
 
   CartItem({
     required this.product,
@@ -12,6 +12,20 @@ class CartItem {
   });
 
   double get totalPrice => product.price * quantity;
+
+  Map<String, dynamic> toJson() => {
+    'productId': product.id,
+    'quantity': quantity,
+    'size': size,
+  };
+
+  factory CartItem.fromJson(Map<String, dynamic> json, Product product) {
+    return CartItem(
+      product: product,
+      quantity: json['quantity'] as int,
+      size: json['size'] as String?,
+    );
+  }
 
   CartItem copyWith({
     Product? product,

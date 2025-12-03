@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/cart_item.dart';
-import '../providers/cart_provider.dart';
 
 class CartListTile extends StatelessWidget {
   final CartItem item;
@@ -18,69 +17,108 @@ class CartListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (item == null) {
-      return const SizedBox.shrink();
-    }
-
-    return Column(
-      children: [
-        ListTile(
-          leading: Image.network(
-            item.product.imageUrl,
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
-          ),
-          title: Text(item.product.name),
-          subtitle: Text('Size: ${item.size ?? 'N/A'}'),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _buildProductImage(),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.product.name,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (item.size != null)
+                      Text(
+                        "Size: ${item.size}",
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "£${item.totalPrice.toStringAsFixed(2)}",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.add),
-                    iconSize: 20,
-                    onPressed: onIncrease,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2.0),
-                    child: Text(item.quantity.toString()),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.remove),
-                    iconSize: 20,
-                    onPressed: onDecrease,
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: onIncrease,
+                        iconSize: 20,
+                      ),
+                      Text(
+                        item.quantity.toString(),
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: onDecrease,
+                        iconSize: 20,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(width: 16),
-              Text(
-                '£${item.totalPrice.toStringAsFixed(2)}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text('Cancel'),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0, top: 8.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: onRemove,
+                    child: const Text('Remove'),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: onRemove,
-                child: const Text('Remove'),
-              ),
-            ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProductImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(6),
+      child: item.product.isLocalImage
+          ? Image.asset(
+              item.product.imageUrl,
+              width: 60,
+              height: 60,
+              fit: BoxFit.cover,
+            )
+          : Image.network(
+              item.product.imageUrl,
+              width: 60,
+              height: 60,
+              fit: BoxFit.cover,
+            ),
     );
   }
 }

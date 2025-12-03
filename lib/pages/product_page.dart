@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/quantity_selector.dart';
 import '../services/data_service.dart';
@@ -18,50 +17,9 @@ class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
   int quantity = 1;
 
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
-  Future<void> _launchEmail(String email) async {
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: email,
-    );
-    if (!await launchUrl(emailUri)) {
-      throw Exception('Could not launch email to $email');
-    }
-  }
-
-  Future<void> _launchPhone(String phone) async {
-    final Uri phoneUri = Uri(
-      scheme: 'tel',
-      path: phone,
-    );
-    if (!await launchUrl(phoneUri)) {
-      throw Exception('Could not launch phone call to $phone');
-    }
-  }
-
-  Future<void> _launchMap(double latitude, double longitude) async {
-    final Uri mapUri = Uri(
-      scheme: 'geo',
-      path: '$latitude,$longitude',
-    );
-    if (!await launchUrl(mapUri)) {
-      throw Exception('Could not launch map');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
-    print("DEBUG Product ID: $productId");
 
     final data = DataService.instance;
     final Product product = data.getProduct(productId);

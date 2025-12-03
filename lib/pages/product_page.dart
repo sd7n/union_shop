@@ -76,29 +76,31 @@ class _ProductPageState extends State<ProductPage> {
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(height: 24),
-                      Text(
-                        'Size',
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                      ),
-                      const SizedBox(height: 8),
-                      DropdownButton<String>(
-                        value: selectedSize,
-                        items: ['S', 'M', 'L', 'XL']
-                            .map((size) => DropdownMenuItem(
-                                  value: size,
-                                  child: Text(size),
-                                ))
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            selectedSize = value;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 24),
+                      if (product.sizes.isNotEmpty) ...[
+                        Text(
+                          'Size',
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        const SizedBox(height: 8),
+                        DropdownButton<String>(
+                          value: selectedSize,
+                          items: product.sizes
+                              .map((size) => DropdownMenuItem(
+                                    value: size,
+                                    child: Text(size),
+                                  ))
+                              .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedSize = value;
+                            });
+                          },
+                        ),
+                        const SizedBox(height: 24),
+                      ],
                       QuantitySelector(
                         onChanged: (qty) {},
                       ),
@@ -156,28 +158,30 @@ class _ProductPageState extends State<ProductPage> {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 24),
-              Text(
-                'Size',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(height: 8),
-              DropdownButton<String>(
-                value: selectedSize,
-                items: ['S', 'M', 'L', 'XL']
-                    .map((size) => DropdownMenuItem(
-                          value: size,
-                          child: Text(size),
-                        ))
-                    .toList(),
-                onChanged: (value) {
-                  setState(() {
-                    selectedSize = value;
-                  });
-                },
-              ),
-              const SizedBox(height: 24),
+              if (product.sizes.isNotEmpty) ...[
+                Text(
+                  'Size',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 8),
+                DropdownButton<String>(
+                  value: selectedSize,
+                  items: product.sizes
+                      .map((size) => DropdownMenuItem(
+                            value: size,
+                            child: Text(size),
+                          ))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedSize = value;
+                    });
+                  },
+                ),
+                const SizedBox(height: 24),
+              ],
               QuantitySelector(
                 onChanged: (qty) {},
               ),

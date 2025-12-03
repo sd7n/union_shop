@@ -29,7 +29,7 @@ class _ProductPageState extends State<ProductPage> {
       fullWidth: true,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isWide = constraints.maxWidth >= 700;
+          final isWide = constraints.maxWidth >= 900;
 
           if (isWide) {
             return _buildWideLayout(context, product);

@@ -15,10 +15,6 @@ class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
   int quantity = 1;
 
-  void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
-  }
-
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
@@ -60,15 +56,18 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       Text(
                         product.name,
-                        style:
-                            Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         '£${product.price.toStringAsFixed(2)}',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Colors.green,
                             ),
@@ -82,10 +81,10 @@ class _ProductPageState extends State<ProductPage> {
                       if (product.sizes.isNotEmpty) ...[
                         Text(
                           'Size',
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 8),
                         DropdownButton<String>(
@@ -116,7 +115,9 @@ class _ProductPageState extends State<ProductPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            print("ADD TO CART → productId=$productId size=$selectedSize qty=$quantity");
+                            print(
+                              "ADD TO CART → productId=$productId size=$selectedSize qty=$quantity",
+                            );
                           },
                           child: const Text('Add to Cart'),
                         ),
@@ -147,17 +148,18 @@ class _ProductPageState extends State<ProductPage> {
               const SizedBox(height: 24),
               Text(
                 product.name,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Text(
                 '£${product.price.toStringAsFixed(2)}',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
               ),
               const SizedBox(height: 24),
               Text(
@@ -168,9 +170,10 @@ class _ProductPageState extends State<ProductPage> {
               if (product.sizes.isNotEmpty) ...[
                 Text(
                   'Size',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 DropdownButton<String>(
@@ -201,7 +204,9 @@ class _ProductPageState extends State<ProductPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    print("ADD TO CART → productId=$productId size=$selectedSize qty=$quantity");
+                    print(
+                      "ADD TO CART → productId=$productId size=$selectedSize qty=$quantity",
+                    );
                   },
                   child: const Text('Add to Cart'),
                 ),

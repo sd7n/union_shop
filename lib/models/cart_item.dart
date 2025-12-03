@@ -2,14 +2,16 @@ import 'product.dart';
 
 class CartItem {
   final Product product;
-  final int quantity;
-  final String size;
+  int quantity;
+  String? size;
 
-  const CartItem({
+  CartItem({
     required this.product,
     required this.quantity,
-    required this.size,
+    this.size,
   });
+
+  double get totalPrice => product.price * quantity;
 
   CartItem copyWith({
     Product? product,
@@ -25,5 +27,5 @@ class CartItem {
 
   @override
   String toString() =>
-      'CartItem(product: ${product.name}, quantity: $quantity, size: $size)';
+      'CartItem(product: ${product.name}, quantity: $quantity, size: $size, totalPrice: ${totalPrice.toStringAsFixed(2)})';
 }

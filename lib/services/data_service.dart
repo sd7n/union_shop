@@ -64,7 +64,7 @@ class DataService {
         'assets/images/hoodie_navy.png',
         'assets/images/hoodie_navy_alt.png',
       ],
-      externalUrl: 'https://example.com/products/navy_hoodie',
+      colors: ['Navy', 'Black', 'Grey'],
     ),
     Product(
       id: 'hoodie-zip',
@@ -80,6 +80,7 @@ class DataService {
         'assets/images/hoodie_zip.png',
         'assets/images/hoodie_zip_alt.png',
       ],
+      colors: ['Navy', 'Black', 'Grey'],
     ),
     Product(
       id: 'tee-classic',

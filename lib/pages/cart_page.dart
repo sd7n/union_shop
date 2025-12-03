@@ -116,19 +116,29 @@ class CartPage extends StatelessWidget {
                 .toList(),
           ),
           const SizedBox(height: 24),
-          Text(
-            'Subtotal: £${cart.total.toStringAsFixed(2)}',
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text('Checkout'),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Subtotal: £${cart.total.toStringAsFixed(2)}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Checkout'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

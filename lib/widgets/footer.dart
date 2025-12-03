@@ -71,17 +71,17 @@ class Footer extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.camera_alt),
-                onPressed: () => _launchUrl('https://instagram.com'),
+                onPressed: () => _launchUrl('https://www.instagram.com/portsmouthuni/'),
                 tooltip: 'Instagram',
               ),
               IconButton(
                 icon: const Icon(Icons.mail_outline),
-                onPressed: () => _launchUrl('https://twitter.com'),
+                onPressed: () => _launchUrl('https://x.com/portsmouthuni'),
                 tooltip: 'Twitter',
               ),
               IconButton(
                 icon: const Icon(Icons.play_circle_outline),
-                onPressed: () => _launchUrl('https://youtube.com'),
+                onPressed: () => _launchUrl('https://www.youtube.com/c/universityofportsmouth'),
                 tooltip: 'YouTube',
               ),
             ],

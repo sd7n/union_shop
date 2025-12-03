@@ -55,10 +55,15 @@ class DataService {
       name: 'Classic Navy Hoodie',
       description: 'A warm, durable hoodie featuring the university crest.',
       price: 29.99,
+      strikePrice: 39.99,
       imageUrl: 'assets/images/hoodie_navy.png',
       isLocalImage: true,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
+      images: [
+        'assets/images/hoodie_navy.png',
+        'assets/images/hoodie_navy_alt.png',
+      ],
       externalUrl: 'https://example.com/products/navy_hoodie',
     ),
     Product(
@@ -66,10 +71,15 @@ class DataService {
       name: 'University Zip Hoodie',
       description: 'Front-zip hoodie with embroidered university logo.',
       price: 34.99,
+      strikePrice: 44.99,
       imageUrl: 'assets/images/hoodie_zip.png',
       isLocalImage: true,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
+      images: [
+        'assets/images/hoodie_zip.png',
+        'assets/images/hoodie_zip_alt.png',
+      ],
     ),
     Product(
       id: 'tee-classic',
@@ -80,6 +90,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
+      images: [
+        'assets/images/tshirt_classic.png',
+        'assets/images/tshirt_classic_back.png',
+      ],
     ),
     Product(
       id: 'tee-sport',
@@ -90,6 +104,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
+      images: [
+        'assets/images/tshirt_sport.png',
+        'assets/images/tshirt_sport_alt.png',
+      ],
     ),
     Product(
       id: 'mug-uni',
@@ -100,6 +118,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'accessories',
       sizes: [],
+      images: [
+        'assets/images/mug_uni.png',
+        'assets/images/mug_uni_alt.png',
+      ],
     ),
     Product(
       id: 'tote-campus',
@@ -110,6 +132,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'accessories',
       sizes: [],
+      images: [
+        'assets/images/tote_bag.png',
+        'assets/images/tote_bag_alt.png',
+      ],
     ),
     Product(
       id: 'notebook-a5',
@@ -120,6 +146,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'stationery',
       sizes: [],
+      images: [
+        'assets/images/notebook_a5.png',
+        'assets/images/notebook_a5_inside.png',
+      ],
     ),
     Product(
       id: 'pen-gel',

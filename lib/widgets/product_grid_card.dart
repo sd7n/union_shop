@@ -8,6 +8,7 @@ class ProductGridCard extends StatefulWidget {
   final bool isLocalImage;
   final String productId;
   final String? externalUrl;
+  final int index;
 
   const ProductGridCard({
     super.key,
@@ -17,6 +18,7 @@ class ProductGridCard extends StatefulWidget {
     required this.productId,
     this.isLocalImage = false,
     this.externalUrl,
+    this.index = 0,
   });
 
   @override
@@ -38,66 +40,76 @@ class _ProductGridCardState extends State<ProductGridCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: TweenAnimationBuilder<double>(
-        tween: Tween<double>(begin: 1.0, end: _isHovered ? 1.05 : 1.0),
-        duration: const Duration(milliseconds: 200),
-        builder: (context, scale, child) {
-          return Transform.scale(
-            scale: scale,
-            child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              elevation: _isHovered ? 8 : 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: InkWell(
-                  onTap: () => Navigator.pushNamed(
-                    context,
-                    '/product',
-                    arguments: widget.productId,
-                  ),
-                  onLongPress: widget.externalUrl != null ? () => _launchUrl(widget.externalUrl!) : null,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: widget.isLocalImage
-                                ? Image.asset(widget.imageUrl, fit: BoxFit.cover)
-                                : Image.network(widget.imageUrl, fit: BoxFit.cover),
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0, end: 1),
+      duration: Duration(milliseconds: 300 + (widget.index * 80)),
+      builder: (context, value, child) {
+        return Transform.translate(
+          offset: Offset(0, 20 * (1 - value)),
+          child: Opacity(opacity: value, child: child),
+        );
+      },
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 1.0, end: _isHovered ? 1.05 : 1.0),
+          duration: const Duration(milliseconds: 200),
+          builder: (context, scale, child) {
+            return Transform.scale(
+              scale: scale,
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                elevation: _isHovered ? 8 : 1,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/product',
+                      arguments: widget.productId,
+                    ),
+                    onLongPress: widget.externalUrl != null ? () => _launchUrl(widget.externalUrl!) : null,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: widget.isLocalImage
+                                  ? Image.asset(widget.imageUrl, fit: BoxFit.cover)
+                                  : Image.network(widget.imageUrl, fit: BoxFit.cover),
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          widget.title,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.price,
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
+                          const SizedBox(height: 12),
+                          Text(
+                            widget.title,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            widget.price,
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

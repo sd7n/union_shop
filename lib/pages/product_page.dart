@@ -16,6 +16,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
   int quantity = 1;
+  late String selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class _ProductPageState extends State<ProductPage> {
     final Product product = data.getProduct(productId);
 
     selectedSize ??= product.sizes.isNotEmpty ? product.sizes.first : null;
+    selectedImage = product.imageUrl;
 
     return PageShell(
       fullWidth: true,
@@ -46,9 +48,40 @@ class _ProductPageState extends State<ProductPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.network(product.imageUrl, fit: BoxFit.cover),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: Image.network(selectedImage, fit: BoxFit.cover),
+              ),
+              const SizedBox(height: 12),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: (product.images ?? [product.imageUrl])
+                      .map((img) {
+                    return GestureDetector(
+                      onTap: () => setState(() => selectedImage = img),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        margin: const EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: selectedImage == img
+                                ? Colors.black
+                                : Colors.grey.shade300,
+                            width: 2,
+                          ),
+                        ),
+                        child: Image.network(img, fit: BoxFit.cover),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(width: 48),

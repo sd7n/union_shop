@@ -36,14 +36,25 @@ class CartListTile extends StatelessWidget {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(
-                icon: const Icon(Icons.remove),
-                onPressed: onDecrease,
-              ),
-              Text(item.quantity.toString()),
-              IconButton(
-                icon: const Icon(Icons.add),
-                onPressed: onIncrease,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    iconSize: 20,
+                    onPressed: onIncrease,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 2.0),
+                    child: Text(item.quantity.toString()),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.remove),
+                    iconSize: 20,
+                    onPressed: onDecrease,
+                  ),
+                ],
               ),
               const SizedBox(width: 16),
               Text(

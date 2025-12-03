@@ -71,6 +71,12 @@ class CartPage extends StatelessWidget {
                           item,
                           item.quantity - 1,
                         ),
+                        onRemove: () async {
+                          final confirmed = await showRemoveDialog(context);
+                          if (confirmed) {
+                            provider.remove(item);
+                          }
+                        },
                       ),
                     ))
                 .toList(),

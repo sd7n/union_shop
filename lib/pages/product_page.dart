@@ -290,6 +290,14 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
         ),
+        const SizedBox(height: 48),
+        Text(
+          product.description,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            height: 1.6,
+            color: const Color(0xFF5F5F5F),
+          ),
+        ),
       ],
     );
   }

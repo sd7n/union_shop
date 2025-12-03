@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductGridCard extends StatelessWidget {
   final String title;
@@ -6,6 +7,7 @@ class ProductGridCard extends StatelessWidget {
   final String imageUrl;
   final bool isLocalImage;
   final String productId;
+  final String? externalUrl;
 
   const ProductGridCard({
     super.key,
@@ -14,7 +16,18 @@ class ProductGridCard extends StatelessWidget {
     required this.imageUrl,
     required this.productId,
     this.isLocalImage = false,
+    this.externalUrl,
   });
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +41,7 @@ class ProductGridCard extends StatelessWidget {
           '/product',
           arguments: productId,
         ),
+        onLongPress: externalUrl != null ? () => _launchUrl(externalUrl!) : null,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

@@ -5,7 +5,7 @@ import '../services/data_service.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  void _goToCollections(BuildContext context) {
+  void _navigate(BuildContext context) {
     Navigator.pushNamed(context, '/collections');
   }
 
@@ -31,60 +31,86 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 32),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          SizedBox(
+            height: 420,
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
               children: [
-                Text(
-                  'Union Shop',
-                  style: (isWide
-                          ? Theme.of(context)
-                              .textTheme
-                              .headlineLarge
-                              ?.copyWith(fontSize: 40)
-                          : Theme.of(context).textTheme.headlineMedium)
-                      ?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Positioned.fill(
+                  child: Image.network(
+                    'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: isWide ? 20 : 12),
-                Text(
-                  'Official University merchandise, clothing and accessories.',
-                  style: (isWide
-                          ? Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(fontSize: 18)
-                          : Theme.of(context).textTheme.bodyLarge)
-                      ?.copyWith(
-                    color: Colors.black87,
+                Positioned.fill(
+                  child: Container(
+                    color: Colors.black.withOpacity(0.65),
                   ),
                 ),
-                SizedBox(height: isWide ? 32 : 20),
-                SizedBox(
-                  width: isWide ? 180 : double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () => _goToCollections(context),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(140, 48),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 14,
-                      ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "UNION SHOP",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 38,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          "Your official store for University of Portsmouth\nmerchandise, clothing & accessories.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontSize: 18,
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+                        ElevatedButton(
+                          onPressed: () => _navigate(context),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF4d2963),
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 14,
+                              horizontal: 28,
+                            ),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero,
+                            ),
+                          ),
+                          child: const Text(
+                            "BROWSE PRODUCTS",
+                            style: TextStyle(
+                              fontSize: 14,
+                              letterSpacing: 1.2,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    child: const Text('Shop Now'),
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: isWide ? 48 : 32),
+          const SizedBox(height: 40),
           Text(
-            'Featured Products',
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
+            "FEATURED PRODUCTS",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 1,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 8),
@@ -206,17 +232,12 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
         },
         child: Container(
           decoration: BoxDecoration(
-            border:
-                _isHovered ? Border.all(color: Colors.blue.shade200) : null,
+            border: _isHovered
+                ? Border.all(color: Theme.of(context).colorScheme.secondary)
+                : null,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Card(
-            elevation: 2,
-            shadowColor: Colors.black12,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 4),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Padding(
@@ -227,7 +248,7 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
                       width: widget.imageSize,
                       height: widget.imageSize,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
+                        color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: const Center(
@@ -259,7 +280,7 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
                                 .bodyMedium
                                 ?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.green.shade700,
+                                  color: Theme.of(context).colorScheme.secondary,
                                 ),
                           ),
                           const SizedBox(height: 8),
@@ -269,7 +290,8 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
                               onPressed: widget.onView,
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
-                                foregroundColor: Colors.blue,
+                                foregroundColor:
+                                    Theme.of(context).colorScheme.primary,
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -289,9 +311,9 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
               ),
             ),
           ),
-        ),
+        },
       ),
-    );
+    ));
   }
 }
 

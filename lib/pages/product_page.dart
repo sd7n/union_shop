@@ -16,7 +16,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
   int quantity = 1;
-  late String selectedImage;
+  String? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class _ProductPageState extends State<ProductPage> {
     final Product product = data.getProduct(productId);
 
     selectedSize ??= product.sizes.isNotEmpty ? product.sizes.first : null;
-    selectedImage = product.imageUrl;
 
     return PageShell(
       fullWidth: true,
@@ -53,7 +52,7 @@ class _ProductPageState extends State<ProductPage> {
             children: [
               AspectRatio(
                 aspectRatio: 1,
-                child: Image.network(selectedImage, fit: BoxFit.cover),
+                child: Image.network(selectedImage ?? product.imageUrl, fit: BoxFit.cover),
               ),
               const SizedBox(height: 12),
               SingleChildScrollView(

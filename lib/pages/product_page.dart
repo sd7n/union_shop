@@ -12,7 +12,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  String? selectedSize = 'M';
+  String? selectedSize;
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
@@ -25,6 +25,8 @@ class _ProductPageState extends State<ProductPage> {
 
     final data = DataService.instance;
     final Product product = data.getProduct(productId);
+
+    selectedSize ??= product.sizes.isNotEmpty ? product.sizes.first : null;
 
     return PageShell(
       child: LayoutBuilder(

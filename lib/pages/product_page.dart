@@ -42,6 +42,7 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
+  // Desktop layout: side-by-side image gallery + product details
   Widget _buildWideLayout(BuildContext context, Product product) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,6 +92,7 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
+  // Mobile layout: stacked image + product details
   Widget _buildMobileLayout(BuildContext context, Product product) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,6 +223,7 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
+  // Product details section: name, price, size/quantity selectors, add to cart
   Widget _buildProductDetails(BuildContext context, Product product) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -339,6 +342,7 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
+  // Styled dropdown for size selection
   Widget _styledDropdown({
     required String? value,
     required List<String> items,

@@ -229,4 +229,24 @@ class _ProductPageState extends State<ProductPage> {
       ),
     );
   }
+
+  Widget _buildWideLayout(BuildContext context, Product product) {
+    return const SizedBox.shrink();
+  }
+
+  Widget _buildMobileLayout(BuildContext context, Product product) {
+    return const SizedBox.shrink();
+  }
+
+  Widget _buildProductDetails(BuildContext context, Product product) {
+    return const SizedBox.shrink();
+  }
+
+  Widget _styledDropdown({
+    required String? value,
+    required List<String> items,
+    required ValueChanged<String?> onChanged,
+  }) {
+    return const SizedBox.shrink();
+  }
 }

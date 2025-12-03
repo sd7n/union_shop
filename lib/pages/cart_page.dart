@@ -31,6 +31,12 @@ class CartPage extends StatelessWidget {
             children: cart.items
                 .map((item) => Dismissible(
                       key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.only(right: 20),
+                        child: const Icon(Icons.delete, color: Colors.white),
+                      ),
                       child: ListTile(
                         leading: Image.network(
                           item.product.imageUrl,

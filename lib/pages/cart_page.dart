@@ -97,7 +97,15 @@ class CartPage extends StatelessWidget {
                                 child: const Icon(Icons.delete, color: Colors.white),
                               ),
                               onDismissed: (_) async {
-                                if (await showRemoveDialog(context)) provider.remove(item);
+                                if (await showRemoveDialog(context)) {
+                                  provider.remove(item);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('${item.product.name} removed from cart'),
+                                      duration: const Duration(seconds: 2),
+                                    ),
+                                  );
+                                }
                               },
                               child: CartListTile(
                                 item: item,
@@ -113,6 +121,12 @@ class CartPage extends StatelessWidget {
                                   final confirmed = await showRemoveDialog(context);
                                   if (confirmed) {
                                     provider.remove(item);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('${item.product.name} removed from cart'),
+                                        duration: const Duration(seconds: 2),
+                                      ),
+                                    );
                                   }
                                 },
                               ),

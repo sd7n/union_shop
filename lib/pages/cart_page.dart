@@ -156,6 +156,10 @@ class CartPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -218,6 +222,9 @@ class CartPage extends StatelessWidget {
                                     const SnackBar(content: Text('Proceeding to checkout...')),
                                   );
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, 48),
+                                ),
                                 child: const Text('Checkout'),
                               ),
                             ),

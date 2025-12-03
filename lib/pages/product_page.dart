@@ -259,6 +259,37 @@ class _ProductPageState extends State<ProductPage> {
             });
           },
         ),
+        const SizedBox(height: 32),
+        GestureDetector(
+          onTap: () {
+            final cartProvider = context.read<CartProvider>();
+            cartProvider.add(product, quantity, selectedSize);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${product.name} added to cart'),
+                duration: const Duration(seconds: 2),
+              ),
+            );
+          },
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: const Center(
+              child: Text(
+                'ADD TO CART',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

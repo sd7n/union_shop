@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/cart_provider.dart';
 
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({super.key});
@@ -51,9 +53,35 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
               style: TextStyle(color: Colors.white),
             ),
           ),
-          IconButton(
-            onPressed: () => _go(context, '/cart'),
-            icon: const Icon(Icons.shopping_cart),
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              IconButton(
+                onPressed: () => _go(context, '/cart'),
+                icon: const Icon(Icons.shopping_cart),
+              ),
+              Consumer<CartProvider>(
+                builder: (context, cartProvider, child) {
+                  final itemCount = cartProvider.cart.itemCount;
+                  if (itemCount == 0) return const SizedBox.shrink();
+                  return Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      '$itemCount',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ],
       );

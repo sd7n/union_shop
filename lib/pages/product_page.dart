@@ -42,7 +42,18 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   Widget _buildWideLayout(BuildContext context, Product product) {
-    return const SizedBox.shrink();
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Expanded(
+          child: Placeholder(),
+        ),
+        const SizedBox(width: 48),
+        const Expanded(
+          child: Placeholder(),
+        ),
+      ],
+    );
   }
 
   Widget _buildMobileLayout(BuildContext context, Product product) {

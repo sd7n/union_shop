@@ -30,6 +30,7 @@ class CartPage extends StatelessWidget {
             shrinkWrap: true,
             children: cart.items
                 .map((item) => ListTile(
+                      key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
                       leading: Image.network(
                         item.product.imageUrl,
                         width: 50,

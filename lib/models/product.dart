@@ -11,6 +11,7 @@ class Product {
   final String collectionId;
   final List<String> sizes;
   final List<String>? images;
+  final List<String>? colors;
   final String? externalUrl;
 
   const Product({
@@ -24,6 +25,7 @@ class Product {
     required this.collectionId,
     required this.sizes,
     this.images,
+    this.colors,
     this.externalUrl,
   });
 

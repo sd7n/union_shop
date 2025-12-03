@@ -40,11 +40,6 @@ class CollectionsDetailPage extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 24),
-          if (collection.externalUrl != null)
-            TextButton(
-              onPressed: () => _launchUrl(collection.externalUrl!),
-              child: const Text('Open Collection Website'),
-            ),
           const SizedBox(height: 16),
           if (products.isEmpty)
             ...[

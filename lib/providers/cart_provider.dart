@@ -54,12 +54,10 @@ class CartProvider extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final cartString = prefs.getString('cart');
 
-    if (cartString == null || cartString.isEmpty) {
-      return;
-    }
+    if (cartString == null || cartString.isEmpty) return;
 
     try {
-      final List<dynamic> jsonList = cartStringDecode(cartString);
+      final List<dynamic> jsonList = jsonDecode(cartString);
       final products = DataService.instance.products;
 
       _cart.items.clear();
@@ -69,10 +67,7 @@ class CartProvider extends ChangeNotifier {
         final size = json['size'];
         final quantity = json['quantity'];
 
-        final product = products.firstWhere(
-          (p) => p.id == productId,
-          orElse: () => throw Exception("Invalid product ID: $productId"),
-        );
+        final product = products.firstWhere((p) => p.id == productId);
 
         _cart.items.add(
           CartItem(

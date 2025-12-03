@@ -28,6 +28,36 @@ class _ProductPageState extends State<ProductPage> {
     }
   }
 
+  Future<void> _launchEmail(String email) async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: email,
+    );
+    if (!await launchUrl(emailUri)) {
+      throw Exception('Could not launch email to $email');
+    }
+  }
+
+  Future<void> _launchPhone(String phone) async {
+    final Uri phoneUri = Uri(
+      scheme: 'tel',
+      path: phone,
+    );
+    if (!await launchUrl(phoneUri)) {
+      throw Exception('Could not launch phone call to $phone');
+    }
+  }
+
+  Future<void> _launchMap(double latitude, double longitude) async {
+    final Uri mapUri = Uri(
+      scheme: 'geo',
+      path: '$latitude,$longitude',
+    );
+    if (!await launchUrl(mapUri)) {
+      throw Exception('Could not launch map');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;

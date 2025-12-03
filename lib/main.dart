@@ -11,7 +11,12 @@ import 'package:union_shop/pages/auth_page.dart';
 import 'package:union_shop/pages/cart_page.dart';
 
 void main() {
-  runApp(const UnionShopApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: const UnionShopApp(),
+    ),
+  );
 }
 
 class UnionShopApp extends StatelessWidget {
@@ -19,26 +24,23 @@ class UnionShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CartProvider(),
-      child: MaterialApp(
-        title: 'Union Shop',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const HomeScreen(),
-          '/about': (context) => const AboutPage(),
-          '/collections': (context) => const CollectionsPage(),
-          '/collection': (context) => const CollectionsDetailPage(),
-          '/product': (context) => const ProductPage(),
-          '/sale': (context) => const SalePage(),
-          '/auth': (context) => const AuthPage(),
-          '/cart': (context) => const CartPage(),
-        },
+    return MaterialApp(
+      title: 'Union Shop',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/about': (context) => const AboutPage(),
+        '/collections': (context) => const CollectionsPage(),
+        '/collection': (context) => const CollectionsDetailPage(),
+        '/product': (context) => const ProductPage(),
+        '/sale': (context) => const SalePage(),
+        '/auth': (context) => const AuthPage(),
+        '/cart': (context) => const CartPage(),
+      },
     );
   }
 }

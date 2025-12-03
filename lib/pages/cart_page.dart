@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:union_shop/widgets/page_shell.dart';
+import 'package:union_shop/widgets/cart_list_tile.dart';
 import '../providers/cart_provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -38,41 +39,7 @@ class CartPage extends StatelessWidget {
                         child: const Icon(Icons.delete, color: Colors.white),
                       ),
                       onDismissed: (_) => provider.remove(item),
-                      child: ListTile(
-                        leading: Image.network(
-                          item.product.imageUrl,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        title: Text(item.product.name),
-                        subtitle: Text('Size: ${item.size ?? 'N/A'}'),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed: () => provider.updateQuantity(
-                                item,
-                                item.quantity - 1,
-                              ),
-                            ),
-                            Text(item.quantity.toString()),
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed: () => provider.updateQuantity(
-                                item,
-                                item.quantity + 1,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Text(
-                              '£${item.totalPrice.toStringAsFixed(2)}',
-                              style: const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: CartListTile(item: item, provider: provider),
                     ))
                 .toList(),
           ),

@@ -185,7 +185,48 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   Widget _buildProductDetails(BuildContext context, Product product) {
-    return const SizedBox.shrink();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          product.name,
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            if (product.strikePrice != null && product.strikePrice! > 0)
+              Text(
+                '£${product.strikePrice!.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  decoration: TextDecoration.lineThrough,
+                  color: Colors.grey,
+                ),
+              ),
+            if (product.strikePrice != null && product.strikePrice! > 0)
+              const SizedBox(width: 12),
+            Text(
+              '£${product.price.toStringAsFixed(2)}',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF4d2963),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          'Tax included',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _styledDropdown({

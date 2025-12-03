@@ -117,15 +117,12 @@ class _ProductPageState extends State<ProductPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            final provider = Provider.of<CartProvider>(context,
-                                listen: false);
-                            provider.add(product, quantity, selectedSize);
-
+                            final cartProvider = context.read<CartProvider>();
+                            cartProvider.add(product, selectedSize);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(
-                                  '${product.name} added to cart!',
-                                ),
+                                content: Text('${product.name} added to cart'),
+                                duration: const Duration(seconds: 2),
                               ),
                             );
                           },
@@ -214,15 +211,12 @@ class _ProductPageState extends State<ProductPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    final provider =
-                        Provider.of<CartProvider>(context, listen: false);
-                    provider.add(product, quantity, selectedSize);
-
+                    final cartProvider = context.read<CartProvider>();
+                    cartProvider.add(product, selectedSize);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                          '${product.name} added to cart!',
-                        ),
+                        content: Text('${product.name} added to cart'),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                   },

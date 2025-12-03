@@ -146,6 +146,26 @@ class _ProductPageState extends State<ProductPage> {
           ),
         ),
         const SizedBox(height: 28),
+        if (product.colors != null && product.colors!.isNotEmpty) ...[
+          Text(
+            'Color',
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          _styledDropdown(
+            value: selectedColor,
+            items: product.colors!,
+            onChanged: (value) {
+              setState(() {
+                selectedColor = value;
+              });
+            },
+          ),
+          const SizedBox(height: 24),
+        ],
         if (product.sizes.isNotEmpty) ...[
           Text(
             'Size',
@@ -268,6 +288,25 @@ class _ProductPageState extends State<ProductPage> {
           ),
         ),
         const SizedBox(height: 32),
+        if (product.colors != null && product.colors!.isNotEmpty) ...[
+          Text(
+            'Color',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          _styledDropdown(
+            value: selectedColor,
+            items: product.colors!,
+            onChanged: (value) {
+              setState(() {
+                selectedColor = value;
+              });
+            },
+          ),
+          const SizedBox(height: 28),
+        ],
         if (product.sizes.isNotEmpty) ...[
           Text(
             'Size',

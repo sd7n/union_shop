@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/page_shell.dart';
-import '../widgets/product_grid_card.dart';
+import '../widgets/product_tile.dart';
 import '../services/data_service.dart';
 
 class SalePage extends StatelessWidget {
@@ -69,12 +69,13 @@ class SalePage extends StatelessWidget {
                 mainAxisSpacing: 16,
                 childAspectRatio: isWide ? 3 / 4 : 3 / 3.8,
                 children: saleProducts.map((p) {
-                  return ProductGridCard(
-                    productId: p.id,
-                    title: p.name,
-                    price: '£${(p.price * 0.8).toStringAsFixed(2)}',
-                    imageUrl: p.imageUrl,
-                    isLocalImage: p.isLocalImage,
+                  return ProductTile(
+                    product: p!,
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/product',
+                      arguments: p.id,
+                    ),
                   );
                 }).toList(),
               );

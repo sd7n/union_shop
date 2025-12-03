@@ -95,6 +95,7 @@ class DataService {
         'assets/images/tshirt_classic.png',
         'assets/images/tshirt_classic_back.png',
       ],
+      colors: ['White', 'Black', 'Navy'],
     ),
     Product(
       id: 'tee-sport',
@@ -109,6 +110,7 @@ class DataService {
         'assets/images/tshirt_sport.png',
         'assets/images/tshirt_sport_alt.png',
       ],
+      colors: ['Black', 'Navy', 'Grey'],
     ),
     Product(
       id: 'mug-uni',
@@ -123,6 +125,7 @@ class DataService {
         'assets/images/mug_uni.png',
         'assets/images/mug_uni_alt.png',
       ],
+      colors: ['White', 'Black'],
     ),
     Product(
       id: 'tote-campus',
@@ -137,6 +140,7 @@ class DataService {
         'assets/images/tote_bag.png',
         'assets/images/tote_bag_alt.png',
       ],
+      colors: ['Black', 'Navy'],
     ),
     Product(
       id: 'notebook-a5',
@@ -151,6 +155,7 @@ class DataService {
         'assets/images/notebook_a5.png',
         'assets/images/notebook_a5_inside.png',
       ],
+      colors: ['Black', 'Navy', 'Grey'],
     ),
     Product(
       id: 'pen-gel',
@@ -161,6 +166,10 @@ class DataService {
       isLocalImage: true,
       collectionId: 'stationery',
       sizes: [],
+      images: [
+        'assets/images/pen_gel.png',
+      ],
+      colors: ['Blue', 'Black'],
     ),
   ];
 

@@ -18,15 +18,19 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateQuantity(CartItem item, int qty) {
-    if (qty <= 0) {
+  void updateQuantity(CartItem item, int newQuantity) {
+    if (newQuantity < 1) {
       remove(item);
-    } else {
-      final index = _cart.items.indexOf(item);
-      if (index != -1) {
-        _cart.items[index].quantity = qty;
-        notifyListeners();
-      }
+      return;
+    }
+
+    final index = _cart.items.indexWhere(
+      (i) => i.product.id == item.product.id && i.size == item.size,
+    );
+
+    if (index != -1) {
+      _cart.items[index].quantity = newQuantity;
+      notifyListeners();
     }
   }
 

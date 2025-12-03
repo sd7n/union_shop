@@ -25,6 +25,8 @@ class Product {
 
   get strikePrice => null;
 
+  get images => null;
+
   @override
   String toString() =>
       'Product(id: $id, name: $name, price: $price, collectionId: $collectionId)';

@@ -109,14 +109,30 @@ class CartPage extends StatelessWidget {
                               },
                               child: CartListTile(
                                 item: item,
-                                onIncrease: () => provider.updateQuantity(
-                                  item,
-                                  item.quantity + 1,
-                                ),
-                                onDecrease: () => provider.updateQuantity(
-                                  item,
-                                  item.quantity - 1,
-                                ),
+                                onIncrease: () {
+                                  provider.updateQuantity(
+                                    item,
+                                    item.quantity + 1,
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('${item.product.name} quantity updated to ${item.quantity + 1}'),
+                                      duration: const Duration(seconds: 1),
+                                    ),
+                                  );
+                                },
+                                onDecrease: () {
+                                  final newQuantity = item.quantity - 1;
+                                  provider.updateQuantity(item, newQuantity);
+                                  if (newQuantity > 0) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('${item.product.name} quantity updated to $newQuantity'),
+                                        duration: const Duration(seconds: 1),
+                                      ),
+                                    );
+                                  }
+                                },
                                 onRemove: () async {
                                   final confirmed = await showRemoveDialog(context);
                                   if (confirmed) {

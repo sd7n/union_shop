@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/quantity_selector.dart';
 import '../services/data_service.dart';
 import '../models/product.dart';
+import '../providers/cart_provider.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -115,8 +117,16 @@ class _ProductPageState extends State<ProductPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            print(
-                              "ADD TO CART → productId=$productId size=$selectedSize qty=$quantity",
+                            final provider = Provider.of<CartProvider>(context,
+                                listen: false);
+                            provider.add(product, quantity, selectedSize);
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '${product.name} added to cart!',
+                                ),
+                              ),
                             );
                           },
                           child: const Text('Add to Cart'),
@@ -204,8 +214,16 @@ class _ProductPageState extends State<ProductPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    print(
-                      "ADD TO CART → productId=$productId size=$selectedSize qty=$quantity",
+                    final provider =
+                        Provider.of<CartProvider>(context, listen: false);
+                    provider.add(product, quantity, selectedSize);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          '${product.name} added to cart!',
+                        ),
+                      ),
                     );
                   },
                   child: const Text('Add to Cart'),

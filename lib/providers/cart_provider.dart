@@ -98,36 +98,4 @@ class CartProvider extends ChangeNotifier {
     final jsonString = jsonEncode(cartData);
     await prefs.setString('cart', jsonString);
   }
-
-  String cartStringEncode(List<Map<String, dynamic>> data) {
-    return data.toString();
-  }
-
-  List<dynamic> cartStringDecode(String data) {
-    try {
-      final cleaned = data
-          .replaceAll('[', '')
-          .replaceAll(']', '')
-          .split('},')
-          .map((chunk) => chunk.endsWith('}') ? chunk : "$chunk}")
-          .toList();
-
-      return cleaned.map((c) {
-        return {
-          'productId': _extract(c, 'productId'),
-          'quantity': int.parse(_extract(c, 'quantity')),
-          'size': _extract(c, 'size'),
-        };
-      }).toList();
-    } catch (e) {
-      debugPrint('Error decoding saved cart: $e');
-      return [];
-    }
-  }
-
-  String _extract(String source, String key) {
-    final pattern = RegExp("$key: ([^,}]+)");
-    final match = pattern.firstMatch(source);
-    return match != null ? match.group(1)!.trim() : "";
-  }
 }

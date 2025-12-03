@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../widgets/page_shell.dart';
 import '../widgets/product_grid_card.dart';
 import '../services/data_service.dart';
 
 class CollectionsDetailPage extends StatelessWidget {
   const CollectionsDetailPage({super.key});
-
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw Exception('Could not launch $url');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

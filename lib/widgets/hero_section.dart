@@ -85,7 +85,7 @@ class HeroSection extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          'BROWSE PRODUCTS',
+                          'BROWSE COLLECTIONS',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,

@@ -241,6 +241,29 @@ class _ProductPageState extends State<ProductPage> {
           ),
         ),
         const SizedBox(height: 32),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('/collection', arguments: product.collectionId);
+          },
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: const Center(
+              child: Text(
+                'BACK TO COLLECTIONS',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -377,6 +400,30 @@ class _ProductPageState extends State<ProductPage> {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
             color: const Color(0xFF5F5F5F),
+          ),
+        ),
+        const SizedBox(height: 32),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('/collection', arguments: product.collectionId);
+          },
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: const Center(
+              child: Text(
+                'BACK TO ESSENTIAL RANGE',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
           ),
         ),
       ],

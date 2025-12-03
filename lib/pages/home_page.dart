@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
           Align(
             alignment: Alignment.centerLeft,
             child: Column(
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 40),
+          SizedBox(height: isWide ? 48 : 32),
           Text(
             'Featured Products',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -92,7 +92,7 @@ class HomeScreen extends StatelessWidget {
             thickness: 1,
             color: Colors.grey.shade300,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth < 600) {
@@ -130,6 +130,7 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
+          SizedBox(height: isWide ? 48 : 32),
         ],
       ),
     );

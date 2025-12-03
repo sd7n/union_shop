@@ -15,6 +15,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
+  String? selectedColor;
   int quantity = 1;
   String? selectedImage;
 
@@ -25,6 +26,7 @@ class _ProductPageState extends State<ProductPage> {
     final Product product = data.getProduct(productId);
 
     selectedSize ??= product.sizes.isNotEmpty ? product.sizes.first : null;
+    selectedColor ??= product.colors != null && product.colors!.isNotEmpty ? product.colors!.first : null;
 
     return PageShell(
       fullWidth: true,

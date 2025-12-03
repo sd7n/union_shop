@@ -95,20 +95,14 @@ class _ProductPageState extends State<ProductPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: 240,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade200,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Center(
-            child: Image.network(
-              product.imageUrl,
-              fit: BoxFit.cover,
-            ),
+        AspectRatio(
+          aspectRatio: 1,
+          child: Image.network(
+            product.imageUrl,
+            fit: BoxFit.cover,
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 28),
         Text(
           product.name,
           style: Theme.of(context)
@@ -116,20 +110,38 @@ class _ProductPageState extends State<ProductPage> {
               .headlineSmall
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
-        Text(
-          '£${product.price.toStringAsFixed(2)}',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            if (product.strikePrice != null && product.strikePrice! > 0)
+              Text(
+                '£${product.strikePrice!.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  decoration: TextDecoration.lineThrough,
+                  color: Colors.grey,
+                ),
               ),
+            if (product.strikePrice != null && product.strikePrice! > 0)
+              const SizedBox(width: 12),
+            Text(
+              '£${product.price.toStringAsFixed(2)}',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF4d2963),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(height: 24),
-        Text(
-          product.description,
-          style: Theme.of(context).textTheme.bodyLarge,
+        const SizedBox(height: 8),
+        const Text(
+          'Tax included',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey,
+          ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 28),
         if (product.sizes.isNotEmpty) ...[
           Text(
             'Size',
@@ -138,15 +150,10 @@ class _ProductPageState extends State<ProductPage> {
                 .titleMedium
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 8),
-          DropdownButton<String>(
+          const SizedBox(height: 12),
+          _styledDropdown(
             value: selectedSize,
-            items: product.sizes
-                .map((size) => DropdownMenuItem(
-                      value: size,
-                      child: Text(size),
-                    ))
-                .toList(),
+            items: product.sizes,
             onChanged: (value) {
               setState(() {
                 selectedSize = value;
@@ -155,6 +162,14 @@ class _ProductPageState extends State<ProductPage> {
           ),
           const SizedBox(height: 24),
         ],
+        Text(
+          'Quantity',
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 12),
         QuantitySelector(
           onChanged: (qty) {
             setState(() {
@@ -162,21 +177,43 @@ class _ProductPageState extends State<ProductPage> {
             });
           },
         ),
-        const SizedBox(height: 24),
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: () {
-              final cartProvider = context.read<CartProvider>();
-              cartProvider.add(product, quantity, selectedSize);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('${product.name} added to cart'),
-                  duration: const Duration(seconds: 2),
+        const SizedBox(height: 32),
+        GestureDetector(
+          onTap: () {
+            final cartProvider = context.read<CartProvider>();
+            cartProvider.add(product, quantity, selectedSize);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${product.name} added to cart'),
+                duration: const Duration(seconds: 2),
+              ),
+            );
+          },
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: const Center(
+              child: Text(
+                'ADD TO CART',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
                 ),
-              );
-            },
-            child: const Text('Add to Cart'),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 48),
+        Text(
+          product.description,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            height: 1.6,
+            color: const Color(0xFF5F5F5F),
           ),
         ),
         const SizedBox(height: 32),

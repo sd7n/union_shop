@@ -34,159 +34,158 @@ class CartPage extends StatelessWidget {
     final cart = context.watch<CartProvider>().cart;
     final provider = context.read<CartProvider>();
 
-    if (cart.items.isEmpty) {
-      return PageShell(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.shopping_cart_outlined,
-                size: 80,
-                color: Colors.grey[400],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Your cart is empty',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Add some items to get started',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[600],
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     return PageShell(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Your Cart',
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            '${cart.items.length} item${cart.items.length != 1 ? 's' : ''}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[600],
-            ),
-          ),
-          const SizedBox(height: 16),
-          ListView(
-            shrinkWrap: true,
-            children: cart.items
-                .map((item) => Dismissible(
-                      key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
-                      background: Container(
-                        color: Colors.red,
-                        alignment: Alignment.centerRight,
-                        padding: const EdgeInsets.only(right: 20),
-                        child: const Icon(Icons.delete, color: Colors.white),
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        child: cart.items.isEmpty
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 80,
+                      color: Colors.grey[400],
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Your cart is empty',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Add some items to get started',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.grey[600],
                       ),
-                      onDismissed: (_) async {
-                        if (await showRemoveDialog(context)) provider.remove(item);
-                      },
-                      child: CartListTile(
-                        item: item,
-                        onIncrease: () => provider.updateQuantity(
-                          item,
-                          item.quantity + 1,
-                        ),
-                        onDecrease: () => provider.updateQuantity(
-                          item,
-                          item.quantity - 1,
-                        ),
-                        onRemove: () async {
-                          final confirmed = await showRemoveDialog(context);
-                          if (confirmed) {
-                            provider.remove(item);
-                          }
-                        },
-                      ),
-                    ))
-                .toList(),
-          ),
-          const SizedBox(height: 24),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
+                    ),
+                  ],
+                ),
+              )
+            : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Subtotal',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      Text(
-                        '£${cart.total.toStringAsFixed(2)}',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
+                  Text(
+                    'Your Cart',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Tax',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      Text(
-                        '£0.00',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-                  const Divider(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Total',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '£${cart.total.toStringAsFixed(2)}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Text(
+                    '${cart.items.length} item${cart.items.length != 1 ? 's' : ''}',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // TODO: Navigate to checkout page
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Proceeding to checkout...')),
-                        );
-                      },
-                      child: const Text('Checkout'),
+                  ListView(
+                    shrinkWrap: true,
+                    children: cart.items
+                        .map((item) => Dismissible(
+                              key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
+                              background: Container(
+                                color: Colors.red,
+                                alignment: Alignment.centerRight,
+                                padding: const EdgeInsets.only(right: 20),
+                                child: const Icon(Icons.delete, color: Colors.white),
+                              ),
+                              onDismissed: (_) async {
+                                if (await showRemoveDialog(context)) provider.remove(item);
+                              },
+                              child: CartListTile(
+                                item: item,
+                                onIncrease: () => provider.updateQuantity(
+                                  item,
+                                  item.quantity + 1,
+                                ),
+                                onDecrease: () => provider.updateQuantity(
+                                  item,
+                                  item.quantity - 1,
+                                ),
+                                onRemove: () async {
+                                  final confirmed = await showRemoveDialog(context);
+                                  if (confirmed) {
+                                    provider.remove(item);
+                                  }
+                                },
+                              ),
+                            ))
+                        .toList(),
+                  ),
+                  const SizedBox(height: 24),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Subtotal',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              Text(
+                                '£${cart.total.toStringAsFixed(2)}',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Tax',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              Text(
+                                '£0.00',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
+                          const Divider(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Total',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                '£${cart.total.toStringAsFixed(2)}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                // TODO: Navigate to checkout page
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Proceeding to checkout...')),
+                                );
+                              },
+                              child: const Text('Checkout'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-          ),
-        ],
       ),
     );
   }

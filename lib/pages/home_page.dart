@@ -311,9 +311,9 @@ class _HoverableProductCardState extends State<_HoverableProductCard> {
               ),
             ),
           ),
-        },
+        ),
       ),
-    ));
+    );
   }
 }
 

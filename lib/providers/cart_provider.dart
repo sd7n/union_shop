@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import '../models/cart.dart';
 import '../models/cart_item.dart';
 import '../models/product.dart';
@@ -90,6 +91,7 @@ class CartProvider extends ChangeNotifier {
 
   Future<void> _saveCart() async {
     final prefs = await SharedPreferences.getInstance();
+
     final cartData = _cart.items.map((item) {
       return {
         'productId': item.product.id,
@@ -97,7 +99,9 @@ class CartProvider extends ChangeNotifier {
         'size': item.size,
       };
     }).toList();
-    await prefs.setString('cart', cartStringEncode(cartData));
+
+    final jsonString = jsonEncode(cartData);
+    await prefs.setString('cart', jsonString);
   }
 
   String cartStringEncode(List<Map<String, dynamic>> data) {

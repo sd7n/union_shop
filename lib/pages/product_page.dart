@@ -45,12 +45,15 @@ class _ProductPageState extends State<ProductPage> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Expanded(
-          child: Placeholder(),
+        Expanded(
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Image.network(product.imageUrl, fit: BoxFit.cover),
+          ),
         ),
         const SizedBox(width: 48),
-        const Expanded(
-          child: Placeholder(),
+        Expanded(
+          child: _buildProductDetails(context, product),
         ),
       ],
     );

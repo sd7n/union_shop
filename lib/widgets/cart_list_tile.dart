@@ -18,6 +18,10 @@ class CartListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (item == null) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       children: [
         ListTile(

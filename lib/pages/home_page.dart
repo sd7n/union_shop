@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           HeroSection(
-            onPressed: _navigate,
+            onPressed: () => _navigate(context),
           ),
           const SizedBox(height: 40),
           Text(

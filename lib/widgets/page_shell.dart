@@ -17,7 +17,7 @@ class PageShell extends StatelessWidget {
       endDrawer: const NavbarDrawer(),
       body: SafeArea(
         child: Container(
-          color: Colors.grey.shade50,
+          color: Colors.white,
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(
               horizontal: isWide ? 32 : 16,
@@ -25,7 +25,7 @@ class PageShell extends StatelessWidget {
             ),
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 900),
+                constraints: const BoxConstraints(maxWidth: 1100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

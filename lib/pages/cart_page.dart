@@ -4,6 +4,28 @@ import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/cart_list_tile.dart';
 import '../providers/cart_provider.dart';
 
+Future<bool> showRemoveDialog(BuildContext context) async {
+  return await showDialog<bool>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Remove Item'),
+        content: const Text('Are you sure you want to remove this item from your cart?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Remove'),
+          ),
+        ],
+      );
+    },
+  ) ?? false;
+}
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 

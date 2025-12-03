@@ -5,38 +5,43 @@ import 'navbar_drawer.dart';
 
 class PageShell extends StatelessWidget {
   final Widget child;
-  const PageShell({super.key, required this.child});
+
+  final bool fullWidth;
+
+  const PageShell({
+    super.key,
+    required this.child,
+    this.fullWidth = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final isWide = width >= 900;
-
     return Scaffold(
       appBar: const Navbar(),
       endDrawer: const NavbarDrawer(),
       body: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
-              horizontal: isWide ? 32 : 16,
-              vertical: 24,
-            ),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1100),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    child,
-                    const SizedBox(height: 48),
-                    const Footer(),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: fullWidth
+                    ? child
+                    : Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 1200),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 24,
+                            ),
+                            child: child,
+                          ),
+                        ),
+                      ),
               ),
             ),
-          ),
+            const Footer(),
+          ],
         ),
       ),
     );

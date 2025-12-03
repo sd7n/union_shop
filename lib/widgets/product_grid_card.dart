@@ -50,46 +50,48 @@ class _ProductGridCardState extends State<ProductGridCard> {
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               elevation: _isHovered ? 8 : 1,
-              child: InkWell(
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  '/product',
-                  arguments: widget.productId,
-                ),
-                onLongPress: widget.externalUrl != null ? () => _launchUrl(widget.externalUrl!) : null,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: widget.isLocalImage
-                              ? Image.asset(widget.imageUrl, fit: BoxFit.cover)
-                              : Image.network(widget.imageUrl, fit: BoxFit.cover),
+                child: InkWell(
+                  onTap: () => Navigator.pushNamed(
+                    context,
+                    '/product',
+                    arguments: widget.productId,
+                  ),
+                  onLongPress: widget.externalUrl != null ? () => _launchUrl(widget.externalUrl!) : null,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: widget.isLocalImage
+                                ? Image.asset(widget.imageUrl, fit: BoxFit.cover)
+                                : Image.network(widget.imageUrl, fit: BoxFit.cover),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        widget.title,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        widget.price,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(height: 12),
+                        Text(
+                          widget.title,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 4),
+                        Text(
+                          widget.price,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

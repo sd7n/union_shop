@@ -245,6 +245,20 @@ class _ProductPageState extends State<ProductPage> {
           ),
           const SizedBox(height: 24),
         ],
+        Text(
+          'Quantity',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 12),
+        QuantitySelector(
+          onChanged: (qty) {
+            setState(() {
+              quantity = qty;
+            });
+          },
+        ),
       ],
     );
   }

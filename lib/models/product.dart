@@ -23,6 +23,8 @@ class Product {
     this.externalUrl,
   });
 
+  get strikePrice => null;
+
   @override
   String toString() =>
       'Product(id: $id, name: $name, price: $price, collectionId: $collectionId)';

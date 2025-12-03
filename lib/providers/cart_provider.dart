@@ -58,17 +58,32 @@ class CartProvider extends ChangeNotifier {
     }
 
     try {
+      final List<dynamic> jsonList = cartStringDecode(cartString);
       final products = DataService.instance.products;
 
-      // Parse the saved cart string and reconstruct items
-      // This is a simplified approach - in production, use proper JSON parsing
-      final cartItems = <CartItem> [];
+      _cart.items.clear();
 
-      // Note: Proper implementation would parse the saved format correctly
-      // For now, we'll just notify listeners after loading attempt
+      for (final json in jsonList) {
+        final productId = json['productId'];
+        final size = json['size'];
+        final quantity = json['quantity'];
+
+        final product = products.firstWhere(
+          (p) => p.id == productId,
+          orElse: () => throw Exception("Invalid product ID: $productId"),
+        );
+
+        _cart.items.add(
+          CartItem(
+            product: product,
+            quantity: quantity,
+            size: size,
+          ),
+        );
+      }
+
       notifyListeners();
     } catch (e) {
-      // Handle loading error silently
       debugPrint('Error loading cart: $e');
     }
   }
@@ -78,13 +93,42 @@ class CartProvider extends ChangeNotifier {
     final cartData = _cart.items.map((item) {
       return {
         'productId': item.product.id,
-        'productName': item.product.name,
-        'productPrice': item.product.price,
-        'productImageUrl': item.product.imageUrl,
         'quantity': item.quantity,
         'size': item.size,
       };
     }).toList();
-    await prefs.setString('cart', cartData.toString());
+    await prefs.setString('cart', cartStringEncode(cartData));
+  }
+
+  String cartStringEncode(List<Map<String, dynamic>> data) {
+    return data.toString();
+  }
+
+  List<dynamic> cartStringDecode(String data) {
+    try {
+      final cleaned = data
+          .replaceAll('[', '')
+          .replaceAll(']', '')
+          .split('},')
+          .map((chunk) => chunk.endsWith('}') ? chunk : "$chunk}")
+          .toList();
+
+      return cleaned.map((c) {
+        return {
+          'productId': _extract(c, 'productId'),
+          'quantity': int.parse(_extract(c, 'quantity')),
+          'size': _extract(c, 'size'),
+        };
+      }).toList();
+    } catch (e) {
+      debugPrint('Error decoding saved cart: $e');
+      return [];
+    }
+  }
+
+  String _extract(String source, String key) {
+    final pattern = RegExp("$key: ([^,}]+)");
+    final match = pattern.firstMatch(source);
+    return match != null ? match.group(1)!.trim() : "";
   }
 }

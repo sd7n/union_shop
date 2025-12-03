@@ -9,6 +9,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartProvider>().cart;
+    final provider = context.read<CartProvider>();
 
     if (cart.items.isEmpty) {
       return PageShell(
@@ -34,9 +35,30 @@ class CartPage extends StatelessWidget {
                   ),
                   title: Text(item.product.name),
                   subtitle: Text('Size: ${item.size ?? 'N/A'}'),
-                  trailing: Text(
-                    '£${item.totalPrice.toStringAsFixed(2)}',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: () => provider.updateQuantity(
+                          item,
+                          item.quantity - 1,
+                        ),
+                      ),
+                      Text(item.quantity.toString()),
+                      IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () => provider.updateQuantity(
+                          item,
+                          item.quantity + 1,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Text(
+                        '£${item.totalPrice.toStringAsFixed(2)}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                 ))
             .toList(),

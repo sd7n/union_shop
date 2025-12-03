@@ -39,7 +39,17 @@ class CartPage extends StatelessWidget {
                         child: const Icon(Icons.delete, color: Colors.white),
                       ),
                       onDismissed: (_) => provider.remove(item),
-                      child: CartListTile(item: item, provider: provider),
+                      child: CartListTile(
+                        item: item,
+                        onIncrease: () => provider.updateQuantity(
+                          item,
+                          item.quantity + 1,
+                        ),
+                        onDecrease: () => provider.updateQuantity(
+                          item,
+                          item.quantity - 1,
+                        ),
+                      ),
                     ))
                 .toList(),
           ),

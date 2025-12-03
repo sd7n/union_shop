@@ -4,7 +4,7 @@ class NavbarDrawer extends StatelessWidget {
   const NavbarDrawer({super.key});
 
   void _go(BuildContext context, String route) {
-    Navigator.pop(context); // close drawer
+    Navigator.pop(context);
     Navigator.pushNamed(context, route);
   }
 
@@ -15,29 +15,34 @@ class NavbarDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
+            decoration: BoxDecoration(color: Color(0xFF4d2963)),
             child: Text(
-              'Union Shop',
-              style: TextStyle(color: Colors.white),
+              'Union Shop Menu',
+              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () => _go(context, '/'),
           ),
           ListTile(
+            leading: const Icon(Icons.store),
             title: const Text('Collections'),
             onTap: () => _go(context, '/collections'),
           ),
           ListTile(
+            leading: const Icon(Icons.local_offer),
             title: const Text('Sale'),
             onTap: () => _go(context, '/sale'),
           ),
           ListTile(
+            leading: const Icon(Icons.info),
             title: const Text('About'),
             onTap: () => _go(context, '/about'),
           ),
           ListTile(
+            leading: const Icon(Icons.person),
             title: const Text('Sign In'),
             onTap: () => _go(context, '/auth'),
           ),

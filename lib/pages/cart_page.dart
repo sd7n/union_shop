@@ -87,69 +87,72 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    ListView(
+                    ListView.separated(
                       shrinkWrap: true,
-                      children: cart.items
-                          .map((item) => Dismissible(
-                                key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
-                                background: Container(
-                                  color: Colors.red,
-                                  alignment: Alignment.centerRight,
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: const Icon(Icons.delete, color: Colors.white),
+                      itemCount: cart.items.length,
+                      separatorBuilder: (context, index) => const Divider(height: 1),
+                      itemBuilder: (context, index) {
+                        final item = cart.items[index];
+                        return Dismissible(
+                          key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
+                          background: Container(
+                            color: Colors.red,
+                            alignment: Alignment.centerRight,
+                            padding: const EdgeInsets.only(right: 20),
+                            child: const Icon(Icons.delete, color: Colors.white),
+                          ),
+                          onDismissed: (_) async {
+                            if (await showRemoveDialog(context)) {
+                              provider.remove(item);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('${item.product.name} removed from cart'),
+                                  duration: const Duration(seconds: 2),
                                 ),
-                                onDismissed: (_) async {
-                                  if (await showRemoveDialog(context)) {
-                                    provider.remove(item);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('${item.product.name} removed from cart'),
-                                        duration: const Duration(seconds: 2),
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: CartListTile(
-                                  item: item,
-                                  onIncrease: () {
-                                    provider.updateQuantity(
-                                      item,
-                                      item.quantity + 1,
-                                    );
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('${item.product.name} quantity updated to ${item.quantity + 1}'),
-                                        duration: const Duration(seconds: 1),
-                                      ),
-                                    );
-                                  },
-                                  onDecrease: () {
-                                    final newQuantity = item.quantity - 1;
-                                    provider.updateQuantity(item, newQuantity);
-                                    if (newQuantity > 0) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text('${item.product.name} quantity updated to $newQuantity'),
-                                          duration: const Duration(seconds: 1),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  onRemove: () async {
-                                    final confirmed = await showRemoveDialog(context);
-                                    if (confirmed) {
-                                      provider.remove(item);
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text('${item.product.name} removed from cart'),
-                                          duration: const Duration(seconds: 2),
-                                        ),
-                                      );
-                                    }
-                                  },
+                              );
+                            }
+                          },
+                          child: CartListTile(
+                            item: item,
+                            onIncrease: () {
+                              provider.updateQuantity(
+                                item,
+                                item.quantity + 1,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('${item.product.name} quantity updated to ${item.quantity + 1}'),
+                                  duration: const Duration(seconds: 1),
                                 ),
-                              ))
-                          .toList(),
+                              );
+                            },
+                            onDecrease: () {
+                              final newQuantity = item.quantity - 1;
+                              provider.updateQuantity(item, newQuantity);
+                              if (newQuantity > 0) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('${item.product.name} quantity updated to $newQuantity'),
+                                    duration: const Duration(seconds: 1),
+                                  ),
+                                );
+                              }
+                            },
+                            onRemove: () async {
+                              final confirmed = await showRemoveDialog(context);
+                              if (confirmed) {
+                                provider.remove(item);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('${item.product.name} removed from cart'),
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 24),
                     Card(

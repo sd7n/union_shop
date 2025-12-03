@@ -5,10 +5,12 @@ class Product {
   final String name;
   final String description;
   final double price;
+  final double? strikePrice;
   final String imageUrl;
   final bool isLocalImage;
   final String collectionId;
   final List<String> sizes;
+  final List<String>? images;
   final String? externalUrl;
 
   const Product({
@@ -16,16 +18,14 @@ class Product {
     required this.name,
     required this.description,
     required this.price,
+    this.strikePrice,
     required this.imageUrl,
     required this.isLocalImage,
     required this.collectionId,
     required this.sizes,
+    this.images,
     this.externalUrl,
   });
-
-  get strikePrice => null;
-
-  get images => null;
 
   @override
   String toString() =>

@@ -13,6 +13,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   String? selectedSize;
+  int quantity = 1;
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
@@ -104,7 +105,11 @@ class _ProductPageState extends State<ProductPage> {
                         const SizedBox(height: 24),
                       ],
                       QuantitySelector(
-                        onChanged: (qty) {},
+                        onChanged: (qty) {
+                          setState(() {
+                            quantity = qty;
+                          });
+                        },
                       ),
                       const SizedBox(height: 24),
                       SizedBox(
@@ -185,7 +190,11 @@ class _ProductPageState extends State<ProductPage> {
                 const SizedBox(height: 24),
               ],
               QuantitySelector(
-                onChanged: (qty) {},
+                onChanged: (qty) {
+                  setState(() {
+                    quantity = qty;
+                  });
+                },
               ),
               const SizedBox(height: 24),
               SizedBox(

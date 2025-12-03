@@ -37,6 +37,12 @@ class CartPage extends StatelessWidget {
     return PageShell(
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 250),
+        transitionBuilder: (child, animation) {
+          return SizeTransition(
+            sizeFactor: animation,
+            child: child,
+          );
+        },
         child: cart.items.isEmpty
             ? Center(
                 child: Column(

@@ -21,7 +21,7 @@ class HeroSection extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
-                    'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Playboi_Carti_-_Music_album_cover.svg/1024px-Playboi_Carti_-_Music_album_cover.svg.png',
                   ),
                   fit: BoxFit.cover,
                 ),

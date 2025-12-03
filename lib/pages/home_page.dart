@@ -13,102 +13,108 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.of(context).size.width >= 600;
-
     return PageShell(
+      fullWidth: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           HeroSection(
             onPressed: () => _navigate(context),
           ),
-          const SizedBox(height: 40),
-          Text(
-            "FEATURED PRODUCTS",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1,
-              color: Colors.black,
+          const SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "FEATURED PRODUCTS",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(height: 24),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth < 600) {
+                      return Column(
+                        children: [
+                          ProductTile(
+                            product: DataService.instance.getProduct('hoodie-navy')!,
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              '/product',
+                              arguments: 'hoodie-navy',
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          ProductTile(
+                            product: DataService.instance.getProduct('tee-classic')!,
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              '/product',
+                              arguments: 'tee-classic',
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          ProductTile(
+                            product: DataService.instance.getProduct('mug-uni')!,
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              '/product',
+                              arguments: 'mug-uni',
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                    return GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 24,
+                      childAspectRatio: 0.8,
+                      children: [
+                        ProductTile(
+                          product: DataService.instance.getProduct('hoodie-navy')!,
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            '/product',
+                            arguments: 'hoodie-navy',
+                          ),
+                        ),
+                        ProductTile(
+                          product: DataService.instance.getProduct('tee-classic')!,
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            '/product',
+                            arguments: 'tee-classic',
+                          ),
+                        ),
+                        ProductTile(
+                          product: DataService.instance.getProduct('mug-uni')!,
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            '/product',
+                            arguments: 'mug-uni',
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 8),
-          Divider(
-            thickness: 1,
-            color: Colors.grey.shade300,
-          ),
-          const SizedBox(height: 24),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth < 600) {
-                return Column(
-                  children: [
-                    ProductTile(
-                      product: DataService.instance.getProduct('hoodie-navy')!,
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        '/product',
-                        arguments: 'hoodie-navy',
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    ProductTile(
-                      product: DataService.instance.getProduct('tee-classic')!,
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        '/product',
-                        arguments: 'tee-classic',
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    ProductTile(
-                      product: DataService.instance.getProduct('mug-uni')!,
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        '/product',
-                        arguments: 'mug-uni',
-                      ),
-                    ),
-                  ],
-                );
-              }
-              return GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 24,
-                childAspectRatio: 0.8,
-                children: [
-                  ProductTile(
-                    product: DataService.instance.getProduct('hoodie-navy')!,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      '/product',
-                      arguments: 'hoodie-navy',
-                    ),
-                  ),
-                  ProductTile(
-                    product: DataService.instance.getProduct('tee-classic')!,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      '/product',
-                      arguments: 'tee-classic',
-                    ),
-                  ),
-                  ProductTile(
-                    product: DataService.instance.getProduct('mug-uni')!,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      '/product',
-                      arguments: 'mug-uni',
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-          SizedBox(height: isWide ? 48 : 32),
         ],
       ),
     );

@@ -20,13 +20,13 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
-
     final data = DataService.instance;
     final Product product = data.getProduct(productId);
 
     selectedSize ??= product.sizes.isNotEmpty ? product.sizes.first : null;
 
     return PageShell(
+      fullWidth: false,
       child: LayoutBuilder(
         builder: (context, constraints) {
           final isWide = constraints.maxWidth >= 700;

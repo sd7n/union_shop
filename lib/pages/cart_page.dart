@@ -46,6 +46,7 @@ class CartPage extends StatelessWidget {
     final provider = context.read<CartProvider>();
 
     return PageShell(
+      fullWidth: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: AnimatedSwitcher(

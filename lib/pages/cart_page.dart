@@ -60,7 +60,9 @@ class CartPage extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 20),
                         child: const Icon(Icons.delete, color: Colors.white),
                       ),
-                      onDismissed: (_) => provider.remove(item),
+                      onDismissed: (_) async {
+                        if (await showRemoveDialog(context)) provider.remove(item);
+                      },
                       child: CartListTile(
                         item: item,
                         onIncrease: () => provider.updateQuantity(

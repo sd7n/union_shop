@@ -29,40 +29,42 @@ class CartPage extends StatelessWidget {
           ListView(
             shrinkWrap: true,
             children: cart.items
-                .map((item) => ListTile(
+                .map((item) => Dismissible(
                       key: ValueKey('${item.product.id}_${item.size ?? 'none'}'),
-                      leading: Image.network(
-                        item.product.imageUrl,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                      title: Text(item.product.name),
-                      subtitle: Text('Size: ${item.size ?? 'N/A'}'),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () => provider.updateQuantity(
-                              item,
-                              item.quantity - 1,
+                      child: ListTile(
+                        leading: Image.network(
+                          item.product.imageUrl,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                        title: Text(item.product.name),
+                        subtitle: Text('Size: ${item.size ?? 'N/A'}'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: () => provider.updateQuantity(
+                                item,
+                                item.quantity - 1,
+                              ),
                             ),
-                          ),
-                          Text(item.quantity.toString()),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () => provider.updateQuantity(
-                              item,
-                              item.quantity + 1,
+                            Text(item.quantity.toString()),
+                            IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: () => provider.updateQuantity(
+                                item,
+                                item.quantity + 1,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 16),
-                          Text(
-                            '£${item.totalPrice.toStringAsFixed(2)}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                            const SizedBox(width: 16),
+                            Text(
+                              '£${item.totalPrice.toStringAsFixed(2)}',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                     ))
                 .toList(),

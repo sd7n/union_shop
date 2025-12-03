@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/cart_list_tile.dart';
 import '../providers/cart_provider.dart';
@@ -28,6 +29,16 @@ Future<bool> showRemoveDialog(BuildContext context) async {
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
+
+  Future<void> _launchEmail(String email) async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: email,
+    );
+    if (!await launchUrl(emailUri)) {
+      throw Exception('Could not launch email to $email');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +77,11 @@ class CartPage extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
+                      ),
+                      const SizedBox(height: 16),
+                      TextButton(
+                        onPressed: () => _launchEmail('support@universityshop.com'),
+                        child: const Text('Contact Support'),
                       ),
                     ],
                   ),

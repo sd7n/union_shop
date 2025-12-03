@@ -4,12 +4,14 @@ import '../providers/cart_provider.dart';
 
 class CartListTile extends StatelessWidget {
   final CartItem item;
-  final CartProvider provider;
+  final VoidCallback onIncrease;
+  final VoidCallback onDecrease;
 
   const CartListTile({
     super.key,
     required this.item,
-    required this.provider,
+    required this.onIncrease,
+    required this.onDecrease,
   });
 
   @override
@@ -28,18 +30,12 @@ class CartListTile extends StatelessWidget {
         children: [
           IconButton(
             icon: const Icon(Icons.remove),
-            onPressed: () => provider.updateQuantity(
-              item,
-              item.quantity - 1,
-            ),
+            onPressed: onDecrease,
           ),
           Text(item.quantity.toString()),
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () => provider.updateQuantity(
-              item,
-              item.quantity + 1,
-            ),
+            onPressed: onIncrease,
           ),
           const SizedBox(width: 16),
           Text(

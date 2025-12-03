@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key, required this.onPressed});
-
   final VoidCallback onPressed;
+
+  const HeroSection({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    final height = width < 600 ? 280.0 : 420.0;
+
     return SizedBox(
-      height: 400,
+      height: height,
       width: double.infinity,
       child: Stack(
         children: [
-          // Background image
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
@@ -23,64 +26,71 @@ class HeroSection extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Container(
-                color: Colors.black.withOpacity(0.6),
-              ),
             ),
           ),
 
-          // Overlay content
+          Container(
+            height: height,
+            width: double.infinity,
+            color: Colors.black.withOpacity(0.68), 
+          ),
+
           Positioned.fill(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'Official University Merchandise',
+                    Text(
+                      'The Union Shop',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 34,
-                        fontWeight: FontWeight.bold,
-                        height: 1.2,
+                        fontSize: width < 600 ? 26 : 34,
+                        fontWeight: FontWeight.w700,
                         color: Colors.white,
+                        height: 1.15,
+                        letterSpacing: 0.4,
                       ),
                     ),
 
                     const SizedBox(height: 16),
 
-                    const Text(
-                      "Clothing, accessories and gifts — made for Portsmouth students.",
+                    Text(
+                      'Welcome to the Union Shop',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: width < 600 ? 16 : 20,
+                        fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        height: 1.4,
+                        height: 1.45,
+                        letterSpacing: 0.2,
                       ),
                     ),
 
                     const SizedBox(height: 32),
 
-                    ElevatedButton(
-                      onPressed: onPressed,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4d2963),
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 16,
+                    SizedBox(
+                      height: 46,
+                      child: ElevatedButton(
+                        onPressed: onPressed,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF4d2963),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 32,
+                          ),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                          ),
                         ),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                        ),
-                      ),
-                      child: const Text(
-                        'BROWSE PRODUCTS',
-                        style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w600,
+                        child: const Text(
+                          'BROWSE PRODUCTS',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.3,
+                          ),
                         ),
                       ),
                     ),
@@ -88,7 +98,7 @@ class HeroSection extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

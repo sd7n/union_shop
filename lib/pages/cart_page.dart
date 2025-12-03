@@ -37,9 +37,27 @@ class CartPage extends StatelessWidget {
     if (cart.items.isEmpty) {
       return PageShell(
         child: Center(
-          child: Text(
-            'Your cart is empty',
-            style: Theme.of(context).textTheme.headlineSmall,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.shopping_cart_outlined,
+                size: 80,
+                color: Colors.grey[400],
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Your cart is empty',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Add some items to get started',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
+              ),
+            ],
           ),
         ),
       );

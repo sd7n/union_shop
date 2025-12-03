@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,17 +67,24 @@ class Footer extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
-          TextButton(
-            onPressed: () {},
-            child: const Text('Instagram'),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text('Twitter'),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text('YouTube'),
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.camera_alt),
+                onPressed: () => _launchUrl('https://instagram.com'),
+                tooltip: 'Instagram',
+              ),
+              IconButton(
+                icon: const Icon(Icons.mail_outline),
+                onPressed: () => _launchUrl('https://twitter.com'),
+                tooltip: 'Twitter',
+              ),
+              IconButton(
+                icon: const Icon(Icons.play_circle_outline),
+                onPressed: () => _launchUrl('https://youtube.com'),
+                tooltip: 'YouTube',
+              ),
+            ],
           ),
           const SizedBox(height: 8),
         ],

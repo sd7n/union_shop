@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:union_shop/providers/cart_provider.dart';
 import 'package:union_shop/pages/home_page.dart';
 import 'package:union_shop/pages/about_page.dart';
 import 'package:union_shop/pages/collections_page.dart';
@@ -17,23 +19,26 @@ class UnionShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Union Shop',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
+    return ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: MaterialApp(
+        title: 'Union Shop',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomeScreen(),
+          '/about': (context) => const AboutPage(),
+          '/collections': (context) => const CollectionsPage(),
+          '/collection': (context) => const CollectionsDetailPage(),
+          '/product': (context) => const ProductPage(),
+          '/sale': (context) => const SalePage(),
+          '/auth': (context) => const AuthPage(),
+          '/cart': (context) => const CartPage(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-        '/about': (context) => const AboutPage(),
-        '/collections': (context) => const CollectionsPage(),
-        '/collection': (context) => const CollectionsDetailPage(),
-        '/product': (context) => const ProductPage(),
-        '/sale': (context) => const SalePage(),
-        '/auth': (context) => const AuthPage(),
-        '/cart': (context) => const CartPage(),
-      },
     );
   }
 }

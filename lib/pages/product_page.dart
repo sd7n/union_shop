@@ -54,7 +54,7 @@ class _ProductPageState extends State<ProductPage> {
                 aspectRatio: 1,
                 child: Image.network(selectedImage ?? product.imageUrl, fit: BoxFit.cover),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 24),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -65,7 +65,7 @@ class _ProductPageState extends State<ProductPage> {
                       child: Container(
                         width: 80,
                         height: 80,
-                        margin: const EdgeInsets.only(right: 8),
+                        margin: const EdgeInsets.only(right: 12),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: selectedImage == img
@@ -83,7 +83,7 @@ class _ProductPageState extends State<ProductPage> {
             ],
           ),
         ),
-        const SizedBox(width: 48),
+        const SizedBox(width: 64),
         Expanded(
           child: _buildProductDetails(context, product),
         ),
@@ -194,7 +194,7 @@ class _ProductPageState extends State<ProductPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
         Row(
           children: [
             if (product.strikePrice != null && product.strikePrice! > 0)
@@ -225,7 +225,7 @@ class _ProductPageState extends State<ProductPage> {
             color: Colors.grey,
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
         if (product.sizes.isNotEmpty) ...[
           Text(
             'Size',
@@ -243,7 +243,7 @@ class _ProductPageState extends State<ProductPage> {
               });
             },
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 28),
         ],
         Text(
           'Quantity',
@@ -259,7 +259,7 @@ class _ProductPageState extends State<ProductPage> {
             });
           },
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 36),
         GestureDetector(
           onTap: () {
             final cartProvider = context.read<CartProvider>();
@@ -290,7 +290,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
         ),
-        const SizedBox(height: 48),
+        const SizedBox(height: 56),
         Text(
           product.description,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(

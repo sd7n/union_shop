@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/hero_slide.dart';
 
 class HeroSection extends StatelessWidget {
   final VoidCallback onPressed;

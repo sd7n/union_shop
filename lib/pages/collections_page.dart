@@ -3,9 +3,14 @@ import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/collection_card.dart';
 import '../services/data_service.dart';
 
-class CollectionsPage extends StatelessWidget {
+class CollectionsPage extends StatefulWidget {
   const CollectionsPage({super.key});
 
+  @override
+  State<CollectionsPage> createState() => _CollectionsPageState();
+}
+
+class _CollectionsPageState extends State<CollectionsPage> {
   @override
   Widget build(BuildContext context) {
     final data = DataService.instance;

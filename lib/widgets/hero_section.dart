@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import '../models/hero_slide.dart';
 
 class HeroSection extends StatefulWidget {
@@ -11,6 +12,11 @@ class HeroSection extends StatefulWidget {
 }
 
 class _HeroSectionState extends State<HeroSection> {
+  late PageController _pageController;
+  int currentPage = 0;
+  bool isPaused = false;
+  Timer? autoTimer;
+
   final List<HeroSlide> slides = [
     const HeroSlide(
       image: 'assets/images/essential_range_hero.png',
@@ -34,6 +40,33 @@ class _HeroSectionState extends State<HeroSection> {
       buttonRoute: '/collections',
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+    _startAutoSlide();
+  }
+
+  @override
+  void dispose() {
+    autoTimer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _startAutoSlide() {
+    autoTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (!isPaused && mounted) {
+        int nextPage = (currentPage + 1) % slides.length;
+        _pageController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

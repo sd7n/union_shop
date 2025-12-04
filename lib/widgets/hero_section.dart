@@ -231,6 +231,34 @@ class _HeroSectionState extends State<HeroSection> {
               ),
             ),
           ),
+          // Dot indicators
+          Positioned(
+            bottom: 16,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  slides.length,
+                  (index) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      width: currentPage == index ? 24 : 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: currentPage == index
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

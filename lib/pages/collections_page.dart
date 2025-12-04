@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/collection_card.dart';
 import '../services/data_service.dart';
+import '../models/collection.dart';
+import '../models/product.dart';
 
 class CollectionsPage extends StatefulWidget {
   const CollectionsPage({super.key});
@@ -11,6 +13,21 @@ class CollectionsPage extends StatefulWidget {
 }
 
 class _CollectionsPageState extends State<CollectionsPage> {
+  final DataService _data = DataService.instance;
+
+  late final List<Collection> _collections;
+  late final List<Product> _allProducts;
+
+  String _selectedCollectionId = 'all';
+  String _selectedSort = 'featured';
+
+  @override
+  void initState() {
+    super.initState();
+    _collections = _data.collections;
+    _allProducts = _data.products;
+  }
+
   @override
   Widget build(BuildContext context) {
     final data = DataService.instance;

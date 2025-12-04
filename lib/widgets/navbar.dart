@@ -13,6 +13,11 @@ enum ShopMenuItem {
   graduation,
 }
 
+enum PrintShackMenu {
+  about,
+  personalisation,
+}
+
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   const Navbar({super.key});
 

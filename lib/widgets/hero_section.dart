@@ -77,92 +77,98 @@ class _HeroSectionState extends State<HeroSection> {
     return SizedBox(
       height: height,
       width: double.infinity,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Playboi_Carti_-_Music_album_cover.svg/1024px-Playboi_Carti_-_Music_album_cover.svg.png',
+      child: PageView.builder(
+        controller: _pageController,
+        onPageChanged: (page) {
+          setState(() {
+            currentPage = page;
+          });
+        },
+        itemCount: slides.length,
+        itemBuilder: (context, index) {
+          final slide = slides[index];
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(slide.image),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ),
-
-          Container(
-            height: height,
-            width: double.infinity,
-            color: Colors.black.withOpacity(0.68), 
-          ),
-
-          Positioned.fill(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'The Union Shop',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: width < 600 ? 26 : 34,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        height: 1.15,
-                        letterSpacing: 0.4,
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    Text(
-                      'Welcome to the Union Shop',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: width < 600 ? 16 : 20,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        height: 1.45,
-                        letterSpacing: 0.2,
-                      ),
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    SizedBox(
-                      height: 46,
-                      child: ElevatedButton(
-                        onPressed: onPressed,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF4d2963),
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                          ),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero,
-                          ),
-                        ),
-                        child: const Text(
-                          'BROWSE COLLECTIONS',
+              Container(
+                height: height,
+                width: double.infinity,
+                color: Colors.black.withOpacity(0.68),
+              ),
+              Positioned.fill(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          slide.title,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.3,
+                            fontSize: width < 600 ? 26 : 34,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            height: 1.15,
+                            letterSpacing: 0.4,
                           ),
                         ),
-                      ),
+                        const SizedBox(height: 16),
+                        Text(
+                          slide.subtitle,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: width < 600 ? 16 : 20,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                            height: 1.45,
+                            letterSpacing: 0.2,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+                        SizedBox(
+                          height: 46,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, slide.buttonRoute);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF4d2963),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 32,
+                              ),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
+                            ),
+                            child: Text(
+                              slide.buttonText,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1.3,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }

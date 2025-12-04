@@ -156,7 +156,29 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   Widget _shopDropdown(BuildContext context) {
     return PopupMenuButton<ShopMenuItem>(
       onSelected: (item) {
-        debugPrint('Selected shop item: $item');
+        switch (item) {
+          case ShopMenuItem.clothing:
+            _go(context, '/collections');
+            break;
+          case ShopMenuItem.merchandise:
+            _go(context, '/collections');
+            break;
+          case ShopMenuItem.halloween:
+            _go(context, '/collections');
+            break;
+          case ShopMenuItem.signatureEssential:
+            _go(context, '/');
+            break;
+          case ShopMenuItem.portsmouthCity:
+            _go(context, '/');
+            break;
+          case ShopMenuItem.pride:
+            _go(context, '/collections');
+            break;
+          case ShopMenuItem.graduation:
+            _go(context, '/collections');
+            break;
+        }
       },
       itemBuilder: (context) => [
         const PopupMenuItem(

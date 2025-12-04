@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/search_provider.dart';
+import '../services/data_service.dart';
 
 class SearchOverlay extends StatelessWidget {
   final bool isVisible;
@@ -21,17 +22,32 @@ class SearchOverlay extends StatelessWidget {
       child: Container(
         color: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: TextField(
-          onChanged: (value) {
-            context.read<SearchProvider>().setSearchTerm(value);
-          },
-          decoration: InputDecoration(
-            hintText: 'Search',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                onChanged: (value) {
+                  context.read<SearchProvider>().setSearchTerm(value);
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                ),
+              ),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          ),
+            const SizedBox(width: 8),
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                final searchProvider = context.read<SearchProvider>();
+                final allProducts = DataService.instance.products;
+                searchProvider.runSearch(allProducts);
+              },
+            ),
+          ],
         ),
       ),
     );

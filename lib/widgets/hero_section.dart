@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
 import '../models/hero_slide.dart';
 
-class HeroSection extends StatelessWidget {
+class HeroSection extends StatefulWidget {
   final VoidCallback onPressed;
 
   const HeroSection({super.key, required this.onPressed});
+
+  @override
+  State<HeroSection> createState() => _HeroSectionState();
+}
+
+class _HeroSectionState extends State<HeroSection> {
+  final List<HeroSlide> slides = [
+    const HeroSlide(
+      image: 'assets/images/essential_range_hero.png',
+      title: 'Essential Range',
+      subtitle: 'Discover our essential collection',
+      buttonText: 'SHOP NOW',
+      buttonRoute: '/collections',
+    ),
+    const HeroSlide(
+      image: 'assets/images/print_shack_hero.png',
+      title: 'Print Shack',
+      subtitle: 'Custom printing & personalised gifts',
+      buttonText: 'EXPLORE',
+      buttonRoute: '/collection',
+    ),
+    const HeroSlide(
+      image: 'assets/images/dominos_hero.png',
+      title: 'Dominos',
+      subtitle: 'Limited edition collaboration',
+      buttonText: 'VIEW',
+      buttonRoute: '/collections',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {

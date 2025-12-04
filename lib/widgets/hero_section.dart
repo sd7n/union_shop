@@ -259,6 +259,30 @@ class _HeroSectionState extends State<HeroSection> {
               ),
             ),
           ),
+          // Pause/Play button
+          Positioned(
+            bottom: 16,
+            right: 16,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isPaused = !isPaused;
+                });
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.3),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  isPaused ? Icons.play_arrow : Icons.pause,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

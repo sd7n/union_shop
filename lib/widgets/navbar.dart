@@ -33,6 +33,8 @@ class _NavbarState extends State<Navbar> {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
+  void _toggleSearch() => setState(() => _isSearchOpen = !_isSearchOpen);
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

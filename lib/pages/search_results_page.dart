@@ -15,53 +15,54 @@ class SearchResultsPage extends StatelessWidget {
           final results = searchProvider.results;
           final searchTerm = searchProvider.searchTerm;
 
-          if (results.isEmpty) {
-            return Center(
-              child: Text(
-                'No results found for "$searchTerm"',
-                style: const TextStyle(fontSize: 16),
-              ),
-            );
-          }
-
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.only(top: 24, bottom: 16),
                 child: Text(
-                  '${results.length} results for \'$searchTerm\''.toUpperCase(),
-                  textAlign: TextAlign.center,
+                  results.isEmpty
+                      ? 'NO RESULTS FOR "$searchTerm"'
+                      : '${results.length} RESULTS FOR "$searchTerm"',
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.6,
                   ),
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: results.length,
-                  itemBuilder: (context, index) {
-                    final product = results[index];
-                    return ListTile(
-                      leading: Image.network(
-                        product.imageUrl,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: results.isEmpty
+                    ? const Center(
+                        child: Text(
+                          'Try another search term',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: results.length,
+                        itemBuilder: (context, index) {
+                          final product = results[index];
+                          return ListTile(
+                            leading: Image.network(
+                              product.imageUrl,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                            title: Text(product.name),
+                            subtitle: Text('£${product.price.toStringAsFixed(2)}'),
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/product',
+                                arguments: product.id,
+                              );
+                            },
+                          );
+                        },
                       ),
-                      title: Text(product.name),
-                      subtitle: Text('£${product.price.toStringAsFixed(2)}'),
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/product',
-                          arguments: product.id,
-                        );
-                      },
-                    );
-                  },
-                ),
               ),
             ],
           );

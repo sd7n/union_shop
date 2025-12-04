@@ -154,8 +154,40 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _shopDropdown(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
+    return PopupMenuButton<ShopMenuItem>(
+      onSelected: (item) {
+        debugPrint('Selected shop item: $item');
+      },
+      itemBuilder: (context) => [
+        const PopupMenuItem(
+          value: ShopMenuItem.clothing,
+          child: Text('Clothing'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.merchandise,
+          child: Text('Merchandise'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.halloween,
+          child: Text('Halloween 🎃'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.signatureEssential,
+          child: Text('Signature & Essential Range'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.portsmouthCity,
+          child: Text('Portsmouth City Collection'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.pride,
+          child: Text('Pride'),
+        ),
+        const PopupMenuItem(
+          value: ShopMenuItem.graduation,
+          child: Text('Graduation 🎓'),
+        ),
+      ],
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

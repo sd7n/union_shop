@@ -13,38 +13,57 @@ class SearchResultsPage extends StatelessWidget {
       child: Consumer<SearchProvider>(
         builder: (context, searchProvider, _) {
           final results = searchProvider.results;
+          final searchTerm = searchProvider.searchTerm;
 
           if (results.isEmpty) {
             return Center(
               child: Text(
-                'No results found for "${searchProvider.searchTerm}"',
+                'No results found for "$searchTerm"',
                 style: const TextStyle(fontSize: 16),
               ),
             );
           }
 
-          return ListView.builder(
-            itemCount: results.length,
-            itemBuilder: (context, index) {
-              final product = results[index];
-              return ListTile(
-                leading: Image.network(
-                  product.imageUrl,
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.cover,
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  '${results.length} results for \'$searchTerm\''.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
                 ),
-                title: Text(product.name),
-                subtitle: Text('£${product.price.toStringAsFixed(2)}'),
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/product',
-                    arguments: product.id,
-                  );
-                },
-              );
-            },
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: results.length,
+                  itemBuilder: (context, index) {
+                    final product = results[index];
+                    return ListTile(
+                      leading: Image.network(
+                        product.imageUrl,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                      title: Text(product.name),
+                      subtitle: Text('£${product.price.toStringAsFixed(2)}'),
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/product',
+                          arguments: product.id,
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),

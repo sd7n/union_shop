@@ -277,7 +277,7 @@ class _NavbarState extends State<Navbar> {
       onSelected: (item) {
         switch (item) {
           case PrintShackMenu.about:
-            _go(context, '/about');
+            _go(context, '/printshack-about');
             break;
           case PrintShackMenu.personalisation:
             _go(context, '/personalisation');
@@ -287,11 +287,11 @@ class _NavbarState extends State<Navbar> {
       itemBuilder: (context) => [
         const PopupMenuItem(
           value: PrintShackMenu.about,
-          child: Text('About The Print Shack'),
+          child: Text('About Us'),
         ),
         const PopupMenuItem(
           value: PrintShackMenu.personalisation,
-          child: Text('Personalisation Options'),
+          child: Text('Personalisation'),
         ),
       ],
       child: Row(

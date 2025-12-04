@@ -9,4 +9,17 @@ class SearchProvider extends ChangeNotifier {
     searchTerm = term;
     notifyListeners();
   }
+
+  void runSearch(List<Product> allProducts) {
+    if (searchTerm.isEmpty) {
+      results = [];
+    } else {
+      results = allProducts
+          .where((product) =>
+              product.name.toLowerCase().contains(searchTerm.toLowerCase()) ||
+              product.description.toLowerCase().contains(searchTerm.toLowerCase()))
+          .toList();
+    }
+    notifyListeners();
+  }
 }

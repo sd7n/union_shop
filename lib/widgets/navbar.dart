@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 
+enum ShopMenuItem {
+  clothing,
+  merchandise,
+  halloween,
+  signatureEssential,
+  portsmouthCity,
+  pride,
+  graduation,
+}
+
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({super.key});
 

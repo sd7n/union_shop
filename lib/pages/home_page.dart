@@ -13,6 +13,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = DataService.instance;
+    final signature = data.getProductsForCollection('signature');
+    final city = data.getProductsForCollection('city');
+
     return PageShell(
       fullWidth: true,
       child: Column(

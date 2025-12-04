@@ -67,7 +67,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
                 const Spacer(),
                 if (isWide) ...[
                   _navLink(context, 'Home', '/'),
-                  _navLink(context, 'Shop', '/collections'),
+                  _shopDropdown(context),
                   _navLink(context, 'The Print Shack', '/collections'),
                   _navLink(context, 'Sale!', '/sale'),
                   _navLink(context, 'About', '/about'),

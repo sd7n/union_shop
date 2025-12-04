@@ -12,8 +12,18 @@ enum ShopMenuItem {
   graduation,
 }
 
-class Navbar extends StatelessWidget implements PreferredSizeWidget {
+class Navbar extends StatefulWidget implements PreferredSizeWidget {
   const Navbar({super.key});
+
+  @override
+  State<Navbar> createState() => _NavbarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(110);
+}
+
+class _NavbarState extends State<Navbar> {
+  bool _isSearchOpen = false;
 
   void _go(BuildContext context, String route) {
     Navigator.pushNamed(context, route);
@@ -29,7 +39,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     final isWide = width >= 900;
 
     return PreferredSize(
-      preferredSize: const Size.fromHeight(110),
+      preferredSize: widget.preferredSize,
       child: Column(
         children: [
           Container(
@@ -75,9 +85,30 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
                 const SizedBox(width: 16),
                 Row(
                   children: [
+                    if (_isSearchOpen)
+                      Container(
+                        width: 200,
+                        child: TextField(
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            hintText: 'Search...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFDDDDDD),
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     IconButton(
                       icon: const Icon(Icons.search),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _isSearchOpen = !_isSearchOpen;
+                        });
+                      },
                       color: const Color(0xFF5F5F5F),
                     ),
                     IconButton(
@@ -231,7 +262,4 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(110);
 }

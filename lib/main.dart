@@ -11,6 +11,8 @@ import 'package:union_shop/pages/sale_page.dart';
 import 'package:union_shop/pages/auth_page.dart';
 import 'package:union_shop/pages/cart_page.dart';
 import 'package:union_shop/pages/search_results_page.dart';
+import 'package:union_shop/pages/login_page.dart';
+import 'package:union_shop/pages/signup_page.dart';
 
 void main() {
   runApp(
@@ -52,6 +54,8 @@ class UnionShopApp extends StatelessWidget {
         '/auth': (context) => const AuthPage(),
         '/cart': (context) => const CartPage(),
         '/search': (context) => const SearchResultsPage(),
+        '/login': (context) => const LoginPage(),
+        '/signup': (context) => const SignupPage(),
       },
     );
   }

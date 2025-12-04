@@ -18,7 +18,16 @@ class SearchOverlay extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       child: Container(
         color: Colors.white,
-        child: const SizedBox.shrink(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: 'Search',
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          ),
+        ),
       ),
     );
   }

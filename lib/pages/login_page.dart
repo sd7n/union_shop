@@ -11,7 +11,26 @@ class LoginPage extends StatelessWidget {
         backgroundColor: const Color(0xFF4D2963),
         foregroundColor: Colors.white,
       ),
-      body: const SizedBox.expand(),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

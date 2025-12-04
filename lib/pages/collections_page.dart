@@ -109,6 +109,15 @@ class _CollectionsPageState extends State<CollectionsPage> {
               final isWide = constraints.maxWidth >= 900;
               final crossAxisCount = isWide ? 3 : 2;
 
+              if (products.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 48),
+                  child: Center(
+                    child: Text('No products found for this selection.'),
+                  ),
+                );
+              }
+
               return GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

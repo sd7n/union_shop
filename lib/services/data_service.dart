@@ -245,6 +245,16 @@ class DataService {
       ],
       colors: ['Black', 'Navy', 'Beige'],
     ),
+    Product(
+      id: 'city-tee',
+      name: 'Spinnaker Tower T-Shirt',
+      description: 'Minimalist Spinnaker Tower print tee.',
+      price: 16.99,
+      imageUrl: 'assets/images/city_spinnaker_tee.png',
+      isLocalImage: true,
+      collectionId: 'city',
+      sizes: ['S', 'M', 'L', 'XL'],
+    ),
   ];
 
   void load() {

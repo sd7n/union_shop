@@ -77,98 +77,161 @@ class _HeroSectionState extends State<HeroSection> {
     return SizedBox(
       height: height,
       width: double.infinity,
-      child: PageView.builder(
-        controller: _pageController,
-        onPageChanged: (page) {
-          setState(() {
-            currentPage = page;
-          });
-        },
-        itemCount: slides.length,
-        itemBuilder: (context, index) {
-          final slide = slides[index];
-          return Stack(
-            children: [
-              Positioned.fill(
+      child: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            onPageChanged: (page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
+            itemCount: slides.length,
+            itemBuilder: (context, index) {
+              final slide = slides[index];
+              return Stack(
+                children: [
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(slide.image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: height,
+                    width: double.infinity,
+                    color: Colors.black.withOpacity(0.68),
+                  ),
+                  Positioned.fill(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              slide.title,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: width < 600 ? 26 : 34,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                height: 1.15,
+                                letterSpacing: 0.4,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              slide.subtitle,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: width < 600 ? 16 : 20,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                                height: 1.45,
+                                letterSpacing: 0.2,
+                              ),
+                            ),
+                            const SizedBox(height: 32),
+                            SizedBox(
+                              height: 46,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, slide.buttonRoute);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4d2963),
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 32,
+                                  ),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                ),
+                                child: Text(
+                                  slide.buttonText,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 1.3,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+          // Navigation buttons
+          Positioned(
+            left: 16,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  int prevPage = (currentPage - 1 + slides.length) % slides.length;
+                  _pageController.animateToPage(
+                    prevPage,
+                    duration: const Duration(milliseconds: 600),
+                    curve: Curves.easeInOut,
+                  );
+                },
                 child: Container(
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(slide.image),
-                      fit: BoxFit.cover,
-                    ),
+                    color: Colors.white.withOpacity(0.3),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.chevron_left,
+                    color: Colors.white,
+                    size: 28,
                   ),
                 ),
               ),
-              Container(
-                height: height,
-                width: double.infinity,
-                color: Colors.black.withOpacity(0.68),
-              ),
-              Positioned.fill(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          slide.title,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: width < 600 ? 26 : 34,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            height: 1.15,
-                            letterSpacing: 0.4,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          slide.subtitle,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: width < 600 ? 16 : 20,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            height: 1.45,
-                            letterSpacing: 0.2,
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        SizedBox(
-                          height: 46,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, slide.buttonRoute);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF4d2963),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                              ),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                            child: Text(
-                              slide.buttonText,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 1.3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+            ),
+          ),
+          Positioned(
+            right: 16,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  int nextPage = (currentPage + 1) % slides.length;
+                  _pageController.animateToPage(
+                    nextPage,
+                    duration: const Duration(milliseconds: 600),
+                    curve: Curves.easeInOut,
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white,
+                    size: 28,
                   ),
                 ),
               ),
-            ],
-          );
-        },
+            ),
+          ),
+        ],
       ),
     );
   }

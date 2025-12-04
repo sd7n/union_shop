@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
-import 'package:union_shop/widgets/collection_card.dart';
 import 'package:union_shop/widgets/product_tile.dart';
 import '../services/data_service.dart';
 import '../models/collection.dart';
@@ -66,44 +65,73 @@ class _CollectionsPageState extends State<CollectionsPage> {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 24),
           Row(
             children: [
-              Text('FILTER BY'),
-              SizedBox(width: 8),
+              Text(
+                'FILTER BY',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      letterSpacing: 0.8,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              const SizedBox(width: 8),
               DropdownButton<String>(
                 value: _selectedCollectionId,
                 items: [
-                  DropdownMenuItem(value: 'all', child: Text('All products')),
+                  const DropdownMenuItem(
+                    value: 'all',
+                    child: Text('All products'),
+                  ),
                   ..._collections.map(
-                    (c) => DropdownMenuItem(value: c.id, child: Text(c.name)),
+                    (c) => DropdownMenuItem(
+                      value: c.id,
+                      child: Text(c.name),
+                    ),
                   ),
                 ],
                 onChanged: (value) {
+                  if (value == null) return;
                   setState(() {
-                    _selectedCollectionId = value!;
+                    _selectedCollectionId = value;
                   });
                 },
               ),
-              Spacer(),
-              Text('SORT BY'),
-              SizedBox(width: 8),
+              const Spacer(),
+              Text(
+                'SORT BY',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      letterSpacing: 0.8,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              const SizedBox(width: 8),
               DropdownButton<String>(
                 value: _selectedSort,
                 items: const [
-                  DropdownMenuItem(value: 'featured', child: Text('Featured')),
-                  DropdownMenuItem(value: 'price_low', child: Text('Price: Low to High')),
-                  DropdownMenuItem(value: 'price_high', child: Text('Price: High to Low')),
+                  DropdownMenuItem(
+                    value: 'featured',
+                    child: Text('Featured'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'price_low',
+                    child: Text('Price: Low to High'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'price_high',
+                    child: Text('Price: High to Low'),
+                  ),
                 ],
                 onChanged: (value) {
+                  if (value == null) return;
                   setState(() {
-                    _selectedSort = value!;
+                    _selectedSort = value;
                   });
                 },
               ),
             ],
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 24),
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth >= 900;
@@ -126,15 +154,25 @@ class _CollectionsPageState extends State<CollectionsPage> {
                   crossAxisCount: crossAxisCount,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
+                  childAspectRatio: isWide ? 3 / 3.8 : 3 / 4.3,
                 ),
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return ProductTile(product: product);
+                  return ProductTile(
+                    product: product,
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/product',
+                        arguments: product.id,
+                      );
+                    },
+                  );
                 },
               );
             },
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
         ],
       ),
     );

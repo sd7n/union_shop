@@ -416,7 +416,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
             child: const Center(
               child: Text(
-                'BACK TO ESSENTIAL RANGE',
+                'BACK TO COLLECTIONS',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

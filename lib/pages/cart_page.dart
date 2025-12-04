@@ -138,7 +138,7 @@ class CartPage extends StatelessWidget {
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('${item.product.name} quantity updated to ${item.quantity + 1}'),
+                                  content: Text('${item.product.name} quantity updated to ${item.quantity }'),
                                   duration: const Duration(seconds: 1),
                                 ),
                               );

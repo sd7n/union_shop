@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/search_provider.dart';
 import '../services/data_service.dart';
+import 'package:union_shop/pages/search_results_page.dart';
 
 class SearchOverlay extends StatelessWidget {
   final bool isVisible;
@@ -45,6 +46,7 @@ class SearchOverlay extends StatelessWidget {
                 final searchProvider = context.read<SearchProvider>();
                 final allProducts = DataService.instance.products;
                 searchProvider.runSearch(allProducts);
+                Navigator.pushNamed(context, '/search');
               },
             ),
           ],

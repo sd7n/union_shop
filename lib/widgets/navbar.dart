@@ -154,7 +154,28 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _shopDropdown(BuildContext context) {
-    return const SizedBox.shrink();
+    return TextButton(
+      onPressed: () {},
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            'Shop',
+            style: TextStyle(
+              color: Color(0xFF2B2B2B),
+              fontSize: 14,
+              letterSpacing: 0.3,
+            ),
+          ),
+          const SizedBox(width: 4),
+          const Icon(
+            Icons.arrow_drop_down,
+            color: Color(0xFF2B2B2B),
+            size: 20,
+          ),
+        ],
+      ),
+    );
   }
 
   @override

@@ -64,6 +64,19 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don't have an account?"),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
+                  child: const Text('Create one'),
+                ),
+              ],
+            ),
           ],
         ),
       ),

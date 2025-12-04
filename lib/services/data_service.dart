@@ -47,6 +47,20 @@ class DataService {
       imageUrl: 'assets/images/printshack_collection.png',
       isLocalImage: true,
     ),
+    Collection(
+      id: 'signature',
+      name: 'Signature Range',
+      description: 'Exclusive signature collection',
+      imageUrl: 'assets/images/signature_collection.png',
+      isLocalImage: true,
+    ),
+    Collection(
+      id: 'city',
+      name: 'Portsmouth City Collection',
+      description: 'City-inspired designs and merchandise',
+      imageUrl: 'assets/images/city_collection.png',
+      isLocalImage: true,
+    ),
   ];
 
   final _products = [

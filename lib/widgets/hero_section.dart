@@ -19,22 +19,22 @@ class _HeroSectionState extends State<HeroSection> {
 
   final List<HeroSlide> slides = [
     const HeroSlide(
-      image: 'assets/images/essential_range_hero.png',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Playboi_Carti_-_Music_album_cover.svg/1024px-Playboi_Carti_-_Music_album_cover.svg.png',
       title: 'Essential Range',
       subtitle: 'Discover our essential collection',
       buttonText: 'SHOP NOW',
       buttonRoute: '/collections',
     ),
     const HeroSlide(
-      image: 'assets/images/print_shack_hero.png',
+      imageUrl: 'https://uk.rarevinyl.com/cdn/shop/files/playboy-carti-i-am-music-black-vinyl-sealed-uk-2-lp-vinyl-record-double-7814833-868119_1024x1024.jpg?v=1750953953',
       title: 'Print Shack',
       subtitle: 'Custom printing & personalised gifts',
       buttonText: 'EXPLORE',
-      buttonRoute: '/collection',
+      buttonRoute: '/collections',
     ),
     const HeroSlide(
-      image: 'assets/images/dominos_hero.png',
-      title: 'Dominos',
+      imageUrl: 'https://static.vecteezy.com/system/resources/thumbnails/039/315/327/small/balenciaga-logo-icons-and-pattern-editorial-use-vinnitsa-ukraine-february-15-2024-free-vector.jpg',
+      title: 'Balenciaga',
       subtitle: 'Limited edition collaboration',
       buttonText: 'VIEW',
       buttonRoute: '/collections',
@@ -95,7 +95,7 @@ class _HeroSectionState extends State<HeroSection> {
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(slide.image),
+                          image: NetworkImage(slide.imageUrl),
                           fit: BoxFit.cover,
                         ),
                       ),

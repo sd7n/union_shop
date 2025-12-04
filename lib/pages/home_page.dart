@@ -11,6 +11,48 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/collections');
   }
 
+  Widget _productRow(BuildContext context, List products) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 600) {
+          return Column(
+            children: products
+                .map((product) => Padding(
+                      padding: const EdgeInsets.only(bottom: 24),
+                      child: ProductTile(
+                        product: product,
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          '/product',
+                          arguments: product.id,
+                        ),
+                      ),
+                    ))
+                .toList(),
+          );
+        }
+        return GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 3,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 24,
+          childAspectRatio: 0.8,
+          children: products
+              .map((product) => ProductTile(
+                    product: product,
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/product',
+                      arguments: product.id,
+                    ),
+                  ))
+              .toList(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final data = DataService.instance;
@@ -46,76 +88,11 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.grey.shade300,
                 ),
                 const SizedBox(height: 24),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (constraints.maxWidth < 600) {
-                      return Column(
-                        children: [
-                          ProductTile(
-                            product: DataService.instance.getProduct('hoodie-navy')!,
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              '/product',
-                              arguments: 'hoodie-navy',
-                            ),
-                          ),
-                          const SizedBox(height: 24),
-                          ProductTile(
-                            product: DataService.instance.getProduct('tee-classic')!,
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              '/product',
-                              arguments: 'tee-classic',
-                            ),
-                          ),
-                          const SizedBox(height: 24),
-                          ProductTile(
-                            product: DataService.instance.getProduct('mug-uni')!,
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              '/product',
-                              arguments: 'mug-uni',
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-                    return GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 24,
-                      childAspectRatio: 0.8,
-                      children: [
-                        ProductTile(
-                          product: DataService.instance.getProduct('hoodie-navy')!,
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            '/product',
-                            arguments: 'hoodie-navy',
-                          ),
-                        ),
-                        ProductTile(
-                          product: DataService.instance.getProduct('tee-classic')!,
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            '/product',
-                            arguments: 'tee-classic',
-                          ),
-                        ),
-                        ProductTile(
-                          product: DataService.instance.getProduct('mug-uni')!,
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            '/product',
-                            arguments: 'mug-uni',
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                _productRow(context, [
+                  DataService.instance.getProduct('hoodie-navy')!,
+                  DataService.instance.getProduct('tee-classic')!,
+                  DataService.instance.getProduct('mug-uni')!,
+                ]),
               ],
             ),
           ),

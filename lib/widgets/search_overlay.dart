@@ -6,10 +6,12 @@ import 'package:union_shop/pages/search_results_page.dart';
 
 class SearchOverlay extends StatelessWidget {
   final bool isVisible;
+  final VoidCallback onToggle;
 
   const SearchOverlay({
     super.key,
     required this.isVisible,
+    required this.onToggle,
   });
 
   @override
@@ -34,6 +36,7 @@ class SearchOverlay extends StatelessWidget {
                   final searchProvider = context.read<SearchProvider>();
                   final allProducts = DataService.instance.products;
                   searchProvider.runSearch(allProducts);
+                  onToggle();
                   Navigator.pushNamed(context, '/search');
                 },
                 decoration: InputDecoration(
@@ -52,6 +55,7 @@ class SearchOverlay extends StatelessWidget {
                 final searchProvider = context.read<SearchProvider>();
                 final allProducts = DataService.instance.products;
                 searchProvider.runSearch(allProducts);
+                onToggle();
                 Navigator.pushNamed(context, '/search');
               },
             ),

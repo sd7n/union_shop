@@ -45,7 +45,7 @@ class _NavbarState extends State<Navbar> {
       preferredSize: widget.preferredSize,
       child: Stack(
         children: [
-          SearchOverlay(isVisible: _isSearchOpen),
+          SearchOverlay(isVisible: _isSearchOpen, onToggle: _toggleSearch),
           Column(
             children: [
               Container(

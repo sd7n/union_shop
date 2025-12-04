@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/search_provider.dart';
 
 class SearchOverlay extends StatelessWidget {
   final bool isVisible;
@@ -20,6 +22,9 @@ class SearchOverlay extends StatelessWidget {
         color: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: TextField(
+          onChanged: (value) {
+            context.read<SearchProvider>().setSearchTerm(value);
+          },
           decoration: InputDecoration(
             hintText: 'Search',
             border: OutlineInputBorder(

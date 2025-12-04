@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:union_shop/providers/cart_provider.dart';
+import 'package:union_shop/providers/search_provider.dart';
 import 'package:union_shop/pages/home_page.dart';
 import 'package:union_shop/pages/about_page.dart';
 import 'package:union_shop/pages/collections_page.dart';
@@ -12,8 +13,11 @@ import 'package:union_shop/pages/cart_page.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CartProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
+      ],
       child: const UnionShopApp(),
     ),
   );

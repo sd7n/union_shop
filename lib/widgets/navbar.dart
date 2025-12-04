@@ -153,6 +153,10 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  Widget _shopDropdown(BuildContext context) {
+    return const SizedBox.shrink();
+  }
+
   @override
   Size get preferredSize => const Size.fromHeight(110);
 }

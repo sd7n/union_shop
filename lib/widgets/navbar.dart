@@ -89,7 +89,7 @@ class _NavbarState extends State<Navbar> {
                     if (isWide) ...[
                       _navLink(context, 'Home', '/'),
                       _shopDropdown(context),
-                      _navLink(context, 'The Print Shack', '/collections'),
+                      _printShackDropdown(context),
                       _navLink(context, 'Sale!', '/sale'),
                       _navLink(context, 'About', '/about'),
                     ],
@@ -255,6 +255,50 @@ class _NavbarState extends State<Navbar> {
         children: [
           const Text(
             'Shop',
+            style: TextStyle(
+              color: Color(0xFF2B2B2B),
+              fontSize: 14,
+              letterSpacing: 0.3,
+            ),
+          ),
+          const SizedBox(width: 4),
+          const Icon(
+            Icons.arrow_drop_down,
+            color: Color(0xFF2B2B2B),
+            size: 20,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _printShackDropdown(BuildContext context) {
+    return PopupMenuButton<PrintShackMenu>(
+      onSelected: (item) {
+        switch (item) {
+          case PrintShackMenu.about:
+            _go(context, '/about');
+            break;
+          case PrintShackMenu.personalisation:
+            _go(context, '/personalisation');
+            break;
+        }
+      },
+      itemBuilder: (context) => [
+        const PopupMenuItem(
+          value: PrintShackMenu.about,
+          child: Text('About The Print Shack'),
+        ),
+        const PopupMenuItem(
+          value: PrintShackMenu.personalisation,
+          child: Text('Personalisation Options'),
+        ),
+      ],
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            'The Print Shack',
             style: TextStyle(
               color: Color(0xFF2B2B2B),
               fontSize: 14,

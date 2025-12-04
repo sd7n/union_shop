@@ -96,6 +96,32 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "SIGNATURE RANGE",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(height: 24),
+                _productRow(context, signature),
+              ],
+            ),
+          ),
+          const SizedBox(height: 48),
         ],
       ),
     );

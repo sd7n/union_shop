@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
+import 'search_overlay.dart';
 
 enum ShopMenuItem {
   clothing,
@@ -42,131 +43,132 @@ class _NavbarState extends State<Navbar> {
 
     return PreferredSize(
       preferredSize: widget.preferredSize,
-      child: Column(
+      child: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            color: const Color(0xFF4d2963),
-            child: const Text(
-              'BIG SALE! OUR ESSENTIAL RANGE HAS DROPPED IN PRICE! OVER 20% OFF!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          Container(
-            height: 60,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(color: Color(0xFFDDDDDD), width: 1),
-              ),
-            ),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () => _goHome(context),
-                  child: Image.network(
-                    'https://shop.upsu.net/cdn/shop/files/upsu_300x300.png?v=1614735854',
-                    height: 32,
+          Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                color: const Color(0xFF4d2963),
+                child: const Text(
+                  'BIG SALE! OUR ESSENTIAL RANGE HAS DROPPED IN PRICE! OVER 20% OFF!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                const Spacer(),
-                if (isWide) ...[
-                  _navLink(context, 'Home', '/'),
-                  _shopDropdown(context),
-                  _navLink(context, 'The Print Shack', '/collections'),
-                  _navLink(context, 'Sale!', '/sale'),
-                  _navLink(context, 'About', '/about'),
-                ],
-                const SizedBox(width: 16),
-                Row(
+              ),
+              Container(
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(
+                    bottom: BorderSide(color: Color(0xFFDDDDDD), width: 1),
+                  ),
+                ),
+                child: Row(
                   children: [
-                    if (_isSearchOpen)
-                      Container(
-                        width: 200,
-                        child: TextField(
-                          autofocus: true,
-                          decoration: InputDecoration(
-                            hintText: 'Search...',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFDDDDDD),
-                                width: 1,
+                    GestureDetector(
+                      onTap: () => _goHome(context),
+                      child: Image.network(
+                        'https://shop.upsu.net/cdn/shop/files/upsu_300x300.png?v=1614735854',
+                        height: 32,
+                      ),
+                    ),
+                    const Spacer(),
+                    if (isWide) ...[
+                      _navLink(context, 'Home', '/'),
+                      _shopDropdown(context),
+                      _navLink(context, 'The Print Shack', '/collections'),
+                      _navLink(context, 'Sale!', '/sale'),
+                      _navLink(context, 'About', '/about'),
+                    ],
+                    const SizedBox(width: 16),
+                    Row(
+                      children: [
+                        if (_isSearchOpen)
+                          Container(
+                            width: 200,
+                            child: TextField(
+                              autofocus: true,
+                              decoration: InputDecoration(
+                                hintText: 'Search...',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFDDDDDD),
+                                    width: 1,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () {
-                        setState(() {
-                          _isSearchOpen = !_isSearchOpen;
-                        });
-                      },
-                      color: const Color(0xFF5F5F5F),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.person_outline),
-                      onPressed: () {},
-                      color: const Color(0xFF5F5F5F),
-                    ),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
                         IconButton(
-                          onPressed: () => _go(context, '/cart'),
-                          icon: const Icon(Icons.shopping_bag_outlined),
+                          icon: const Icon(Icons.search),
+                          onPressed: _toggleSearch,
                           color: const Color(0xFF5F5F5F),
                         ),
-                        Positioned(
-                          right: 2,
-                          top: 3,
-                          child: Consumer<CartProvider>(
-                            builder: (context, cartProvider, _) {
-                              final count = cartProvider.cart.itemCount;
-                              if (count == 0) return const SizedBox();
-                              return Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text(
-                                  '$count',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                        IconButton(
+                          icon: const Icon(Icons.person_outline),
+                          onPressed: () {},
+                          color: const Color(0xFF5F5F5F),
                         ),
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            IconButton(
+                              onPressed: () => _go(context, '/cart'),
+                              icon: const Icon(Icons.shopping_bag_outlined),
+                              color: const Color(0xFF5F5F5F),
+                            ),
+                            Positioned(
+                              right: 2,
+                              top: 3,
+                              child: Consumer<CartProvider>(
+                                builder: (context, cartProvider, _) {
+                                  final count = cartProvider.cart.itemCount;
+                                  if (count == 0) return const SizedBox();
+                                  return Container(
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Text(
+                                      '$count',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        if (!isWide)
+                          Builder(builder: (context) {
+                            return IconButton(
+                              icon: const Icon(Icons.menu),
+                              onPressed: () {
+                                Scaffold.of(context).openEndDrawer();
+                              },
+                            );
+                          }),
                       ],
                     ),
-                    if (!isWide)
-                      Builder(builder: (context) {
-                        return IconButton(
-                          icon: const Icon(Icons.menu),
-                          onPressed: () {
-                            Scaffold.of(context).openEndDrawer();
-                          },
-                        );
-                      }),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          SearchOverlay(isVisible: _isSearchOpen),
         ],
       ),
     );

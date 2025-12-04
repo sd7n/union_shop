@@ -122,6 +122,31 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PORTSMOUTH CITY COLLECTION",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(height: 24),
+                _productRow(context, city),
+              ],
+            ),
+          ),
+          const SizedBox(height: 64),
         ],
       ),
     );

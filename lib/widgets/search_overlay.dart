@@ -31,6 +31,9 @@ class SearchOverlay extends StatelessWidget {
                   context.read<SearchProvider>().setSearchTerm(value);
                 },
                 onSubmitted: (value) {
+                  final searchProvider = context.read<SearchProvider>();
+                  final allProducts = DataService.instance.products;
+                  searchProvider.runSearch(allProducts);
                 },
                 decoration: InputDecoration(
                   hintText: 'Search',

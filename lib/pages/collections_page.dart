@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
 import 'package:union_shop/widgets/collection_card.dart';
+import 'package:union_shop/widgets/product_tile.dart';
 import '../services/data_service.dart';
 import '../models/collection.dart';
 import '../models/product.dart';
@@ -53,6 +54,8 @@ class _CollectionsPageState extends State<CollectionsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final products = _visibleProducts;
+
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,6 +102,28 @@ class _CollectionsPageState extends State<CollectionsPage> {
                 },
               ),
             ],
+          ),
+          SizedBox(height: 32),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth >= 900;
+              final crossAxisCount = isWide ? 3 : 2;
+
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  return ProductTile(product: product);
+                },
+              );
+            },
           ),
           SizedBox(height: 32),
         ],

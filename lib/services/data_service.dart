@@ -71,7 +71,7 @@ class DataService {
       price: 29.99,
       strikePrice: 39.99,
       imageUrl: 'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
-      isLocalImage: true,
+      isLocalImage: false,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
@@ -87,7 +87,7 @@ class DataService {
       price: 34.99,
       strikePrice: 44.99,
       imageUrl: 'assets/images/hoodie_zip.png',
-      isLocalImage: true,
+      isLocalImage: false,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
@@ -101,12 +101,12 @@ class DataService {
       name: 'Classic Uni T-Shirt',
       description: 'Soft cotton tee with printed university logo.',
       price: 14.99,
-      imageUrl: 'assets/images/tshirt_classic.png',
-      isLocalImage: true,
+      imageUrl: 'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
+      isLocalImage: false,
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'assets/images/tshirt_classic.png',
+        'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
         'assets/images/tshirt_classic_back.png',
       ],
       colors: ['White', 'Black', 'Navy'],

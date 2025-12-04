@@ -53,9 +53,6 @@ class _CollectionsPageState extends State<CollectionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final data = DataService.instance;
-    final collections = data.collections;
-
     return PageShell(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,26 +64,41 @@ class _CollectionsPageState extends State<CollectionsPage> {
                 ),
           ),
           SizedBox(height: 16),
-          Column(
-            children: collections.map((c) {
-              return Column(
-                children: [
-                  CollectionCard(
-                    title: c.name,
-                    subtitle: c.description,
-                    collectionId: c.id,
-                    imageUrl: c.imageUrl,
-                    isLocalImage: c.isLocalImage,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      '/collection',
-                      arguments: c.id,
-                    ),
+          Row(
+            children: [
+              Text('FILTER BY'),
+              SizedBox(width: 8),
+              DropdownButton<String>(
+                value: _selectedCollectionId,
+                items: [
+                  DropdownMenuItem(value: 'all', child: Text('All products')),
+                  ..._collections.map(
+                    (c) => DropdownMenuItem(value: c.id, child: Text(c.name)),
                   ),
-                  SizedBox(height: 16),
                 ],
-              );
-            }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCollectionId = value!;
+                  });
+                },
+              ),
+              Spacer(),
+              Text('SORT BY'),
+              SizedBox(width: 8),
+              DropdownButton<String>(
+                value: _selectedSort,
+                items: const [
+                  DropdownMenuItem(value: 'featured', child: Text('Featured')),
+                  DropdownMenuItem(value: 'price_low', child: Text('Price: Low to High')),
+                  DropdownMenuItem(value: 'price_high', child: Text('Price: High to Low')),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _selectedSort = value!;
+                  });
+                },
+              ),
+            ],
           ),
           SizedBox(height: 32),
         ],

@@ -28,6 +28,29 @@ class _CollectionsPageState extends State<CollectionsPage> {
     _allProducts = _data.products;
   }
 
+  List<Product> get _visibleProducts {
+    // 1. Filter
+    List<Product> filtered = _allProducts.where((p) {
+      if (_selectedCollectionId == 'all') return true;
+      return p.collectionId == _selectedCollectionId;
+    }).toList();
+
+    // 2. Sort
+    switch (_selectedSort) {
+      case 'price_low':
+        filtered.sort((a, b) => a.price.compareTo(b.price));
+        break;
+      case 'price_high':
+        filtered.sort((a, b) => b.price.compareTo(a.price));
+        break;
+      case 'featured':
+      default:
+        break;
+    }
+
+    return filtered;
+  }
+
   @override
   Widget build(BuildContext context) {
     final data = DataService.instance;

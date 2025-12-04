@@ -30,6 +30,8 @@ class SearchOverlay extends StatelessWidget {
                 onChanged: (value) {
                   context.read<SearchProvider>().setSearchTerm(value);
                 },
+                onSubmitted: (value) {
+                },
                 decoration: InputDecoration(
                   hintText: 'Search',
                   border: OutlineInputBorder(

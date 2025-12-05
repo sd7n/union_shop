@@ -209,7 +209,7 @@ class DataService {
       description: 'Exclusive signature collection t-shirt with premium finish.',
       price: 19.99,
       imageUrl: 'https://images.stockx.com/images/Supreme-Cross-Box-Logo-Tee-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1744142786',
-      isLocalImage: true,
+      isLocalImage: false,
       collectionId: 'signature',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [

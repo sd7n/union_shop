@@ -245,10 +245,10 @@ class DataService {
       sizes: [],
       images: [
         'https://cdn.webshopapp.com/shops/89710/files/322715876/chloe-chloe-paddington-padlock-bag-in-purple.jpg',
-        'https://www.chloe.com/dw/image/v2/BLMX_PRD/on/demandware.static/-/Sites-chloe-master/default/dwf9471ac9/images/all-images/CH25WS802P7527M/zYkcH7OjTn-qQLij3f3h6w_288c4936.jpeg?sw=1440&sfrm=png&q=90',
+        'https://f08c4e54.aerocdn.com/image-factory/768x768/images/products/Cc6wAWRCZL01GrTjQMDDcAPAeSBXt1buqeMM7TxQ.jpg',
         'https://f08c4e54.aerocdn.com/image-factory/768x768/images/products/VehXW4E2w5zajTZZosAyVLDuLPEbffpQUtYADIQF.jpg'
       ],
-      colors: ['Purple', 'Brown', 'Navy'],
+      colors: ['Purple', 'Red', 'Navy'],
     ),
     Product(
       id: 'city-tee',

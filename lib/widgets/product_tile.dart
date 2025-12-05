@@ -39,13 +39,37 @@ class ProductTile extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Text(
-            '£${product.price.toStringAsFixed(2)}',
-            style: const TextStyle(
-              fontSize: 13,
-              color: Colors.grey,
+          if (product.strikePrice != null)
+            Row(
+              children: [
+                Text(
+                  '£${product.strikePrice!.toStringAsFixed(2)}',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade600,
+                    decoration: TextDecoration.lineThrough,
+                    decorationColor: Colors.grey.shade600,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  '£${product.price.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            )
+          else
+            Text(
+              '£${product.price.toStringAsFixed(2)}',
+              style: const TextStyle(
+                fontSize: 13,
+                color: Colors.grey,
+              ),
             ),
-          ),
         ],
       ),
     );

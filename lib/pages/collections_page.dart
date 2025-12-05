@@ -1,179 +1,136 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/page_shell.dart';
-import 'package:union_shop/widgets/product_tile.dart';
 import '../services/data_service.dart';
 import '../models/collection.dart';
-import '../models/product.dart';
 
-class CollectionsPage extends StatefulWidget {
+class CollectionsPage extends StatelessWidget {
   const CollectionsPage({super.key});
 
   @override
-  State<CollectionsPage> createState() => _CollectionsPageState();
-}
-
-class _CollectionsPageState extends State<CollectionsPage> {
-  final DataService _data = DataService.instance;
-
-  late final List<Collection> _collections;
-  late final List<Product> _allProducts;
-
-  String _selectedCollectionId = 'all';
-  String _selectedSort = 'featured';
-
-  @override
-  void initState() {
-    super.initState();
-    _collections = _data.collections;
-    _allProducts = _data.products;
-  }
-
-  List<Product> get _visibleProducts {
-    // 1. Filter
-    List<Product> filtered = _allProducts.where((p) {
-      if (_selectedCollectionId == 'all') return true;
-      return p.collectionId == _selectedCollectionId;
-    }).toList();
-
-    // 2. Sort
-    switch (_selectedSort) {
-      case 'price_low':
-        filtered.sort((a, b) => a.price.compareTo(b.price));
-        break;
-      case 'price_high':
-        filtered.sort((a, b) => b.price.compareTo(a.price));
-        break;
-      case 'featured':
-      default:
-        break;
-    }
-
-    return filtered;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final products = _visibleProducts;
+    final collections = DataService.instance.collections;
+    final isWide = MediaQuery.of(context).size.width >= 900;
 
     return PageShell(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
             'Collections',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
+                  fontSize: 32,
                 ),
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 24),
-          Row(
+          const SizedBox(height: 40),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: isWide ? 3 : 1,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: isWide ? 1.5 : 1.8,
+            ),
+            itemCount: collections.length,
+            itemBuilder: (context, index) {
+              final collection = collections[index];
+              return _buildCollectionCard(context, collection);
+            },
+          ),
+          const SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCollectionCard(BuildContext context, Collection collection) {
+    final imageMap = {
+      'hoodies': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/autumn_favourites.jpg',
+      'tshirts': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/black_friday.jpg',
+      'accessories': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg',
+      'stationery': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing_original.jpg',
+      'printshack': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/elections_discounts.jpg',
+      'signature': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/essential_range.jpg',
+      'city': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg',
+    };
+
+    final imageUrl = imageMap[collection.id] ?? 
+        'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg';
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/collection-detail',
+          arguments: collection.id,
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Stack(
+            fit: StackFit.expand,
             children: [
-              Text(
-                'FILTER BY',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      letterSpacing: 0.8,
-                      fontWeight: FontWeight.w600,
+              Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey.shade300,
+                    child: const Center(
+                      child: Icon(Icons.image, size: 50, color: Colors.grey),
                     ),
-              ),
-              const SizedBox(width: 8),
-              DropdownButton<String>(
-                value: _selectedCollectionId,
-                items: [
-                  const DropdownMenuItem(
-                    value: 'all',
-                    child: Text('All products'),
-                  ),
-                  ..._collections.map(
-                    (c) => DropdownMenuItem(
-                      value: c.id,
-                      child: Text(c.name),
-                    ),
-                  ),
-                ],
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCollectionId = value;
-                  });
+                  );
                 },
               ),
-              const Spacer(),
-              Text(
-                'SORT BY',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      letterSpacing: 0.8,
-                      fontWeight: FontWeight.w600,
-                    ),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.3),
+                      Colors.black.withOpacity(0.5),
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(width: 8),
-              DropdownButton<String>(
-                value: _selectedSort,
-                items: const [
-                  DropdownMenuItem(
-                    value: 'featured',
-                    child: Text('Featured'),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    collection.name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  DropdownMenuItem(
-                    value: 'price_low',
-                    child: Text('Price: Low to High'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'price_high',
-                    child: Text('Price: High to Low'),
-                  ),
-                ],
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedSort = value;
-                  });
-                },
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final isWide = constraints.maxWidth >= 900;
-              final crossAxisCount = isWide ? 3 : 2;
-
-              if (products.isEmpty) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 48),
-                  child: Center(
-                    child: Text('No products found for this selection.'),
-                  ),
-                );
-              }
-
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossAxisCount,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: isWide ? 3 / 3.8 : 3 / 4.3,
-                ),
-                itemBuilder: (context, index) {
-                  final product = products[index];
-                  return ProductTile(
-                    product: product,
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/product',
-                        arguments: product.id,
-                      );
-                    },
-                  );
-                },
-              );
-            },
-          ),
-          const SizedBox(height: 32),
-        ],
+        ),
       ),
     );
   }

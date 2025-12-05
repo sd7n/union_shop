@@ -102,8 +102,8 @@ class _PersonalisationProductPageState
 
   Widget _buildImageSection() {
     final imageUrls = [
-      'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_1.jpg',
-      'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_2.jpg',
+      'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
+      'https://images.stockx.com/images/BAPE-Color-Camo-Shark-Full-Zip-Hoodie-SS23-Black.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1677221030',
     ];
 
     return Column(
@@ -119,6 +119,23 @@ class _PersonalisationProductPageState
             child: Image.network(
               imageUrls[_selectedImageIndex],
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: Colors.grey.shade200,
+                  child: const Center(
+                    child: Icon(Icons.image, size: 60, color: Colors.grey),
+                  ),
+                );
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Container(
+                  color: Colors.grey.shade200,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -157,6 +174,14 @@ class _PersonalisationProductPageState
           child: Image.network(
             imageUrl,
             fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                color: Colors.grey.shade200,
+                child: const Center(
+                  child: Icon(Icons.image, size: 30, color: Colors.grey),
+                ),
+              );
+            },
           ),
         ),
       ),
@@ -305,13 +330,13 @@ class _PersonalisationProductPageState
                 name: 'Personalisation',
                 description: 'Customized product with personalized text',
                 price: _priceMap[_selectedOption] ?? 3.50,
-                imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_1.jpg',
+                imageUrl: 'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
                 isLocalImage: false,
                 collectionId: 'print-shack',
                 sizes: [],
                 images: [
-                  'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_1.jpg',
-                  'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_2.jpg',
+                  'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
+                  'https://images.stockx.com/images/BAPE-Color-Camo-Shark-Full-Zip-Hoodie-SS23-Black.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1677221030',
                 ],
               );
               

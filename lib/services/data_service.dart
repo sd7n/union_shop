@@ -314,7 +314,7 @@ class DataService {
       description: 'High-speed Type C charging cable.',
       price: 1.50,
       strikePrice: 3.00,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/typec_cable.jpg',
+      imageUrl: 'https://m.media-amazon.com/images/I/61cLJcqwJ-L.jpg',
       isLocalImage: false,
       collectionId: 'accessories',
       sizes: [],

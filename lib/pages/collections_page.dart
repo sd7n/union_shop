@@ -52,7 +52,7 @@ class CollectionsPage extends StatelessWidget {
       'accessories': 'https://upload.wikimedia.org/wikipedia/en/1/1f/Eternal_Atake_Lil_Uzi_Vert.jpg',
       'stationery': 'https://www.rollingstone.com/wp-content/uploads/2020/02/masterofreality.jpg',
       'printshack': 'https://i.scdn.co/image/ab67616d00001e02aab2c3c3f1f3207137d915c9',
-      'signature': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/essential_range.jpg',
+      'signature': 'https://upload.wikimedia.org/wikipedia/en/8/82/JACKBOYS_-_Album_Cover_by_JACKBOYS_%26_Travis_Scott%2C_December_27%2C_2019.jpg',
       'city': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg',
     };
 

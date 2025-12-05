@@ -66,68 +66,80 @@ class _CollectionsDetailPageState extends State<CollectionsDetailPage> {
                 ),
           ),
           const SizedBox(height: 24),
-          Row(
+          Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Text(
-                'FILTER BY',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      letterSpacing: 0.8,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-              const SizedBox(width: 8),
-              DropdownButton<String>(
-                value: _selectedCollectionId,
-                items: [
-                  const DropdownMenuItem(
-                    value: 'all',
-                    child: Text('All products'),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'FILTER BY',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          letterSpacing: 0.8,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
-                  ..._collections.map(
-                    (c) => DropdownMenuItem(
-                      value: c.id,
-                      child: Text(c.name),
-                    ),
-                  ),
-                ],
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCollectionId = value;
-                  });
-                },
-              ),
-              const Spacer(),
-              Text(
-                'SORT BY',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      letterSpacing: 0.8,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-              const SizedBox(width: 8),
-              DropdownButton<String>(
-                value: _selectedSort,
-                items: const [
-                  DropdownMenuItem(
-                    value: 'featured',
-                    child: Text('Featured'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'price_low',
-                    child: Text('Price: Low to High'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'price_high',
-                    child: Text('Price: High to Low'),
+                  const SizedBox(width: 8),
+                  DropdownButton<String>(
+                    value: _selectedCollectionId,
+                    items: [
+                      const DropdownMenuItem(
+                        value: 'all',
+                        child: Text('All products'),
+                      ),
+                      ..._collections.map(
+                        (c) => DropdownMenuItem(
+                          value: c.id,
+                          child: Text(c.name),
+                        ),
+                      ),
+                    ],
+                    onChanged: (value) {
+                      if (value == null) return;
+                      setState(() {
+                        _selectedCollectionId = value;
+                      });
+                    },
                   ),
                 ],
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedSort = value;
-                  });
-                },
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'SORT BY',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          letterSpacing: 0.8,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  const SizedBox(width: 8),
+                  DropdownButton<String>(
+                    value: _selectedSort,
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'featured',
+                        child: Text('Featured'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'price_low',
+                        child: Text('Price: Low to High'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'price_high',
+                        child: Text('Price: High to Low'),
+                      ),
+                    ],
+                    onChanged: (value) {
+                      if (value == null) return;
+                      setState(() {
+                        _selectedSort = value;
+                      });
+                    },
+                  ),
+                ],
               ),
             ],
           ),

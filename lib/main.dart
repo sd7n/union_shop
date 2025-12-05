@@ -10,7 +10,6 @@ import 'package:union_shop/pages/collections_page.dart';
 import 'package:union_shop/pages/collections_detail_page.dart';
 import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/pages/sale_page.dart';
-import 'package:union_shop/pages/auth_page.dart';
 import 'package:union_shop/pages/cart_page.dart';
 import 'package:union_shop/pages/search_results_page.dart';
 import 'package:union_shop/pages/login_page.dart';
@@ -71,7 +70,6 @@ class UnionShopApp extends StatelessWidget {
         '/collection-detail': (context) => const CollectionsDetailPage(),
         '/product': (context) => const ProductPage(),
         '/sale': (context) => const SalePage(),
-        '/auth': (context) => const AuthPage(),
         '/cart': (context) => const CartPage(),
         '/search': (context) => const SearchResultsPage(),
         '/login': (context) => const LoginPage(),

@@ -226,13 +226,13 @@ class _NavbarState extends State<Navbar> {
       onSelected: (item) {
         switch (item) {
           case ShopMenuItem.clothing:
-            _go(context, '/collections');
+            _go(context, '/collection-detail');
             break;
           case ShopMenuItem.merchandise:
-            _go(context, '/collections');
+            _go(context, '/collection-detail');
             break;
           case ShopMenuItem.halloween:
-            _go(context, '/collections');
+            _go(context, '/collection-detail');
             break;
           case ShopMenuItem.signatureEssential:
             _go(context, '/');
@@ -241,10 +241,10 @@ class _NavbarState extends State<Navbar> {
             _go(context, '/');
             break;
           case ShopMenuItem.pride:
-            _go(context, '/collections');
+            _go(context, '/collection-detail');
             break;
           case ShopMenuItem.graduation:
-            _go(context, '/collections');
+            _go(context, '/collection-detail');
             break;
         }
       },

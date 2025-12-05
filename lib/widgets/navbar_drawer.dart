@@ -27,9 +27,9 @@ class NavbarDrawer extends StatelessWidget {
             onTap: () => _go(context, '/'),
           ),
           ListTile(
-            leading: const Icon(Icons.store),
+            leading: const Icon(Icons.category),
             title: const Text('Collections'),
-            onTap: () => _go(context, '/collections'),
+            onTap: () => _go(context, '/collection-detail'),
           ),
           ListTile(
             leading: const Icon(Icons.local_offer),

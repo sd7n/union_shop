@@ -277,15 +277,19 @@ class DataService {
     ),
     Product(
       id: 'sweatshirt-neutral-sand',
-      name: 'Classic Sweatshirts - Neutral',
-      description: 'Comfortable neutral colored sweatshirt with university branding.',
+      name: 'Classic Sweatshirts',
+      description: 'Comfortable colored sweatshirt with university branding.',
       price: 10.99,
       strikePrice: 17.00,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/sweatshirt_sand.jpg',
+      imageUrl: 'https://images.stockx.com/images/Stone-Island-63020-Brushed-Cotton-Fleece-Crewneck-Sweater-Black.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1663175354',
       isLocalImage: false,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
-      colors: ['Sand', 'Cream'],
+      images: [
+        'https://images.stockx.com/images/Stone-Island-63020-Brushed-Cotton-Fleece-Crewneck-Sweater-Black.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1663175354',
+        'https://images.stockx.com/images/Stone-Island-Logo-Patch-Sweater-Grey.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1689870606',
+      ],
+      colors: ['Black', 'Grey'],
     ),
     Product(
       id: 'recycled-notebook',

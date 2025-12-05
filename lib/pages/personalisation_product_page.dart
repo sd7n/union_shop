@@ -41,8 +41,6 @@ class _PersonalisationProductPageState
     super.dispose();
   }
 
-  double get _totalPrice => (_priceMap[_selectedOption] ?? 3.50) * _quantity;
-
   void _updateSelection(String? newValue) {
     if (newValue == null) return;
     
@@ -68,7 +66,6 @@ class _PersonalisationProductPageState
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 768;
-    final numberOfLines = _lineCountMap[_selectedOption] ?? 1;
 
     return PageShell(
       child: isMobile ? _buildMobileLayout() : _buildDesktopLayout(),

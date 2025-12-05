@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 _productRow(context, [
-                  DataService.instance.getProduct('hoodie-navy'),
+                  DataService.instance.getProduct('hoodie-uni'),
                   DataService.instance.getProduct('tee-classic'),
                   DataService.instance.getProduct('mug-uni'),
                 ]),

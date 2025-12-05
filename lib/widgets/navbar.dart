@@ -148,7 +148,7 @@ class _NavbarState extends State<Navbar> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.person_outline),
-                          onPressed: () => _go(context, '/login'),
+                          onPressed: () => _go(context, '/account'),
                           color: const Color(0xFF5F5F5F),
                         ),
                         Stack(

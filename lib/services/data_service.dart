@@ -179,14 +179,15 @@ class DataService {
       name: 'Official Gel Pen',
       description: 'Smooth-writing blue gel pen branded with the university logo.',
       price: 1.99,
-      imageUrl: 'assets/images/pen_gel.png',
+      imageUrl: 'https://m.media-amazon.com/images/I/51EiS4VHHIL._AC_UF894,1000_QL80_.jpg',
       isLocalImage: false,
       collectionId: 'stationery',
       sizes: [],
       images: [
-        'assets/images/pen_gel.png',
+        'https://m.media-amazon.com/images/I/51EiS4VHHIL._AC_UF894,1000_QL80_.jpg',
+        'https://m.media-amazon.com/images/I/41Bb91hX0nL._AC_UF894,1000_QL80_.jpg',
       ],
-      colors: ['Blue', 'Black'],
+      colors: ['Purple', 'White'],
     ),
     Product(
       id: 'sig-hoodie',

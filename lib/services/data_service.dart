@@ -292,7 +292,7 @@ class DataService {
       name: 'Recycled Notebook',
       description: 'Eco-friendly recycled notebook with colorful pens.',
       price: 1.80,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/recycled_notebook.jpg',
+      imageUrl: 'https://m.media-amazon.com/images/I/61M35ZEeNAL._AC_UF894,1000_QL80_.jpg',
       isLocalImage: false,
       collectionId: 'stationery',
       sizes: [],

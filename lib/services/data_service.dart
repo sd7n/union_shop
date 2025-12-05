@@ -232,7 +232,7 @@ class DataService {
         'https://images.stockx.com/images/Louis-Vuitton-x-Takashi-Murakami-Monogram-Multicolor-LV-Cup-PM-White-Multicolored-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&trimcolor=ffffff&updated_at=1738703544',
         'https://images.stockx.com/images/Louis-Vuitton-x-Takashi-Murakami-Set-of-2-Cherry-Coffee-Cups-and-Saucers-White-Monogram-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&trimcolor=ffffff&updated_at=1751058752',
       ],
-      colors: ['White', 'Black'],
+      colors: ['White', 'Double'],
     ),
     Product(
       id: 'city-bag',

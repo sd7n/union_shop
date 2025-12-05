@@ -47,7 +47,7 @@ class CollectionsPage extends StatelessWidget {
 
   Widget _buildCollectionCard(BuildContext context, Collection collection) {
     final imageMap = {
-      'hoodies': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/autumn_favourites.jpg',
+      'hoodies': 'https://images.genius.com/a6da0163f5a243554270d596746d6227.1000x1000x1.png',
       'tshirts': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/black_friday.jpg',
       'accessories': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg',
       'stationery': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing_original.jpg',

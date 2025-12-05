@@ -23,7 +23,13 @@ class PageShell extends StatelessWidget {
           child: Column(
             children: [
               fullWidth
-                  ? child
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 24,
+                      ),
+                      child: child,
+                    )
                   : Center(
                       child: ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 1200),

@@ -102,6 +102,17 @@ class _NavbarState extends State<Navbar> {
                       child: Image.network(
                         'https://shop.upsu.net/cdn/shop/files/upsu_300x300.png?v=1614735854',
                         height: 32,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            height: 32,
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: const Icon(
+                              Icons.store,
+                              size: 32,
+                              color: Color(0xFF4d2963),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     const Spacer(),

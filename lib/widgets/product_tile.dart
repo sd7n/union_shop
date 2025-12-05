@@ -23,8 +23,39 @@ class ProductTile extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(0),
               child: product.isLocalImage
-                  ? Image.asset(product.imageUrl, fit: BoxFit.cover)
-                  : Image.network(product.imageUrl, fit: BoxFit.cover),
+                  ? Image.asset(
+                      product.imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: const Center(
+                            child: Icon(Icons.image, size: 40, color: Colors.grey),
+                          ),
+                        );
+                      },
+                    )
+                  : Image.network(
+                      product.imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: const Center(
+                            child: Icon(Icons.image, size: 40, color: Colors.grey),
+                          ),
+                        );
+                      },
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      },
+                    ),
             ),
           ),
           const SizedBox(height: 6),

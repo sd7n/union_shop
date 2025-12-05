@@ -325,7 +325,7 @@ class DataService {
       description: 'Universal USB charging cables.',
       price: 1.50,
       strikePrice: 3.00,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/usb_cable.jpg',
+      imageUrl: 'https://m.media-amazon.com/images/I/71I7qlZ8t6L.jpg',
       isLocalImage: false,
       collectionId: 'accessories',
       sizes: [],

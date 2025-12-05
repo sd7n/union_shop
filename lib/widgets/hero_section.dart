@@ -23,7 +23,7 @@ class _HeroSectionState extends State<HeroSection> {
       title: 'Essential Range',
       subtitle: 'Discover our essential collection',
       buttonText: 'SHOP NOW',
-      buttonRoute: '/collections',
+      buttonRoute: '/collection-detail',
     ),
     const HeroSlide(
       imageUrl: 'https://uk.rarevinyl.com/cdn/shop/files/playboy-carti-i-am-music-black-vinyl-sealed-uk-2-lp-vinyl-record-double-7814833-868119_1024x1024.jpg?v=1750953953',
@@ -37,7 +37,7 @@ class _HeroSectionState extends State<HeroSection> {
       title: 'Balenciaga',
       subtitle: 'Limited edition collaboration',
       buttonText: 'VIEW',
-      buttonRoute: '/collections',
+      buttonRoute: '/collection-detail',
     ),
   ];
 

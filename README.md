@@ -74,20 +74,15 @@ The Union Shop is a full-featured e-commerce Flutter application designed for th
 
 ### Homepage
 The main landing page features a hero carousel showcasing promotional content, featured product collections, and quick navigation to popular categories.
+<img width="1918" height="1091" alt="image" src="https://github.com/user-attachments/assets/1eb8e801-bd5b-4460-9e5c-4c0af0565ea8" />
 
 ### Product Collections
 Browse products organized by category with grid layouts that adapt to screen size. Each product displays pricing, images, and essential information.
-
-### Shopping Cart
-View cart items with size/color selection, quantity controls, and real-time total calculation. Cart data persists across sessions.
+<img width="1919" height="1087" alt="image" src="https://github.com/user-attachments/assets/88b61a36-6159-4ca8-892c-787b973a74e1" />
 
 ### Print Shack
 Custom printing service page with detailed pricing information and text customization options.
-
-### User Profile
-Secure authentication and account management with Firebase, including profile editing and order history (planned).
-
-> **Note:** To add screenshots, place images in a /screenshots folder and update this section with image paths.
+<img width="1918" height="1084" alt="image" src="https://github.com/user-attachments/assets/74ff86ad-4440-452c-bc85-61f1136be860" />
 
 ##  Installation & Setup
 

@@ -11,62 +11,62 @@ class DataService {
 
   late final AppData appData;
 
-  final _collections = [
-    const Collection(
+  final _collections = const [
+    Collection(
       id: 'hoodies',
       name: 'Hoodies',
       description: 'Official university hoodies',
       imageUrl: 'assets/images/hoodie_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'tshirts',
       name: 'T-Shirts',
       description: 'Casual tees & campus shirts',
       imageUrl: 'assets/images/tshirt_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'accessories',
       name: 'Accessories',
       description: 'Mugs, bags, lanyards and more',
       imageUrl: 'assets/images/accessories_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'stationery',
       name: 'Stationery',
       description: 'Notebooks, pens and study essentials',
       imageUrl: 'assets/images/stationery_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'printshack',
       name: 'Print Shack',
       description: 'Custom printing & personalised gifts',
       imageUrl: 'assets/images/printshack_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'signature',
       name: 'Signature Range',
       description: 'Exclusive signature collection',
       imageUrl: 'assets/images/signature_collection.png',
       isLocalImage: true,
     ),
-    const Collection(
+    Collection(
       id: 'city',
       name: 'Portsmouth City Collection',
       description: 'City-inspired designs and merchandise',
       imageUrl: 'assets/images/city_collection.png',
       isLocalImage: true,
     ),
-    ];
+  ];
 
-    final _products = const [
+  final _products = const [
     Product(
-      id: 'hoodie-uni',
-      name: 'Classic Uni Hoodie',
+      id: 'hoodie-navy',
+      name: 'Classic Navy Hoodie',
       description: 'A warm, durable hoodie featuring the university crest.',
       price: 29.99,
       strikePrice: 39.99,
@@ -75,10 +75,10 @@ class DataService {
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-      'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
-      'assets/images/hoodie_navy_alt.png',
+        'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
+        'assets/images/hoodie_navy_alt.png',
       ],
-      colors: ['Purple', 'Black', 'Blue'],
+      colors: ['Navy', 'Black', 'Grey'],
     ),
     Product(
       id: 'hoodie-zip',
@@ -91,8 +91,8 @@ class DataService {
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-      'assets/images/hoodie_zip.png',
-      'assets/images/hoodie_zip_alt.png',
+        'assets/images/hoodie_zip.png',
+        'assets/images/hoodie_zip_alt.png',
       ],
       colors: ['Navy', 'Black', 'Grey'],
     ),
@@ -106,8 +106,8 @@ class DataService {
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-      'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
-      'assets/images/tshirt_classic_back.png',
+        'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
+        'assets/images/tshirt_classic_back.png',
       ],
       colors: ['White', 'Black', 'Navy'],
     ),
@@ -336,9 +336,15 @@ class DataService {
   List<Product> get products => _products;
 
   Collection getCollection(String id) =>
-      _collections.firstWhere((c) => c.id == id);
+      _collections.firstWhere(
+        (c) => c.id == id,
+        orElse: () => _collections.first,
+      );
 
-  Product getProduct(String id) => _products.firstWhere((p) => p.id == id);
+  Product getProduct(String id) => _products.firstWhere(
+        (p) => p.id == id,
+        orElse: () => _products.first,
+      );
 
   List<Product> getProductsForCollection(String id) =>
       _products.where((p) => p.collectionId == id).toList();

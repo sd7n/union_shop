@@ -270,7 +270,7 @@ class DataService {
       name: 'A5 Notepad',
       description: 'Purple A5 notepad with university branding.',
       price: 4.99,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/a5_notepad.jpg',
+      imageUrl: 'https://oxfordnotebooks.co.uk/cdn/shop/files/c52ce5836bd460e6ae480588176fa1ae.jpg?v=1725294755',
       isLocalImage: false,
       collectionId: 'stationery',
       sizes: [],

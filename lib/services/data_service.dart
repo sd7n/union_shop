@@ -87,15 +87,16 @@ class DataService {
       description: 'Front-zip hoodie with embroidered university logo.',
       price: 34.99,
       strikePrice: 44.99,
-      imageUrl: 'assets/images/hoodie_zip.png',
+      imageUrl: 'https://images.stockx.com/images/Denim-Tears-The-Cotton-Wreath-Sweatshirt-Black-ProductX.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1744142786',
       isLocalImage: false,
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'assets/images/hoodie_zip.png',
-        'assets/images/hoodie_zip_alt.png',
+        'https://images.stockx.com/images/Denim-Tears-The-Cotton-Wreath-Sweatshirt-Black-ProductX.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1744142786',
+        'https://images.stockx.com/images/Denim-Tears-The-Cotton-Wreath-Sweatshirt-Grey-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1744140720',
+        'https://images.stockx.com/images/Denim-Tears-The-Cotton-Wreath-Sweatshirt-Pink-Product.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1744142786'
       ],
-      colors: ['Navy', 'Black', 'Grey'],
+      colors: ['Black', 'Grey', 'Pink'],
     ),
     Product(
       id: 'tee-classic',

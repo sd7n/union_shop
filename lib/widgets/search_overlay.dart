@@ -38,6 +38,8 @@ class _SearchOverlayState extends State<SearchOverlay> {
     final searchProvider = context.read<SearchProvider>();
     final allProducts = DataService.instance.products;
 
+    // Make sure we have the latest text from the controller
+    searchProvider.setSearchTerm(_controller.text);
     searchProvider.runSearch(allProducts);
     widget.onToggle();
     Navigator.pushNamed(context, '/search');
@@ -72,6 +74,8 @@ class _SearchOverlayState extends State<SearchOverlay> {
                   }
                 },
                 child: TextField(
+                  controller: _controller,
+                  focusNode: _focusNode,
                   textInputAction: TextInputAction.search,
                   onSubmitted: (_) => _submitSearch(context),
                   decoration: InputDecoration(

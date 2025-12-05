@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
+import '../providers/search_provider.dart';
+import '../services/data_service.dart';
 import 'search_overlay.dart';
 
 enum ShopMenuItem {
@@ -30,6 +32,13 @@ class Navbar extends StatefulWidget implements PreferredSizeWidget {
 
 class _NavbarState extends State<Navbar> {
   bool _isSearchOpen = false;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   void _go(BuildContext context, String route) {
     Navigator.pushNamed(context, route);
@@ -40,6 +49,16 @@ class _NavbarState extends State<Navbar> {
   }
 
   void _toggleSearch() => setState(() => _isSearchOpen = !_isSearchOpen);
+
+  void _performSearch(BuildContext context) {
+    final searchProvider = context.read<SearchProvider>();
+    final allProducts = DataService.instance.products;
+    
+    searchProvider.setSearchTerm(_searchController.text);
+    searchProvider.runSearch(allProducts);
+    setState(() => _isSearchOpen = false);
+    Navigator.pushNamed(context, '/search');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +119,10 @@ class _NavbarState extends State<Navbar> {
                           Container(
                             width: 200,
                             child: TextField(
+                              controller: _searchController,
                               autofocus: true,
+                              textInputAction: TextInputAction.search,
+                              onSubmitted: (_) => _performSearch(context),
                               decoration: InputDecoration(
                                 hintText: 'Search...',
                                 border: OutlineInputBorder(
@@ -110,12 +132,18 @@ class _NavbarState extends State<Navbar> {
                                     width: 1,
                                   ),
                                 ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 8,
+                                ),
                               ),
                             ),
                           ),
                         IconButton(
                           icon: const Icon(Icons.search),
-                          onPressed: _toggleSearch,
+                          onPressed: _isSearchOpen
+                              ? () => _performSearch(context)
+                              : _toggleSearch,
                           color: const Color(0xFF5F5F5F),
                         ),
                         IconButton(

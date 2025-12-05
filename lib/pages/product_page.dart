@@ -209,6 +209,7 @@ class _ProductPageState extends State<ProductPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('${product.name} added to cart'),
+                backgroundColor: const Color(0xFF4D2963),
                 duration: const Duration(seconds: 2),
               ),
             );
@@ -371,6 +372,7 @@ class _ProductPageState extends State<ProductPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('${product.name} added to cart'),
+                backgroundColor: const Color(0xFF4D2963),
                 duration: const Duration(seconds: 2),
               ),
             );

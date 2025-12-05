@@ -124,6 +124,7 @@ class CartPage extends StatelessWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('${item.product.name} removed from cart'),
+                                  backgroundColor: const Color(0xFF4D2963),
                                   duration: const Duration(seconds: 2),
                                 ),
                               );
@@ -139,6 +140,7 @@ class CartPage extends StatelessWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('${item.product.name} quantity updated to ${item.quantity }'),
+                                  backgroundColor: const Color(0xFF4D2963),
                                   duration: const Duration(seconds: 1),
                                 ),
                               );
@@ -150,6 +152,7 @@ class CartPage extends StatelessWidget {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('${item.product.name} quantity updated to $newQuantity'),
+                                    backgroundColor: const Color(0xFF4D2963),
                                     duration: const Duration(seconds: 1),
                                   ),
                                 );
@@ -162,6 +165,7 @@ class CartPage extends StatelessWidget {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('${item.product.name} removed from cart'),
+                                    backgroundColor: const Color(0xFF4D2963),
                                     duration: const Duration(seconds: 2),
                                   ),
                                 );
@@ -236,7 +240,10 @@ class CartPage extends StatelessWidget {
                                 onPressed: () {
                                   // TODO: Navigate to checkout page
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Proceeding to checkout...')),
+                                    const SnackBar(
+                                      content: Text('Proceeding to checkout...'),
+                                      backgroundColor: Color(0xFF4D2963),
+                                    ),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(

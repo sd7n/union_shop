@@ -180,7 +180,7 @@ class DataService {
       description: 'Smooth-writing blue gel pen branded with the university logo.',
       price: 1.99,
       imageUrl: 'assets/images/pen_gel.png',
-      isLocalImage: true,
+      isLocalImage: false,
       collectionId: 'stationery',
       sizes: [],
       images: [

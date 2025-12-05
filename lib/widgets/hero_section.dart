@@ -30,7 +30,7 @@ class _HeroSectionState extends State<HeroSection> {
       title: 'Print Shack',
       subtitle: 'Custom printing & personalised gifts',
       buttonText: 'EXPLORE',
-      buttonRoute: '/collections',
+      buttonRoute: '/printshack_about',
     ),
     const HeroSlide(
       imageUrl: 'https://static.vecteezy.com/system/resources/thumbnails/039/315/327/small/balenciaga-logo-icons-and-pattern-editorial-use-vinnitsa-ukraine-february-15-2024-free-vector.jpg',

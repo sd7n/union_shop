@@ -123,91 +123,123 @@ class _NavbarState extends State<Navbar> {
                       _navLink(context, 'Sale!', '/sale'),
                       _navLink(context, 'About', '/about'),
                     ],
-                    const SizedBox(width: 16),
-                    Row(
-                      children: [
-                        if (_isSearchOpen)
-                          Container(
-                            width: 200,
-                            child: TextField(
-                              controller: _searchController,
-                              autofocus: true,
-                              textInputAction: TextInputAction.search,
-                              onSubmitted: (_) => _performSearch(context),
-                              decoration: InputDecoration(
-                                hintText: 'Search...',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: const BorderSide(
-                                    color: Color(0xFFDDDDDD),
-                                    width: 1,
+                    if (!isWide && !_isSearchOpen) const Spacer(),
+                    if (isWide || !_isSearchOpen) const SizedBox(width: 16),
+                    if (_isSearchOpen && !isWide)
+                      Expanded(
+                        child: TextField(
+                          controller: _searchController,
+                          autofocus: true,
+                          textInputAction: TextInputAction.search,
+                          onSubmitted: (_) => _performSearch(context),
+                          decoration: InputDecoration(
+                            hintText: 'Search...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFDDDDDD),
+                                width: 1,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.close, size: 20),
+                              onPressed: _toggleSearch,
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (!(!isWide && _isSearchOpen))
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (_isSearchOpen && isWide)
+                            Container(
+                              width: 200,
+                              child: TextField(
+                                controller: _searchController,
+                                autofocus: true,
+                                textInputAction: TextInputAction.search,
+                                onSubmitted: (_) => _performSearch(context),
+                                decoration: InputDecoration(
+                                  hintText: 'Search...',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFFDDDDDD),
+                                      width: 1,
+                                    ),
                                   ),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 8,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 8,
+                                  ),
                                 ),
                               ),
                             ),
+                          IconButton(
+                            icon: const Icon(Icons.search),
+                            onPressed: _isSearchOpen
+                                ? () => _performSearch(context)
+                                : _toggleSearch,
+                            color: const Color(0xFF5F5F5F),
                           ),
-                        IconButton(
-                          icon: const Icon(Icons.search),
-                          onPressed: _isSearchOpen
-                              ? () => _performSearch(context)
-                              : _toggleSearch,
-                          color: const Color(0xFF5F5F5F),
-                        ),
-                        IconButton(
+                          if (!_isSearchOpen || isWide)
+                            IconButton(
                           icon: const Icon(Icons.person_outline),
                           onPressed: () => _go(context, '/account'),
                           color: const Color(0xFF5F5F5F),
                         ),
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            IconButton(
-                              onPressed: () => _go(context, '/cart'),
-                              icon: const Icon(Icons.shopping_bag_outlined),
-                              color: const Color(0xFF5F5F5F),
+                          if (!_isSearchOpen || isWide)
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                IconButton(
+                                  onPressed: () => _go(context, '/cart'),
+                                  icon: const Icon(Icons.shopping_bag_outlined),
+                                  color: const Color(0xFF5F5F5F),
+                                ),
+                                Positioned(
+                                  right: 2,
+                                  top: 3,
+                                  child: Consumer<CartProvider>(
+                                    builder: (context, cartProvider, _) {
+                                      final count = cartProvider.cart.itemCount;
+                                      if (count == 0) return const SizedBox();
+                                      return Container(
+                                        padding: const EdgeInsets.all(4),
+                                        decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        child: Text(
+                                          '$count',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                            Positioned(
-                              right: 2,
-                              top: 3,
-                              child: Consumer<CartProvider>(
-                                builder: (context, cartProvider, _) {
-                                  final count = cartProvider.cart.itemCount;
-                                  if (count == 0) return const SizedBox();
-                                  return Container(
-                                    padding: const EdgeInsets.all(4),
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Text(
-                                      '$count',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  );
+                          if (!isWide && !_isSearchOpen)
+                            Builder(builder: (context) {
+                              return IconButton(
+                                icon: const Icon(Icons.menu),
+                                onPressed: () {
+                                  Scaffold.of(context).openEndDrawer();
                                 },
-                              ),
-                            ),
-                          ],
-                        ),
-                        if (!isWide)
-                          Builder(builder: (context) {
-                            return IconButton(
-                              icon: const Icon(Icons.menu),
-                              onPressed: () {
-                                Scaffold.of(context).openEndDrawer();
-                              },
-                            );
-                          }),
-                      ],
-                    ),
+                              );
+                            }),
+                        ],
+                      ),
                   ],
                 ),
               ),

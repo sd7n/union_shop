@@ -255,10 +255,15 @@ class DataService {
       name: 'Spinnaker Tower T-Shirt',
       description: 'Minimalist Spinnaker Tower print tee.',
       price: 16.99,
-      imageUrl: 'assets/images/city_spinnaker_tee.png',
-      isLocalImage: true,
+      imageUrl: 'https://m.media-amazon.com/images/I/51ZBsueRaQL._AC_UY1000_.jpg',
+      isLocalImage: false,
       collectionId: 'city',
       sizes: ['S', 'M', 'L', 'XL'],
+      images: [
+        'https://m.media-amazon.com/images/I/51ZBsueRaQL._AC_UY1000_.jpg',
+        'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F07%2Ffe%2Ftshirt-3-1-d6c4c.jpg?fit=max&w=720&q=90',
+      ],
+      colors: ['White', 'Black'],
     ),
     Product(
       id: 'notebook-a5-purple',

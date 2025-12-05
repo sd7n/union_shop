@@ -12,58 +12,58 @@ class DataService {
   late final AppData appData;
 
   final _collections = [
-    Collection(
+    const Collection(
       id: 'hoodies',
       name: 'Hoodies',
       description: 'Official university hoodies',
       imageUrl: 'assets/images/hoodie_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'tshirts',
       name: 'T-Shirts',
       description: 'Casual tees & campus shirts',
       imageUrl: 'assets/images/tshirt_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'accessories',
       name: 'Accessories',
       description: 'Mugs, bags, lanyards and more',
       imageUrl: 'assets/images/accessories_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'stationery',
       name: 'Stationery',
       description: 'Notebooks, pens and study essentials',
       imageUrl: 'assets/images/stationery_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'printshack',
       name: 'Print Shack',
       description: 'Custom printing & personalised gifts',
       imageUrl: 'assets/images/printshack_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'signature',
       name: 'Signature Range',
       description: 'Exclusive signature collection',
       imageUrl: 'assets/images/signature_collection.png',
       isLocalImage: true,
     ),
-    Collection(
+    const Collection(
       id: 'city',
       name: 'Portsmouth City Collection',
       description: 'City-inspired designs and merchandise',
       imageUrl: 'assets/images/city_collection.png',
       isLocalImage: true,
     ),
-  ];
+    ];
 
-  final _products = [
+    final _products = const [
     Product(
       id: 'hoodie-navy',
       name: 'Classic Navy Hoodie',
@@ -75,8 +75,8 @@ class DataService {
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
-        'assets/images/hoodie_navy_alt.png',
+      'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
+      'assets/images/hoodie_navy_alt.png',
       ],
       colors: ['Navy', 'Black', 'Grey'],
     ),
@@ -91,8 +91,8 @@ class DataService {
       collectionId: 'hoodies',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'assets/images/hoodie_zip.png',
-        'assets/images/hoodie_zip_alt.png',
+      'assets/images/hoodie_zip.png',
+      'assets/images/hoodie_zip_alt.png',
       ],
       colors: ['Navy', 'Black', 'Grey'],
     ),
@@ -106,8 +106,8 @@ class DataService {
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
-        'assets/images/tshirt_classic_back.png',
+      'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
+      'assets/images/tshirt_classic_back.png',
       ],
       colors: ['White', 'Black', 'Navy'],
     ),
@@ -121,8 +121,8 @@ class DataService {
       collectionId: 'tshirts',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'assets/images/tshirt_sport.png',
-        'assets/images/tshirt_sport_alt.png',
+      'assets/images/tshirt_sport.png',
+      'assets/images/tshirt_sport_alt.png',
       ],
       colors: ['Black', 'Navy', 'Grey'],
     ),
@@ -137,8 +137,8 @@ class DataService {
       collectionId: 'accessories',
       sizes: [],
       images: [
-        'assets/images/mug_uni.png',
-        'assets/images/mug_uni_alt.png',
+      'assets/images/mug_uni.png',
+      'assets/images/mug_uni_alt.png',
       ],
       colors: ['White', 'Black'],
     ),
@@ -153,8 +153,8 @@ class DataService {
       collectionId: 'accessories',
       sizes: [],
       images: [
-        'assets/images/tote_bag.png',
-        'assets/images/tote_bag_alt.png',
+      'assets/images/tote_bag.png',
+      'assets/images/tote_bag_alt.png',
       ],
       colors: ['Black', 'Navy'],
     ),
@@ -168,8 +168,8 @@ class DataService {
       collectionId: 'stationery',
       sizes: [],
       images: [
-        'assets/images/notebook_a5.png',
-        'assets/images/notebook_a5_inside.png',
+      'assets/images/notebook_a5.png',
+      'assets/images/notebook_a5_inside.png',
       ],
       colors: ['Black', 'Navy', 'Grey'],
     ),
@@ -183,7 +183,7 @@ class DataService {
       collectionId: 'stationery',
       sizes: [],
       images: [
-        'assets/images/pen_gel.png',
+      'assets/images/pen_gel.png',
       ],
       colors: ['Blue', 'Black'],
     ),
@@ -197,8 +197,8 @@ class DataService {
       collectionId: 'signature',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'https://i.ebayimg.com/images/g/r~8AAOSwQKpntCdq/s-l1200.jpg',
-        'assets/images/sig_hoodie_alt.png',
+      'https://i.ebayimg.com/images/g/r~8AAOSwQKpntCdq/s-l1200.jpg',
+      'assets/images/sig_hoodie_alt.png',
       ],
       colors: ['Black', 'Navy', 'Burgundy'],
     ),
@@ -212,8 +212,8 @@ class DataService {
       collectionId: 'signature',
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
-        'assets/images/sig_tee.png',
-        'assets/images/sig_tee_alt.png',
+      'assets/images/sig_tee.png',
+      'assets/images/sig_tee_alt.png',
       ],
       colors: ['White', 'Black', 'Grey'],
     ),
@@ -227,8 +227,8 @@ class DataService {
       collectionId: 'city',
       sizes: [],
       images: [
-        'assets/images/city_mug.png',
-        'assets/images/city_mug_alt.png',
+      'assets/images/city_mug.png',
+      'assets/images/city_mug_alt.png',
       ],
       colors: ['White', 'Black'],
     ),
@@ -242,8 +242,8 @@ class DataService {
       collectionId: 'city',
       sizes: [],
       images: [
-        'https://cdn.webshopapp.com/shops/89710/files/322715876/chloe-chloe-paddington-padlock-bag-in-purple.jpg',
-        'assets/images/city_bag_alt.png',
+      'https://cdn.webshopapp.com/shops/89710/files/322715876/chloe-chloe-paddington-padlock-bag-in-purple.jpg',
+      'assets/images/city_bag_alt.png',
       ],
       colors: ['Black', 'Navy', 'Beige'],
     ),

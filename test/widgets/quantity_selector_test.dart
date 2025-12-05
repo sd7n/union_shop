@@ -5,13 +5,11 @@ import 'package:union_shop/widgets/quantity_selector.dart';
 void main() {
   group('QuantitySelector', () {
     testWidgets('should display initial quantity of 1', (tester) async {
-      int? changedValue;
-      
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
             body: QuantitySelector(
-              onChanged: (value) => changedValue = value,
+              onChanged: (_) {},
             ),
           ),
         ),

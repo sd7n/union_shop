@@ -50,7 +50,7 @@ class CollectionsPage extends StatelessWidget {
       'hoodies': 'https://images.genius.com/a6da0163f5a243554270d596746d6227.1000x1000x1.png',
       'tshirts': 'https://i.ebayimg.com/images/g/fDAAAOSwgMpksbxw/s-l1200.jpg',
       'accessories': 'https://upload.wikimedia.org/wikipedia/en/1/1f/Eternal_Atake_Lil_Uzi_Vert.jpg',
-      'stationery': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing_original.jpg',
+      'stationery': 'https://www.rollingstone.com/wp-content/uploads/2020/02/masterofreality.jpg',
       'printshack': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/elections_discounts.jpg',
       'signature': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/essential_range.jpg',
       'city': 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/clothing.jpg',

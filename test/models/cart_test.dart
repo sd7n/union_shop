@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/models/cart.dart';
-import 'package:union_shop/models/cart_item.dart';
 import 'package:union_shop/models/product.dart';
 
 void main() {

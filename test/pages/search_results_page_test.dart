@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/services/data_service.dart';
-import 'package:union_shop/models/product.dart';
+
 
 void main() {
   group('SearchResultsPage Logic Tests', () {

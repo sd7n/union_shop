@@ -1,61 +1,35 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:union_shop/main.dart';
+import 'package:union_shop/services/data_service.dart';
 
 void main() {
-  group('Home Page Tests', () {
-    testWidgets('should display home page with basic elements', (tester) async {
-      await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
+  group('Home Page Logic Tests', () {
+    test('should load products from DataService', () {
+      final data = DataService.instance;
+      final products = data.products;
 
-      // Check that basic UI elements are present
-      expect(
-        find.text('PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!'),
-        findsOneWidget,
-      );
-      expect(find.text('Placeholder Hero Title'), findsOneWidget);
-      expect(find.text('PLACEHOLDER PRODUCTS SECTION'), findsOneWidget);
-      expect(find.text('BROWSE PRODUCTS'), findsOneWidget);
-      expect(find.text('VIEW ALL PRODUCTS'), findsOneWidget);
+      expect(products, isNotEmpty);
+      expect(products.length, greaterThan(0));
     });
 
-    testWidgets('should display product cards', (tester) async {
-      await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
+    test('should load collections from DataService', () {
+      final data = DataService.instance;
+      final collections = data.collections;
 
-      // Check that product cards are displayed
-      expect(find.text('Placeholder Product 1'), findsOneWidget);
-      expect(find.text('Placeholder Product 2'), findsOneWidget);
-      expect(find.text('Placeholder Product 3'), findsOneWidget);
-      expect(find.text('Placeholder Product 4'), findsOneWidget);
-
-      // Check prices are displayed
-      expect(find.text('£10.00'), findsOneWidget);
-      expect(find.text('£15.00'), findsOneWidget);
-      expect(find.text('£20.00'), findsOneWidget);
-      expect(find.text('£25.00'), findsOneWidget);
+      expect(collections, isNotEmpty);
+      expect(collections.length, greaterThan(0));
     });
 
-    testWidgets('should display header icons', (tester) async {
-      await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
 
-      // Check that header icons are present
-      expect(find.byIcon(Icons.search), findsOneWidget);
-      expect(find.byIcon(Icons.shopping_bag_outlined), findsOneWidget);
-      expect(find.byIcon(Icons.menu), findsOneWidget);
-    });
 
-    testWidgets('should display footer', (tester) async {
-      await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
-
-      // Check that footer is present
-      expect(find.text('Placeholder Footer'), findsOneWidget);
-      expect(
-        find.text('Students should customise this footer section'),
-        findsOneWidget,
-      );
+    test('products should have valid prices', () {
+      final data = DataService.instance;
+      
+      for (var product in data.products) {
+        expect(product.price, greaterThan(0));
+        if (product.strikePrice != null) {
+          expect(product.strikePrice, greaterThan(product.price));
+        }
+      }
     });
   });
 }

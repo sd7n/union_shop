@@ -244,7 +244,7 @@ class _ProductPageState extends State<ProductPage> {
         const SizedBox(height: 32),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed('/collection', arguments: product.collectionId);
+            Navigator.of(context).pushNamed('/collection-detail', arguments: product.collectionId);
           },
           child: Container(
             width: double.infinity,
@@ -407,7 +407,7 @@ class _ProductPageState extends State<ProductPage> {
         const SizedBox(height: 32),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed('/collection', arguments: product.collectionId);
+            Navigator.of(context).pushNamed('/collection-detail', arguments: product.collectionId);
           },
           child: Container(
             width: double.infinity,

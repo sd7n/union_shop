@@ -303,7 +303,7 @@ class DataService {
       description: 'Premium charging cable for iPhone 5/6.',
       price: 1.50,
       strikePrice: 3.00,
-      imageUrl: 'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/iphone_cable.jpg',
+      imageUrl: 'https://files.ekmcdn.com/buytec1/images/genuine-apple-iphone-5-5s-usb-data-charger-cable-1456-p.jpg',
       isLocalImage: false,
       collectionId: 'accessories',
       sizes: [],

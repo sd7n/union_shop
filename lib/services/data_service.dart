@@ -65,8 +65,8 @@ class DataService {
 
   final _products = const [
     Product(
-      id: 'hoodie-navy',
-      name: 'Classic Navy Hoodie',
+      id: 'hoodie-uni',
+      name: 'Classic Uni Hoodie',
       description: 'A warm, durable hoodie featuring the university crest.',
       price: 29.99,
       strikePrice: 39.99,
@@ -76,9 +76,10 @@ class DataService {
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
         'https://images.stockx.com/images/Bape-Color-Camo-Double-Shark-Full-Zip-Hoodie-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1621458689',
-        'assets/images/hoodie_navy_alt.png',
+        'https://images.stockx.com/images/BAPE-Color-Camo-Shark-Full-Zip-Hoodie-SS23-Black.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1677221030',
+        'https://images.stockx.com/images/Bape-Color-Camo-Shark-Full-Zip-Hoodie-Blue.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1613587108',
       ],
-      colors: ['Navy', 'Black', 'Grey'],
+      colors: ['Purple', 'Black', 'Blue'],
     ),
     Product(
       id: 'hoodie-zip',
@@ -132,15 +133,15 @@ class DataService {
       description: 'Ceramic mug featuring the university emblem.',
       price: 7.99,
       strikePrice: 9.99,
-      imageUrl: 'assets/images/mug_uni.png',
-      isLocalImage: true,
+      imageUrl: 'https://i.ebayimg.com/images/g/vmYAAOSw0qZmqbFO/s-l1200.jpg',
+      isLocalImage: false,
       collectionId: 'accessories',
       sizes: [],
       images: [
-        'assets/images/mug_uni.png',
-        'assets/images/mug_uni_alt.png',
+        'https://i.ebayimg.com/images/g/vmYAAOSw0qZmqbFO/s-l1200.jpg',
+        'https://m.media-amazon.com/images/I/51vd-NSbFVL.jpg',
       ],
-      colors: ['White', 'Black'],
+      colors: ['Purple', 'White'],
     ),
     Product(
       id: 'tote-campus',

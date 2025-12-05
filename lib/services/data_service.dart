@@ -109,9 +109,10 @@ class DataService {
       sizes: ['S', 'M', 'L', 'XL'],
       images: [
         'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Purple.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1725629789',
-        'assets/images/tshirt_classic_back.png',
+        'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-Black.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1725629813',
+        'https://images.stockx.com/images/Palace-x-Vivienne-Westwood-T-Shirt-White.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1725629726',
       ],
-      colors: ['White', 'Black', 'Navy'],
+      colors: ['Purple', 'Black', 'White'],
     ),
     Product(
       id: 'tee-sport',

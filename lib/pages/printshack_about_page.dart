@@ -77,8 +77,8 @@ class PrintShackAboutPage extends StatelessWidget {
   Widget _buildImageGrid(bool isWide) {
     final imageUrls = [
       'https://uk.rarevinyl.com/cdn/shop/files/playboy-carti-i-am-music-black-vinyl-sealed-uk-2-lp-vinyl-record-double-7814833-868119_1024x1024.jpg?v=1750953953',
-      'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/print_shack_logo.jpg',
-      'https://union.host.cs.st-andrews.ac.uk/~sd7n/images/personalisation_1.jpg',
+      'https://polydor.co.uk/cdn/shop/files/1_-_cover_1000x1000_ecdae7b7-4348-4878-8a86-fff786550aef.png?v=1762911307',
+      'https://uk.rarevinyl.com/cdn/shop/files/playboy-carti-i-am-music-black-vinyl-sealed-uk-2-lp-vinyl-record-double-7814833-868119_1024x1024.jpg?v=1750953953',
     ];
 
     if (isWide) {
